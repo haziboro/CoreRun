@@ -7,15 +7,21 @@ public class GameManager : MonoBehaviour
 
     private PlanetControl planet;
     private UIManager ui;
+    private SpawnManager spawner;
+
     private int layer = 1;
     private int score = 0;
     private int multiplier = 0;
+
+    public bool gameRunning;
 
     // Start is called before the first frame update
     void Start()
     {
         planet = GameObject.Find("Earth").GetComponent<PlanetControl>();
         ui = GameObject.Find("Canvas").GetComponent<UIManager>();
+        spawner = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        gameRunning = true;
     }
 
     // Update is called once per frame
@@ -25,15 +31,22 @@ public class GameManager : MonoBehaviour
     }
 
     //Ends the game
-    public void GameOver()
+    private void GameOver()
     {
         planet.StopMoving();
+        spawner.StopSpawns();
     }
 
     //Increases the planet's speed
     public void IncreasePlanetSpeed()
     {
         planet.IncreaseSpeed();
+    }
+
+    //Call when an enemy is avoided
+    public void EnemyAvoided()
+    {
+        Debug.Log("GameManager receiving avoidance report");
     }
 
     //Updates the current score

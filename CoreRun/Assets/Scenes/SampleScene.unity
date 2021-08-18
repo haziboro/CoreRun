@@ -844,6 +844,8 @@ MonoBehaviour:
   spawnDegree: 15
   spawnDistance: 49.3
   baseSpawnRate: 3
+  spawnRateModifier: 10
+  currentSpawnRate: 0
 --- !u!4 &658811827
 Transform:
   m_ObjectHideFlags: 0
@@ -2169,7 +2171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5048839908608524080d2ab18ac4a8ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
+  score: 0
+  multiplier: 0
   maxMultiplier: 3
+  layerInterval: 1
   gameRunning: 0
 --- !u!4 &1506685773
 Transform:
@@ -2494,6 +2500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a598095904e074c97b4c4a42462873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  layerText: {fileID: 0}
 --- !u!114 &1826712484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2858,7 +2866,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: '1
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
     private SpawnManager spawner;
     private GameObject player;
 
-    private int layer;
-    private int score;
-    private int multiplier;
+    [SerializeField] int layer;
+    [SerializeField] int score;
+    [SerializeField] int multiplier;
     [SerializeField] int maxMultiplier = 3;
+    [SerializeField] int layerInterval = 20;//Number of seconds between layer transitions
 
     public bool gameRunning;
 
@@ -48,12 +49,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         layer = 1;
         multiplier = 1;
-    }
-
-    //Increases the planet's speed
-    public void IncreasePlanetSpeed()
-    {
-        planet.IncreaseSpeed();
+        StartCoroutine(LayerCountdown());
     }
 
     //Called when an enemy is avoided. Modifies multiplier based on narrow dodge
@@ -75,7 +71,6 @@ public class GameManager : MonoBehaviour
                 multiplier--;
             }
         }
-        CalculatePoints();
         UpdateScore();
     }
 
@@ -86,21 +81,27 @@ public class GameManager : MonoBehaviour
         GameOver();
     }
 
-    //Calculate point rewards
-    void CalculatePoints()
-    {
-        score += 1*layer;
-    }
-
-    //Requests an update for the current score on the interface
+    //Updates score and request the UI to change display
     void UpdateScore()
     {
+        score += 1 * layer;
         ui.UpdateScoreUI(score);
     }
 
-    //Requests an update for the current layer on the interface
-    void UpdateLayer()
+    //Initaite layer increase after layerInterval seconds
+    IEnumerator LayerCountdown()
     {
-        ui.UpdateLayerUI(layer);
+        while (gameRunning)
+        {
+            yield return new WaitForSeconds(layerInterval);
+            layer++;
+            planet.IncreaseSpeed();
+            spawner.IncreaseRate();
+            //Layer increase notification
+            //animation
+            //animation
+            //Layer increase notification
+            ui.UpdateLayerUI(layer);
+        }
     }
 }

@@ -11,6 +11,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] float spawnDegree = 15f;//Enemy spawn position in x-degrees relative to planet
     [SerializeField] float spawnDistance = 50.5f;//Enemy spawn distance from center of planet
     [SerializeField] float baseSpawnRate = 3.0f; //Base rate which enemies spawn in seconds
+    [SerializeField] float spawnRateModifier = 10; //How much(in percent) the spawnrate will increase when IncreaseRate() called
+
+    [SerializeField] float currentSpawnRate;//Spawnrate after modifier applied
 
     private bool readyToSpawn;
 
@@ -20,6 +23,7 @@ public class SpawnManager : MonoBehaviour
         planet = GameObject.Find("Earth");
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         readyToSpawn = true;
+        currentSpawnRate = baseSpawnRate;
     }
 
     // Update is called once per frame
@@ -35,7 +39,7 @@ public class SpawnManager : MonoBehaviour
     //Spawns enemies on a delay
     IEnumerator SpawnTimer()
     {
-        yield return new WaitForSeconds(baseSpawnRate);
+        yield return new WaitForSeconds(currentSpawnRate);
         if (gameManager.gameRunning)
         {
             SpawnEnemy();
@@ -60,5 +64,11 @@ public class SpawnManager : MonoBehaviour
         //Move unit to surface, offset by their individual value
         enemy.transform.Translate(0, 0,
             spawnDistance + enemy.GetComponent<Enemy>().GetOffset());
+    }
+
+    //Increases the spawnrate
+    public void IncreaseRate()
+    {
+        currentSpawnRate -= currentSpawnRate * (spawnRateModifier / 100);
     }
 }

@@ -9,11 +9,11 @@ public class Enemy : MonoBehaviour
     private float playerDistance;
     private bool aggro = false; //True when player has entered aggro range
     private bool narrowMiss; //True when player narrowly dodges
-    [SerializeField] float playerAggroRange = 5; //Distance of aggro range
-    [SerializeField] float spawnOffset = 2.40f;//Offset for proper positioning when spawned
+    [SerializeField] float playerAggroRange = 5; //Distance of aggro range, SPECIFIC TO THIS SPAWN
+    [SerializeField] float spawnOffset = 2.40f;//Offset for proper positioning when spawned, SPECIFIC TO THIS SPAWN
 
     // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
         player = GameObject.Find("PlayerCube");
         narrowMissField = player.GetComponent<CapsuleCollider>();

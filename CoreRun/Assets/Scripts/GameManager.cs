@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
     private PlanetControl planet;
     private UIManager ui;
     private SpawnManager spawner;
+    private GameObject player;
 
-    private int layer = 1;
-    private int score = 0;
-    private int multiplier = 0;
+    private int layer;
+    private int score;
+    private int multiplier;
+    [SerializeField] int maxMultiplier = 3;
 
     public bool gameRunning;
 
@@ -21,7 +23,9 @@ public class GameManager : MonoBehaviour
         planet = GameObject.Find("Earth").GetComponent<PlanetControl>();
         ui = GameObject.Find("Canvas").GetComponent<UIManager>();
         spawner = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
-        gameRunning = true;
+        player = GameObject.Find("PlayerCube");
+
+        StartGame();
     }
 
     // Update is called once per frame
@@ -33,8 +37,17 @@ public class GameManager : MonoBehaviour
     //Ends the game
     private void GameOver()
     {
-        planet.StopMoving();
-        spawner.StopSpawns();
+        gameRunning = false;
+        Debug.Log("The Game is Over");
+    }
+
+    //Starts the game
+    void StartGame()
+    {
+        gameRunning = true;
+        score = 0;
+        layer = 1;
+        multiplier = 1;
     }
 
     //Increases the planet's speed
@@ -43,19 +56,49 @@ public class GameManager : MonoBehaviour
         planet.IncreaseSpeed();
     }
 
-    //Call when an enemy is avoided
-    public void EnemyAvoided()
+    //Called when an enemy is avoided. Modifies multiplier based on narrow dodge
+    public void EnemyAvoided(bool narrowDodge)
     {
-        Debug.Log("GameManager receiving avoidance report");
+        if (narrowDodge)
+        {
+            /*Narrow Dodge notification animation
+             */
+            if(multiplier < maxMultiplier)
+            {
+                multiplier++;
+            }
+        }
+        else
+        {
+            if(multiplier > 1)
+            {
+                multiplier--;
+            }
+        }
+        CalculatePoints();
+        UpdateScore();
     }
 
-    //Updates the current score
+    //Called by player, ends the game when player has died
+    public void PlayerDied()
+    {
+        Debug.Log("The player has died");
+        GameOver();
+    }
+
+    //Calculate point rewards
+    void CalculatePoints()
+    {
+        score += 1*layer;
+    }
+
+    //Requests an update for the current score on the interface
     void UpdateScore()
     {
         ui.UpdateScoreUI(score);
     }
 
-    //Updates the current layer
+    //Requests an update for the current layer on the interface
     void UpdateLayer()
     {
         ui.UpdateLayerUI(layer);

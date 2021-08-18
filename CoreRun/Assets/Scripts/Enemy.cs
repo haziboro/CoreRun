@@ -5,17 +5,19 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     GameObject player;
+    CapsuleCollider narrowMissField; //Narrow miss collider around player
     private float playerDistance;
     private bool aggro = false; //True when player has entered aggro range
+    private bool narrowMiss; //True when player narrowly dodges
     [SerializeField] float playerAggroRange = 5; //Distance of aggro range
-
-    //Offset for proper positioning when spawned
-    [SerializeField] float spawnOffset = 2.40f;
+    [SerializeField] float spawnOffset = 2.40f;//Offset for proper positioning when spawned
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("PlayerCube");
+        narrowMissField = player.GetComponent<CapsuleCollider>();
+        narrowMiss = false;
     }
 
     // Update is called once per frame
@@ -40,10 +42,26 @@ public class Enemy : MonoBehaviour
             if (playerDistance > playerAggroRange)
             {
                 //Report to the player that they have been passed
-                player.GetComponent<Player>().ReportEnemyAvoidance();
+                player.GetComponent<Player>().ReportEnemyAvoidance(narrowMiss);
                 Destroy(gameObject);
             }
         }//endelse
+    }
+
+    //Trigger ReportDeath() in player when colliding with them
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == player.name)
+        {
+            if(other == narrowMissField)
+            {
+                narrowMiss = true;
+            }
+            else
+            {
+                player.GetComponent<Player>().ReportImpact();
+            }
+        }
     }
 
     //Returns spawn Offset

@@ -5,27 +5,27 @@ using UnityEngine;
 [DefaultExecutionOrder(1000)]
 public class SpawnManager : MonoBehaviour
 {
+    GameManager gameManager;
     private GameObject planet;
     [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] float spawnDegree = 15f;//Enemy spawn position in x-degrees relative to planet
     [SerializeField] float spawnDistance = 50.5f;//Enemy spawn distance from center of planet
     [SerializeField] float baseSpawnRate = 3.0f; //Base rate which enemies spawn in seconds
 
-    private bool gameRunning;
     private bool readyToSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
         planet = GameObject.Find("Earth");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         readyToSpawn = true;
-        gameRunning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (readyToSpawn && gameRunning)
+        if (readyToSpawn && gameManager.gameRunning)
         {
             readyToSpawn = false;
             StartCoroutine("SpawnTimer");
@@ -36,8 +36,11 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnTimer()
     {
         yield return new WaitForSeconds(baseSpawnRate);
-        SpawnEnemy();
-        readyToSpawn = true;
+        if (gameManager.gameRunning)
+        {
+            SpawnEnemy();
+            readyToSpawn = true;
+        }
     }
 
     //Instantiate an enemy
@@ -55,14 +58,7 @@ public class SpawnManager : MonoBehaviour
         enemy.transform.Rotate(spawnDegree, 0, 0);
 
         //Move unit to surface, offset by their individual value
-        Debug.Log("Enemy Offset is: " + enemy.GetComponent<Enemy>().GetOffset());
         enemy.transform.Translate(0, 0,
             spawnDistance + enemy.GetComponent<Enemy>().GetOffset());
-    }
-
-    //Stops spawns
-    public void StopSpawns()
-    {
-        gameRunning = false;
     }
 }

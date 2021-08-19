@@ -4,36 +4,82 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    GameManager gameManager;
-    private float horizontalInput;
+    private GameManager gameManager;
     private AudioSource audioSource;
+    private GameObject playerGraphic;//The player graphic, which contains a box collider and rigidbody
+    private Vector3 playerScale;
+    private Vector3 shrinkScale; //all three values defined by shrinkspeed
+    private float currentScale;//scale the player currently has out of 100
+    private float shrinkGroundAdjustment;
+    private float horizontalInput;
+    [SerializeField] float speed;
+
     [SerializeField] AudioClip[] narrowDodgeClips;
-    [SerializeField] float speed = 10;//left/right movement speed
-    [SerializeField] float levelBoundaries = 3.4f;
+    [SerializeField] float baseSpeed = 10;//left/right movement speed
+    [SerializeField] float shrinkSpeed = 0.005f;//Rate at which shrinking occurs
+    [SerializeField] float levelBoundaries = 3.4f;//distance from center
+    [Range(0.0f, 1.0f)] [SerializeField] float minimumSize = 0.5f; //Smallest size allowed
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //Load gameobjects
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         audioSource = GetComponent<AudioSource>();
+        playerGraphic = transform.Find("PlayerGraphic").gameObject;
+
+        //Set base scale values
+        playerScale = playerGraphic.transform.localScale;
+
+        //Calculate variables
+        shrinkScale = new Vector3(-shrinkSpeed, -shrinkSpeed, -shrinkSpeed);
+        shrinkGroundAdjustment = shrinkSpeed / 2;
+        speed = baseSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        SideMovement();
+        if (gameManager.gameRunning == true)
+        {
+            SideMovement();
+            Shrink();
+        }
     }
 
     //Move player left/right based on input
     void SideMovement()
     {
-        if(gameManager.gameRunning == true)
+        horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
+        CheckBoundaries();
+    }
+
+    //Shrink player when 'Down' is pressed
+    void Shrink()
+    {
+        //Shrink player down to half size when down is held
+        if (Input.GetButton("Down")){
+            //if the player's current scale is higher than their original scale/2
+            if (playerGraphic.transform.localScale.x > playerScale.x * minimumSize) //All scale values are always equal so can just use x here
+            {
+                playerGraphic.transform.localScale += shrinkScale;
+                playerGraphic.transform.Translate(0.0f,-shrinkGroundAdjustment,0.0f);
+            }
+        }//endif
+        //Automatically grow player up to original size when down is not held
+        else
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
-            CheckBoundaries();
-        }
+            if(playerGraphic.transform.localScale.x < playerScale.x)
+            {
+                playerGraphic.transform.localScale -= shrinkScale;
+                playerGraphic.transform.Translate(0.0f, shrinkGroundAdjustment, 0.0f);
+            }
+        }//endelse
+        currentScale = playerGraphic.transform.localScale.x / playerScale.x;
+        //Change speed proportionate to size change
+        speed = baseSpeed * currentScale;
     }
 
     //Establishes level boundaries

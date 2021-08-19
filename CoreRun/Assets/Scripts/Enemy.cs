@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     void Start() 
     {
         player = GameObject.Find("PlayerCube");
-        narrowMissField = player.GetComponent<CapsuleCollider>();
+        narrowMissField = player.GetComponentInChildren<CapsuleCollider>();
         narrowMiss = false;
     }
 
@@ -51,16 +51,13 @@ public class Enemy : MonoBehaviour
     //Trigger ReportDeath() in player when colliding with them
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == player.name)
+        if(other.name == narrowMissField.name)
         {
-            if(other == narrowMissField)
-            {
-                narrowMiss = true;
-            }
-            else
-            {
-                player.GetComponent<Player>().ReportImpact();
-            }
+            narrowMiss = true;
+        }
+        else
+        {
+            player.GetComponent<Player>().ReportImpact();
         }
     }
 

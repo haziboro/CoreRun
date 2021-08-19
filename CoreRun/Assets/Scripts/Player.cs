@@ -6,13 +6,17 @@ public class Player : MonoBehaviour
 {
     GameManager gameManager;
     private float horizontalInput;
+    private AudioSource audioSource;
+    [SerializeField] AudioClip[] narrowDodgeClips;
     [SerializeField] float speed = 10;//left/right movement speed
     [SerializeField] float levelBoundaries = 3.4f;
+
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -50,6 +54,14 @@ public class Player : MonoBehaviour
     public void ReportEnemyAvoidance(bool isNarrowDodge)
     {
         gameManager.EnemyAvoided(isNarrowDodge);
+        if (isNarrowDodge)
+        {
+            //Play random dodge audio clip on succesful narrow dodge
+            int clipNum = Random.Range(0, narrowDodgeClips.Length);
+            audioSource.clip = narrowDodgeClips[clipNum];
+            audioSource.Play();
+            //Do a happy animation
+        }
     }
 
     //Reports to GameManager that the player has been hit

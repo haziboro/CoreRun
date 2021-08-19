@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private PlanetControl planet;
     private UIManager ui;
     private SpawnManager spawner;
+    private SoundControl soundControl;
     private GameObject player;
 
     [SerializeField] int layer;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
         planet = GameObject.Find("Earth").GetComponent<PlanetControl>();
         ui = GameObject.Find("Canvas").GetComponent<UIManager>();
         spawner = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        soundControl = GameObject.Find("SoundControl").GetComponent<SoundControl>();
         player = GameObject.Find("PlayerCube");
 
         StartGame();
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         gameRunning = false;
+        soundControl.StopMusic();
         Debug.Log("The Game is Over");
     }
 
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         layer = 1;
         multiplier = 1;
+        soundControl.StartMusic();
         StartCoroutine(LayerCountdown());
     }
 
@@ -57,12 +61,11 @@ public class GameManager : MonoBehaviour
     {
         if (narrowDodge)
         {
-            /*Narrow Dodge notification animation
-             */
             if(multiplier < maxMultiplier)
             {
                 multiplier++;
             }
+            ui.NarrowDodgePopup(player.transform.position);
         }
         else
         {

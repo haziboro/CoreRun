@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,10 +14,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int layer;
     [SerializeField] int score;
-    [SerializeField] int multiplier;
-    [SerializeField] int maxMultiplier = 3;
+    [SerializeField] int dodgeBonus;//Multiplier for narrow dodges
     [SerializeField] int layerInterval = 20;//Number of seconds between layer transitions
 
+    private bool gamePaused;
     public bool gameRunning;
 
     // Start is called before the first frame update
@@ -34,15 +35,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape) && gameRunning)
+        {
+            PauseToggle();
+        }
     }
 
     //Ends the game
-    private void GameOver()
+    public void GameOver()
     {
+        if (gamePaused)//unpause to prevent the game from starting paused
+        {
+            PauseToggle();
+        }
         gameRunning = false;
+        planet.keepSpinning = false;
         soundControl.StopMusic();
-        Debug.Log("The Game is Over");
+        SceneManager.LoadScene(0);
     }
 
     //Starts the game
@@ -51,30 +60,43 @@ public class GameManager : MonoBehaviour
         gameRunning = true;
         score = 0;
         layer = 1;
-        multiplier = 1;
         soundControl.StartMusic();
         StartCoroutine(LayerCountdown());
     }
 
-    //Called when an enemy is avoided. Modifies multiplier based on narrow dodge
+    //Pauses the game
+    //Allows for pausing the game
+    public void PauseToggle()
+    {
+        gamePaused = !gamePaused;
+        if (gamePaused)
+        {
+            Time.timeScale = 0.0f;
+            soundControl.PauseMusic();
+            planet.keepSpinning = false;
+            ui.TogglePauseMenu(true);
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+            soundControl.PauseMusic(false);
+            planet.keepSpinning = true;
+            ui.TogglePauseMenu(false);
+        }//endelse
+    }//end PauseToggle
+
+    //Called by player when an enemy is avoided
     public void EnemyAvoided(bool narrowDodge)
     {
         if (narrowDodge)
         {
-            if(multiplier < maxMultiplier)
-            {
-                multiplier++;
-            }
             ui.NarrowDodgePopup(player.transform.position);
+            UpdateScore(true);
         }
         else
         {
-            if(multiplier > 1)
-            {
-                multiplier--;
-            }
+            UpdateScore(false);
         }
-        UpdateScore();
     }
 
     //Called by player, ends the game when player has died
@@ -85,9 +107,10 @@ public class GameManager : MonoBehaviour
     }
 
     //Updates score and request the UI to change display
-    void UpdateScore()
+    void UpdateScore(bool narrowDodge)
     {
         score += 1 * layer;
+        if (narrowDodge) { score *= dodgeBonus; }
         ui.UpdateScoreUI(score);
     }
 

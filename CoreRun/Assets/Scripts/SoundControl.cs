@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class SoundControl : MonoBehaviour
 {
-    GameManager gameManager;
     private AudioSource backgroundMusic;
-    private AudioSource playerAudio;
+    private List<GameObject> SFXsources;
     [Range(0.0f, 1.0f)] [SerializeField] float startingVolume = 0.25f;
     [Range(0.0f, 1.0f)] [SerializeField] float backgroundVolume;
     [Range(0.0f, 1.0f)] [SerializeField] float soundEffectsVolume;
@@ -14,41 +13,47 @@ public class SoundControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         backgroundMusic = GameObject.Find("Main Camera").GetComponent<AudioSource>();
-        playerAudio = GameObject.Find("PlayerCube").GetComponent<AudioSource>();
+        StartMusic();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (gameManager.gameRunning)
-        {
-            ChangeBackgroundMusicVolume();
-            ChangePlayerVolume();
-        }
+        ChangeBackgroundMusicVolume();
+        ChangeEffectVolume(soundEffectsVolume);
     }
 
     //Set's all volume to startingVolume and starts background music
     public void StartMusic()
     {
         backgroundMusic.volume = startingVolume;
-        playerAudio.volume = startingVolume;
+        ChangeEffectVolume(startingVolume);
+
         backgroundVolume = backgroundMusic.volume;
-        soundEffectsVolume = playerAudio.volume;
+        soundEffectsVolume = startingVolume;
 
         backgroundMusic.Play();
     }
 
-    public void PauseMusic()
+    //Pauses the background music
+    public void PauseMusic(bool pausing = true)
     {
-        backgroundMusic.Pause();
+        if(pausing)
+        {
+            backgroundMusic.Pause();
+        }
+        else
+        {
+            backgroundMusic.Play();
+        }
     }
 
+    //Stop background music and sets all stored audiosources volumes to zero
     public void StopMusic()
     {
         backgroundMusic.Stop();
-        playerAudio.Stop();
+        ChangeEffectVolume(0);
     }
 
     //Background Music Volume
@@ -57,10 +62,16 @@ public class SoundControl : MonoBehaviour
         backgroundMusic.volume = backgroundVolume;
     }
 
-    //Background Music Volume
-    private void ChangePlayerVolume()
+    //Changes volume of all AudioSources in scene
+    private void ChangeEffectVolume(float volumeLevel)
     {
-        playerAudio.volume = soundEffectsVolume;
+        if (SFXsources != null)
+        {
+            foreach (GameObject obj in SFXsources)
+            {
+                obj.GetComponent<AudioSource>().volume = volumeLevel;
+            }
+        }
     }
 
 }

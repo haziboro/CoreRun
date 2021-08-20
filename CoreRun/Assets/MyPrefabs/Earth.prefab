@@ -69025,3 +69025,4 @@ MonoBehaviour:
   baseRotationSpeed: 10
   currentRotationSpeed: 0
   rotationSpeedPercentIncrease: 10
+  keepSpinning: 1

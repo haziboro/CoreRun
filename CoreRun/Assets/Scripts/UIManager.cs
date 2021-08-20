@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     private Camera mainCamera;
     private GameObject player;
+    private GameObject pauseMenu;
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI layerText;
 
@@ -27,6 +28,7 @@ public class UIManager : MonoBehaviour
     {
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         player = GameObject.Find("PlayerCube");
+        pauseMenu = transform.Find("PauseMenu").gameObject;
         scoreText = transform.Find("ScoreBoard")
             .GetComponentInChildren<TextMeshProUGUI>();
         layerText = transform.Find("LayerBoard")
@@ -63,6 +65,12 @@ public class UIManager : MonoBehaviour
         screenPos.y += Random.Range(-randomPopupRange, 0) - downOffset;
         dodgePopup.transform.position = screenPos;
         StartCoroutine(PopUpTimer(screenPos));
+    }
+
+    //Displays the pause menu
+    public void TogglePauseMenu(bool paused)
+    {
+        pauseMenu.SetActive(paused);
     }
 
     //Turns the popup on and initiates color changing

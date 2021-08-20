@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class PlanetControl : MonoBehaviour
 {
-    GameManager gameManager;
     [SerializeField] int baseRotationSpeed = 10;
     [SerializeField] float currentRotationSpeed;
     [SerializeField] float rotationSpeedPercentIncrease;
 
+    public bool keepSpinning = true;
+
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentRotationSpeed = baseRotationSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.gameRunning)
-        {
+        if (keepSpinning){
             SpinSelf();
         }
     }

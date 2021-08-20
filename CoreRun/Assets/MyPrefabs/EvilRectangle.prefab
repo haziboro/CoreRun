@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 3171095810088375420}
   - component: {fileID: 3171095810088375421}
   - component: {fileID: 3171095810088375418}
-  - component: {fileID: 3171095810088375419}
   - component: {fileID: 3171095810088375416}
-  - component: {fileID: 7111361728644536857}
+  - component: {fileID: 6315374026158719302}
   m_Layer: 0
   m_Name: EvilRectangle
   m_TagString: Enemy
@@ -352,14 +351,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &3171095810088375419
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3171095810088375417}
-  m_Mesh: {fileID: 0}
 --- !u!65 &3171095810088375416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -373,7 +364,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1065735, y: 0.6997989, z: 2.5469906}
   m_Center: {x: -0.026295125, y: -0.0008018613, z: -0.0000015497208}
---- !u!114 &7111361728644536857
+--- !u!114 &6315374026158719302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,11 +373,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3171095810088375417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb109b112bc73b343a4ccc119c53ca0d, type: 3}
+  m_Script: {fileID: 11500000, guid: d713ad16b8bd8de4ebb062f4f3c9347c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerAggroRange: 5
   spawnOffset: 2.4
+  spawnType: RandomStill
 --- !u!1 &3171095810306807630
 GameObject:
   m_ObjectHideFlags: 0

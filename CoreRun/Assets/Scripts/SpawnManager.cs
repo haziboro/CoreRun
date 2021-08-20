@@ -12,6 +12,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] float spawnDistance = 50.5f;//Enemy spawn distance from center of planet
     [SerializeField] float baseSpawnRate = 3.0f; //Base rate which enemies spawn in seconds
     [SerializeField] float spawnRateModifier = 10; //How much(in percent) the spawnrate will increase when IncreaseRate() called
+    [SerializeField] float trackWidthFromCenter = 3.4f; //Area for enemies to spawn in
+
 
     [SerializeField] float currentSpawnRate;//Spawnrate after modifier applied
 
@@ -63,7 +65,22 @@ public class SpawnManager : MonoBehaviour
 
         //Move unit to surface, offset by their individual value
         enemy.transform.Translate(0, 0,
-            spawnDistance + enemy.GetComponent<Enemy>().GetOffset());
+            spawnDistance + enemy.GetComponent<Enemy>().spawnOffset);
+        ModifySpawn(enemy.GetComponent<Enemy>());
+    }
+
+    //Modifies spawn position based on conditions provided by Enemies
+    private void ModifySpawn(Enemy enemy)
+    {
+        string type = enemy.spawnType;
+        //Move enemy randomly left or right within the road, bound by its' offset
+        if (type == "RandomStill")
+        {
+            Vector3 enemyNewPos = enemy.transform.position;
+            enemyNewPos.x += Random.Range(-trackWidthFromCenter + enemy.WallOffset(),
+                trackWidthFromCenter - enemy.WallOffset());
+            enemy.transform.position = enemyNewPos;
+        }
     }
 
     //Increases the spawnrate

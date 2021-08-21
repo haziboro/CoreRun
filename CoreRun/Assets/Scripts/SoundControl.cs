@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundControl : MonoBehaviour
 {
     private AudioSource backgroundMusic;
-    private List<GameObject> SFXsources;
+    public List<GameObject> SFXsources;
     [Range(0.0f, 1.0f)] [SerializeField] float startingVolume = 0.25f;
     [Range(0.0f, 1.0f)] [SerializeField] float backgroundVolume;
     [Range(0.0f, 1.0f)] [SerializeField] float soundEffectsVolume;

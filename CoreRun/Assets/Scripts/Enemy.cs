@@ -11,7 +11,7 @@ public abstract class Enemy : MonoBehaviour
     private bool narrowMiss; //True when player narrowly dodges
     public float playerAggroRange; //Distance of aggro range
     public float spawnOffset; //Offset for positioning flat on ground
-    public string spawnType; //Defines how this enemy behaves when spawned
+    public float movementZone; //Defines how far from spawn an enemy can move
 
     // Start is called before the first frame update
     protected virtual void Start() 
@@ -67,6 +67,12 @@ public abstract class Enemy : MonoBehaviour
         narrowMissField = player.GetComponentInChildren<CapsuleCollider>();
         aggro = false;
         narrowMiss = false;
+    }
+
+    //Performs an enemy movement, if applicable
+    protected virtual void Move()
+    {
+        //Do nothing, implement in subclass
     }
 
     //Returns how far from the level wall an enemy should be when spawned

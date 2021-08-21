@@ -6432,6 +6432,7 @@ GameObject:
   - component: {fileID: 3602526386765232077}
   - component: {fileID: 3602526386765232076}
   - component: {fileID: 3602526386765232115}
+  - component: {fileID: 1905858314}
   m_Layer: 0
   m_Name: EvilFlyingPink
   m_TagString: Untagged
@@ -6446,7 +6447,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3602526386765232114}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.25999993, y: 1.8067131, z: 2.209}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6454,7 +6455,7 @@ Transform:
   - {fileID: 3602526386898240172}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &3602526386765232078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7692,11 +7693,26 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3602526386765232114}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.6335419, y: 0.29364395, z: 0.5999999}
   m_Center: {x: -0.001283437, y: 0.0040302277, z: 0}
+--- !u!114 &1905858314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602526386765232114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd97547ab843ea41b1f03715525da27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAggroRange: 5
+  spawnOffset: 2
+  movementZone: 0
 --- !u!1 &3602526386896701873
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,12 +11,22 @@ public class EvilRectangle : Enemy
         base.Start();
         playerAggroRange = 5;
         spawnOffset = 2.40f;
-        spawnType = "RandomStill"; //Can be placed anywhere randomly and doesn't move.
+
+        Move();
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
+    }
+
+    //Evil Rectangle will move itself randomly after its' spawned
+    protected override void Move()
+    {
+        Vector3 newPos = transform.position;
+        newPos.x += Random.Range(-movementZone + WallOffset(),
+            movementZone - WallOffset());
+        transform.position = newPos;
     }
 }

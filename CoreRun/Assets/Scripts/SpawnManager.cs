@@ -52,10 +52,11 @@ public class SpawnManager : MonoBehaviour
     //Instantiate an enemy
     void SpawnEnemy()
     {
+        int enemyIndex = Random.Range(0,enemyPrefabs.Length);
         //Spawn at default position
-        GameObject enemy = Instantiate(enemyPrefabs[0],
+        GameObject enemy = Instantiate(enemyPrefabs[enemyIndex],
             Vector3.zero,
-            enemyPrefabs[0].transform.rotation);
+            enemyPrefabs[enemyIndex].transform.rotation);
         //Assign planet earth as enemy parent
         enemy.transform.parent = planet.transform;
         //Reset enemy position to planet center
@@ -66,21 +67,7 @@ public class SpawnManager : MonoBehaviour
         //Move unit to surface, offset by their individual value
         enemy.transform.Translate(0, 0,
             spawnDistance + enemy.GetComponent<Enemy>().spawnOffset);
-        ModifySpawn(enemy.GetComponent<Enemy>());
-    }
-
-    //Modifies spawn position based on conditions provided by Enemies
-    private void ModifySpawn(Enemy enemy)
-    {
-        string type = enemy.spawnType;
-        //Move enemy randomly left or right within the road, bound by its' offset
-        if (type == "RandomStill")
-        {
-            Vector3 enemyNewPos = enemy.transform.position;
-            enemyNewPos.x += Random.Range(-trackWidthFromCenter + enemy.WallOffset(),
-                trackWidthFromCenter - enemy.WallOffset());
-            enemy.transform.position = enemyNewPos;
-        }
+        enemy.GetComponent<Enemy>().movementZone = trackWidthFromCenter;
     }
 
     //Increases the spawnrate

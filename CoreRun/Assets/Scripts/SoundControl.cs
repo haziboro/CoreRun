@@ -70,8 +70,8 @@ public class SoundControl : MonoBehaviour
             foreach (GameObject obj in SFXsources)
             {
                 obj.GetComponent<AudioSource>().volume = volumeLevel;
-            }
-        }
+            }//endforeach
+        }//endif
     }
 
 }

@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
 {
     GameManager gameManager;
     private GameObject planet;
+    [SerializeField] GameObject layerEnd;//Spawns the layer end object
     [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] float spawnDegree = 15f;//Enemy spawn position in x-degrees relative to planet
     [SerializeField] float spawnDistance = 50.5f;//Enemy spawn distance from center of planet
@@ -18,14 +19,16 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] float currentSpawnRate;//Spawnrate after modifier applied
 
     private bool readyToSpawn;
+    public bool spawningLayerEnd;//true when transitioning layers.
 
     // Start is called before the first frame update
     void Start()
     {
         planet = GameObject.Find("Earth");
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        readyToSpawn = true;
         currentSpawnRate = baseSpawnRate;
+
+        StartSpawning();
     }
 
     // Update is called once per frame
@@ -44,19 +47,24 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitForSeconds(currentSpawnRate);
         if (gameManager.gameRunning)
         {
-            SpawnEnemy();
-            readyToSpawn = true;
-        }
+            if (!spawningLayerEnd)
+            {
+                SpawnEnemy(ChooseRandomEnemy());
+                readyToSpawn = true;
+            }//endif
+            else
+            {
+                SpawnEnemy(layerEnd);
+            }//endelse
+        }//endif
     }
 
     //Instantiate an enemy
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject prefab)
     {
-        int enemyIndex = Random.Range(0,enemyPrefabs.Length);
         //Spawn at default position
-        GameObject enemy = Instantiate(enemyPrefabs[enemyIndex],
-            Vector3.zero,
-            enemyPrefabs[enemyIndex].transform.rotation);
+        GameObject enemy = Instantiate(prefab, Vector3.zero,
+            prefab.transform.rotation);
         //Assign planet earth as enemy parent
         enemy.transform.parent = planet.transform;
         //Reset enemy position to planet center
@@ -64,10 +72,24 @@ public class SpawnManager : MonoBehaviour
         //Rotate enemy relative to planet to position just beyond horizon
         enemy.transform.Rotate(spawnDegree, 0, 0);
 
-        //Move unit to surface, offset by their individual value
+        //Move unit to surface, offset by their spawnOffset parameter
         enemy.transform.Translate(0, 0,
             spawnDistance + enemy.GetComponent<Enemy>().spawnOffset);
         enemy.GetComponent<Enemy>().movementZone = trackWidthFromCenter;
+    }
+
+    //Returns a random enemy from enemyPrefabs
+    private GameObject ChooseRandomEnemy()
+    {
+        int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+        return enemyPrefabs[enemyIndex];
+    }
+
+    //Initiates enemy spawning
+    public void StartSpawning()
+    {
+        spawningLayerEnd = false;
+        readyToSpawn = true;
     }
 
     //Increases the spawnrate

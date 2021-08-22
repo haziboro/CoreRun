@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6898235962933311667}
   - component: {fileID: 6898235962933311664}
   - component: {fileID: 6898235962933311665}
-  - component: {fileID: 6898235962933311694}
+  - component: {fileID: 786255729}
+  - component: {fileID: 7231133419140887616}
   m_Layer: 0
   m_Name: Cave
   m_TagString: Untagged
@@ -27,14 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6898235962933311695}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.14, y: 51.17, z: 11.728764}
   m_LocalScale: {x: 1.9652234, y: 2.0778468, z: 1}
   m_Children:
   - {fileID: 6898235963556354482}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &6898235962933311667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2502,20 +2503,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6898235962933311695}
   m_Mesh: {fileID: 0}
---- !u!64 &6898235962933311694
-MeshCollider:
+--- !u!114 &786255729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898235962933311695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb6a0dc15815e748879c5eebd08f366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAggroRange: 1
+  spawnOffset: 5
+  movementZone: 0
+--- !u!65 &7231133419140887616
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6898235962933311695}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 7.361636, y: 2.3549929, z: 1.0655476}
+  m_Center: {x: -0.33814442, y: -1.3525614, z: -0.8448922}
 --- !u!1 &6898235963556354483
 GameObject:
   m_ObjectHideFlags: 0

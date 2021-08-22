@@ -14,11 +14,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int layer;
     [SerializeField] int score;
-    [SerializeField] int dodgeBonus;//Multiplier for narrow dodges
+    [SerializeField] int dodgeBonus = 2;//Multiplier for narrow dodges
     [SerializeField] int layerInterval = 20;//Number of seconds between layer transitions
 
-    private bool gamePaused;
+    public bool gamePaused;
     public bool gameRunning;
+    public bool transitioningLayer; //true when the layer is increasing
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,15 @@ public class GameManager : MonoBehaviour
         {
             PauseToggle();
         }
+
+        if (transitioningLayer)
+        {
+            if(spawner.spawningLayerEnd == false)
+            {
+                IncreaseLayer();
+                StartCoroutine(LayerCountdown());
+            }
+        }
     }
 
     //Ends the game
@@ -58,6 +68,7 @@ public class GameManager : MonoBehaviour
     void StartGame()
     {
         gameRunning = true;
+        transitioningLayer = false;
         score = 0;
         layer = 1;
         soundControl.StartMusic();
@@ -109,25 +120,31 @@ public class GameManager : MonoBehaviour
     //Updates score and request the UI to change display
     void UpdateScore(bool narrowDodge)
     {
-        score += 1 * layer;
-        if (narrowDodge) { score *= dodgeBonus; }
+        if (narrowDodge) { score += 1 * layer * dodgeBonus; }
+        else { score += 1 * layer; }
         ui.UpdateScoreUI(score);
     }
 
-    //Initaite layer increase after layerInterval seconds
+    //Increases the current layer, updating other scripts
+    public void IncreaseLayer()
+    {
+        layer++;
+        planet.IncreaseSpeed();
+        spawner.IncreaseRate();
+        //Layer increase notification
+        //animation
+        //animation
+        //Layer increase notification
+        ui.UpdateLayerUI(layer);
+        transitioningLayer = false;
+    }
+
+    //Initiate layer end after layerInterval seconds
     IEnumerator LayerCountdown()
     {
-        while (gameRunning)
-        {
-            yield return new WaitForSeconds(layerInterval);
-            layer++;
-            planet.IncreaseSpeed();
-            spawner.IncreaseRate();
-            //Layer increase notification
-            //animation
-            //animation
-            //Layer increase notification
-            ui.UpdateLayerUI(layer);
-        }
+        yield return new WaitForSeconds(layerInterval);
+        //Tell Spawner to spawn the end of layer object
+        transitioningLayer = true;
+        spawner.spawningLayerEnd = true;
     }
 }

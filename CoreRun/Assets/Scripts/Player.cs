@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
     [Range(0.0f, 1.0f)] [SerializeField] float minimumSize = 0.5f; //Smallest size allowed
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +40,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.gameRunning == true)
+        if (gameManager.gameRunning && !gameManager.gamePaused)
         {
             SideMovement();
             Shrink();

@@ -48,7 +48,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     //Trigger ReportDeath() in player when colliding with them
-    protected void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if(other.name == narrowMissField.name)
         {

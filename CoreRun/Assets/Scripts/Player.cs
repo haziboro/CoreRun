@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] AudioClip[] narrowDodgeClips;
     [SerializeField] float baseSpeed = 10;//left/right movement speed
-    [SerializeField] float shrinkSpeed = 0.005f;//Rate at which shrinking occurs
+    [SerializeField] float shrinkSpeed = 0.01f;//Rate at which shrinking occurs
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
     [Range(0.0f, 1.0f)] [SerializeField] float minimumSize = 0.5f; //Smallest size allowed
 

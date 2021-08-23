@@ -376,9 +376,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d713ad16b8bd8de4ebb062f4f3c9347c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAggroRange: 5
+  playerAggroRange: 6
   spawnOffset: 2.4
-  spawnType: RandomStill
+  movementZone: 0
 --- !u!1 &3171095810306807630
 GameObject:
   m_ObjectHideFlags: 0

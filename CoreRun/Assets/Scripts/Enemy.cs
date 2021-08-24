@@ -7,7 +7,7 @@ public abstract class Enemy : MonoBehaviour
     GameObject player;
     CapsuleCollider narrowMissField; //Narrow miss collider around player
     private float playerDistance;
-    private bool aggro; //True when player has entered aggro range
+    protected bool aggro; //True when player has entered aggro range
     private bool narrowMiss; //True when player narrowly dodges
     public float playerAggroRange; //Distance of aggro range
     public float spawnOffset; //Offset for positioning flat on ground

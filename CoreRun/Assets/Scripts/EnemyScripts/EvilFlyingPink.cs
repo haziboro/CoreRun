@@ -13,7 +13,7 @@ public class EvilFlyingPink : Enemy
         playerAggroRange = 5;
         spawnOffset = 2;
         lerpValue = Random.Range(0.0f,1.0f);
-        transform.Rotate(90,0,0);//Adjust self after spawning
+        transform.Rotate(180,0,0);//Adjust self after spawning
     }
 
     // Update is called once per frame

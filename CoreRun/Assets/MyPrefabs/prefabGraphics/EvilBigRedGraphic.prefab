@@ -408,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3547816683700156129
 Transform:
   m_ObjectHideFlags: 0
@@ -13066,7 +13066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3547816684475049966
 Transform:
   m_ObjectHideFlags: 0
@@ -15497,8 +15497,10 @@ GameObject:
   - component: {fileID: 3547816685094397166}
   - component: {fileID: 3547816685094397161}
   - component: {fileID: 3547816685094397160}
+  - component: {fileID: 1214883466}
+  - component: {fileID: 1000254963530426575}
   m_Layer: 0
-  m_Name: EvilBigGuy
+  m_Name: EvilBigRedGraphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15511,7 +15513,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3547816685094397163}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.4234498, y: 0.27400208, z: 2.2931898}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
@@ -15519,7 +15521,7 @@ Transform:
   - {fileID: 3547816684475049966}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &3547816685094397167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17056,6 +17058,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8860681, y: 1.4222183, z: 1.8814049}
   m_Center: {x: -0.054503083, y: 0, z: 0}
+--- !u!114 &1214883466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547816685094397163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724eb04facfa99e4080c53034901f0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAggroRange: 10
+  spawnOffset: 1.9
+  movementZone: 0
+  charging: 0
+  wallOffset: 0.2
+  speed: 10
+--- !u!114 &1000254963530426575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547816685094397163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb7b74f9366499468cd7476e209b2ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeed: 0.3
+  animationIntensity: 0.2
+  xScaleUp: 1
+  yScaleUp: 1
+  zScaleUp: 1
+  animationOn: 1
 --- !u!1 &3547816685239072705
 GameObject:
   m_ObjectHideFlags: 0

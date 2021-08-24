@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -12,13 +13,19 @@ using UnityEditor;
 public class MainMenu : MonoBehaviour
 {
     private TextMeshProUGUI titleText;
+    [SerializeField] GameObject menu;
+    [SerializeField] GameObject soundControl;
+    [SerializeField] GameObject settings;
+    [SerializeField] Slider musicVolumeSlider;
+    [SerializeField] Slider soundEffectsVolumeSlider;
 
     // Start is called before the first frame update
     void Start()
     {
         titleText = GameObject.Find("GameTitle").GetComponent<TextMeshProUGUI>();
+        AssignSliders();
+
         ColorTitle();
-        
     }
 
     //Changes the title's individual letter colors
@@ -39,16 +46,35 @@ public class MainMenu : MonoBehaviour
             );
     }
 
-    //Opens the Settings
-    public void OpenSettings()
+    //Opens the Settings and closes the menu
+    public void ToggleSettings()
     {
-        Debug.Log("Setting Opened");
+        menu.SetActive(!menu.activeSelf);
+        settings.SetActive(!settings.activeSelf);
     }
 
-    //Starts the game
+    //Starts the game, loading saved values into scene data
     public void StartNewGame()
     {
+        //Save scene data
+        SceneDataTransfer sceneData = GameObject.Find("SceneDataTransfer")
+            .GetComponent<SceneDataTransfer>();
+        sceneData.backgroundMusicVolume = soundControl.
+            GetComponent<SoundControl>().backgroundMusicVolume;
+        sceneData.soundEffectsVolume = soundControl.
+            GetComponent<SoundControl>().soundEffectsVolume;
+
         SceneManager.LoadScene(1);
+    }
+
+    //Assigns sliders
+    void AssignSliders()
+    {
+        SoundControl controller = soundControl.GetComponent<SoundControl>();
+        musicVolumeSlider.onValueChanged.AddListener(
+            delegate { controller.ChangeBackgroundMusicVolume(musicVolumeSlider.value); });
+        soundEffectsVolumeSlider.onValueChanged.AddListener(
+            delegate { controller.ChangeEffectVolume(soundEffectsVolumeSlider.value); });
     }
 
     //Quits the application

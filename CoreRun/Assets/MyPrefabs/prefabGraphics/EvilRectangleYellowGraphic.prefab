@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3171095810088375421}
   - component: {fileID: 3171095810088375418}
   - component: {fileID: 3171095810088375416}
-  - component: {fileID: 6315374026158719302}
+  - component: {fileID: -2330335475990176939}
+  - component: {fileID: 2557109401679394333}
   m_Layer: 0
-  m_Name: EvilRectangle
+  m_Name: EvilRectangleYellowGraphic
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,7 +365,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1065735, y: 0.6997989, z: 2.5469906}
   m_Center: {x: -0.026295125, y: -0.0008018613, z: -0.0000015497208}
---- !u!114 &6315374026158719302
+--- !u!114 &-2330335475990176939
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -373,12 +374,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 3171095810088375417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d713ad16b8bd8de4ebb062f4f3c9347c, type: 3}
+  m_Script: {fileID: 11500000, guid: bbb7b74f9366499468cd7476e209b2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAggroRange: 6
-  spawnOffset: 2.4
-  movementZone: 0
+  animationSpeed: 0.4
+  animationIntensity: 0.1
+  xScaleUp: 0
+  yScaleUp: 0
+  zScaleUp: 0
+  animationOn: 0
+--- !u!33 &2557109401679394333
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3171095810088375417}
+  m_Mesh: {fileID: 0}
 --- !u!1 &3171095810306807630
 GameObject:
   m_ObjectHideFlags: 0

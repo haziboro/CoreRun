@@ -71,12 +71,18 @@ public class GameManager : MonoBehaviour
         transitioningLayer = false;
         score = 0;
         layer = 1;
-        soundControl.StartMusic();
+
+        //Load in Menu data
+        SceneDataTransfer sceneData = GameObject.Find("SceneDataTransfer").
+            GetComponent<SceneDataTransfer>();
+        //Update sound volume from loaded data
+        soundControl.ChangeBackgroundMusicVolume(sceneData.backgroundMusicVolume);
+        soundControl.ChangeEffectVolume(sceneData.soundEffectsVolume);
+
         StartCoroutine(LayerCountdown());
     }
 
-    //Pauses the game
-    //Allows for pausing the game
+    //Toggles pause feature during gameplay
     public void PauseToggle()
     {
         gamePaused = !gamePaused;

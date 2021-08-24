@@ -12,11 +12,12 @@ public class Player : MonoBehaviour
     private float currentScale;//scale the player currently has out of 100
     private float shrinkGroundAdjustment;
     private float horizontalInput;
-    [SerializeField] float speed;
+    private bool running = false;
 
+    [SerializeField] float speed;
     [SerializeField] AudioClip[] narrowDodgeClips;
     [SerializeField] float baseSpeed = 10;//left/right movement speed
-    [SerializeField] float shrinkSpeed = 0.01f;//Rate at which shrinking occurs
+    [SerializeField] float shrinkSpeed = 1f;//Rate at which shrinking occurs
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
     [Range(0.0f, 1.0f)] [SerializeField] float minimumSize = 0.5f; //Smallest size allowed
 
@@ -35,12 +36,14 @@ public class Player : MonoBehaviour
         shrinkScale = new Vector3(-shrinkSpeed, -shrinkSpeed, -shrinkSpeed);
         shrinkGroundAdjustment = shrinkSpeed / 2;
         speed = baseSpeed;
+
+        StartCoroutine(ShortPause());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.gameRunning && !gameManager.gamePaused)
+        if (gameManager.gameRunning && !gameManager.gamePaused && running)
         {
             SideMovement();
             Shrink();
@@ -61,11 +64,12 @@ public class Player : MonoBehaviour
     {
         //Shrink player down to half size when down is held
         if (Input.GetButton("Down")){
-            //if the player's current scale is higher than their original scale/2
-            if (playerGraphic.transform.localScale.x > playerScale.x * minimumSize) //All scale values are always equal so can just use x here
+            //if the player's current scale is higher than their original scale/minimunSize
+            if (playerGraphic.transform.localScale.x > playerScale.x * minimumSize)
             {
-                playerGraphic.transform.localScale += shrinkScale;
-                playerGraphic.transform.Translate(0.0f,-shrinkGroundAdjustment,0.0f);
+                playerGraphic.transform.localScale += shrinkScale * Time.deltaTime;
+                playerGraphic.transform.Translate(0.0f,
+                    -shrinkGroundAdjustment * Time.deltaTime, 0.0f);
             }
         }//endif
         //Automatically grow player up to original size when down is not held
@@ -73,11 +77,13 @@ public class Player : MonoBehaviour
         {
             if(playerGraphic.transform.localScale.x < playerScale.x)
             {
-                playerGraphic.transform.localScale -= shrinkScale;
-                playerGraphic.transform.Translate(0.0f, shrinkGroundAdjustment, 0.0f);
+                playerGraphic.transform.localScale -= shrinkScale * Time.deltaTime;
+                playerGraphic.transform.Translate(0.0f,
+                    shrinkGroundAdjustment * Time.deltaTime, 0.0f);
             }
         }//endelse
         currentScale = playerGraphic.transform.localScale.x / playerScale.x;
+
         //Change speed proportionate to size change
         speed = baseSpeed * currentScale;
     }
@@ -114,5 +120,12 @@ public class Player : MonoBehaviour
     public void ReportImpact()
     {
         gameManager.PlayerDied();
+    }
+
+    //Short delay before starting player control
+    IEnumerator ShortPause()
+    {
+        yield return new WaitForSeconds(0.2f);
+        running = true;
     }
 }

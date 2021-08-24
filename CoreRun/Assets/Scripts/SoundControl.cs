@@ -6,33 +6,23 @@ public class SoundControl : MonoBehaviour
 {
     private AudioSource backgroundMusic;
     public List<GameObject> SFXsources;
-    [Range(0.0f, 1.0f)] [SerializeField] float startingVolume = 0.25f;
-    [Range(0.0f, 1.0f)] [SerializeField] float backgroundVolume;
-    [Range(0.0f, 1.0f)] [SerializeField] float soundEffectsVolume;
+
+    public float backgroundMusicVolume = 0.25f;
+    public float soundEffectsVolume = 0.25f;
 
     // Start is called before the first frame update
     void Start()
     {
-        backgroundMusic = GameObject.Find("Main Camera").GetComponent<AudioSource>();
         StartMusic();
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        ChangeBackgroundMusicVolume();
-        ChangeEffectVolume(soundEffectsVolume);
-    }
-
-    //Set's all volume to startingVolume and starts background music
+    //Intializes sounds in scene using volume from SceneDataTransfer
     public void StartMusic()
     {
-        backgroundMusic.volume = startingVolume;
-        ChangeEffectVolume(startingVolume);
+        backgroundMusic = GameObject.Find("Main Camera").GetComponent<AudioSource>();
 
-        backgroundVolume = backgroundMusic.volume;
-        soundEffectsVolume = startingVolume;
-
+        ChangeBackgroundMusicVolume(backgroundMusicVolume);
+        ChangeEffectVolume(soundEffectsVolume);
         backgroundMusic.Play();
     }
 
@@ -49,21 +39,21 @@ public class SoundControl : MonoBehaviour
         }
     }
 
-    //Stop background music and sets all stored audiosources volumes to zero
+    //Stop background music
     public void StopMusic()
     {
         backgroundMusic.Stop();
-        ChangeEffectVolume(0);
     }
 
     //Background Music Volume
-    private void ChangeBackgroundMusicVolume()
+    public void ChangeBackgroundMusicVolume(float backgroundVolume)
     {
         backgroundMusic.volume = backgroundVolume;
+        backgroundMusicVolume = backgroundVolume;
     }
 
     //Changes volume of all AudioSources in scene
-    private void ChangeEffectVolume(float volumeLevel)
+    public void ChangeEffectVolume(float volumeLevel)
     {
         if (SFXsources != null)
         {
@@ -72,6 +62,9 @@ public class SoundControl : MonoBehaviour
                 obj.GetComponent<AudioSource>().volume = volumeLevel;
             }//endforeach
         }//endif
+        soundEffectsVolume = volumeLevel;
     }
+
+    
 
 }

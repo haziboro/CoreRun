@@ -33,7 +33,6 @@ public class EvilBigRed : Enemy
     protected override void Move()
     {
         int position = Random.Range(0,3);
-        Debug.Log("Wall Offset is: " + wallOffset);
         //left
         if (position == 0)
         {

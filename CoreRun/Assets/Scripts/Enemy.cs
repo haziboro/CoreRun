@@ -9,6 +9,7 @@ public abstract class Enemy : MonoBehaviour
     private float playerDistance;
     protected bool aggro; //True when player has entered aggro range
     private bool narrowMiss; //True when player narrowly dodges
+    private bool hitPlayer;//true when an enemy has already hit the player
     public float playerAggroRange; //Distance of aggro range
     public float spawnOffset; //Offset for positioning flat on ground
     public float movementZone; //Defines how far from spawn an enemy can move
@@ -41,7 +42,8 @@ public abstract class Enemy : MonoBehaviour
             if (playerDistance > playerAggroRange)
             {
                 //Report to the player that they have been passed
-                player.GetComponent<Player>().ReportEnemyAvoidance(narrowMiss);
+                player.GetComponent<Player>().ReportEnemyAvoidance(
+                    hitPlayer ? false : narrowMiss);
                 Destroy(gameObject);
             }
         }//endelse
@@ -57,6 +59,7 @@ public abstract class Enemy : MonoBehaviour
         else
         {
             player.GetComponent<Player>().ReportImpact();
+            hitPlayer = true;
         }
     }
 

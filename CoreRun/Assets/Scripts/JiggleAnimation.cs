@@ -18,8 +18,6 @@ public class JiggleAnimation : MonoBehaviour
     private float sizeFactor = 0;//holds cumulative size change
     private float sizeDelta = 0;//Holds most recent size change value
 
-    
-
     public bool animationOn = true;//true when animation is on
 
     // Update is called once per frame

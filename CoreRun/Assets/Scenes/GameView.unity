@@ -567,7 +567,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-470016
+  m_Name: pb_Mesh-1336
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1521,7 +1521,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-470026
+  m_Name: pb_Mesh-1346
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1999,7 +1999,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-469932
+  m_Name: pb_Mesh-1252
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3188,6 +3188,10 @@ MonoBehaviour:
   baseSpeed: 10
   shrinkSpeed: 1
   levelBoundaries: 3.4
+  maxHealth: 3
+  iFrameDuration: 0.2
+  lerpColorMaxHealth: {r: 0.24705882, g: 0.29411766, b: 0.7647059, a: 0}
+  lerpColorNoHealth: {r: 0.6226415, g: 0.5315949, b: 0.5315949, a: 0}
   minimumSize: 0.5
 --- !u!4 &1494081953
 Transform:

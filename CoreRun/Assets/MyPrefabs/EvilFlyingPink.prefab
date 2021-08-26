@@ -45,9 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd97547ab843ea41b1f03715525da27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAggroRange: 7
+  playerAggroRange: 10
   spawnOffset: 2
   movementZone: 0
+  speed: 0.6
+  pauseDuration: 0.3
+  pauseChance: 400
+  turnChance: 50
 --- !u!65 &3268974332382950397
 BoxCollider:
   m_ObjectHideFlags: 0

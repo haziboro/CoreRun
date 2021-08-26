@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] AudioClip[] narrowDodgeClips;
+    [SerializeField] AudioClip[] healthLossClips;
     [SerializeField] float baseSpeed = 10;//left/right movement speed
     [SerializeField] float shrinkSpeed = 1f;//Rate at which shrinking occurs
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
@@ -133,6 +134,11 @@ public class Player : MonoBehaviour
             }
             else
             {
+                //Play random dodge audio clip on succesful narrow dodge
+                int clipNum = Random.Range(0, narrowDodgeClips.Length);
+                audioSource.clip = healthLossClips[clipNum];
+                audioSource.Play();
+
                 StartCoroutine(iFrames());
                 //Go down a color
                 playerGraphic.SetGraphicColor(Color.Lerp(

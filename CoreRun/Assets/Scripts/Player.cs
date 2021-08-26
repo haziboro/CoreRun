@@ -6,11 +6,8 @@ public class Player : MonoBehaviour
 {
     private GameManager gameManager;
     private AudioSource audioSource;
-    private GameObject playerGraphic;//The player graphic, which contains a box collider and rigidbody
-    private Vector3 playerScale;
-    private Vector3 shrinkScale; //all three values defined by shrinkspeed
-    private float currentScale;//scale the player currently has out of 100
-    private float shrinkGroundAdjustment;
+    private playerGraphicController playerGraphic;
+    private float currentScalePercent;//scale the player currently has out of 100
     private float horizontalInput;
     private bool running = false;
     private float health;//Must be float to lerp colors properly
@@ -22,7 +19,8 @@ public class Player : MonoBehaviour
     [SerializeField] float shrinkSpeed = 1f;//Rate at which shrinking occurs
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
     [SerializeField] int maxHealth = 3;
-    [SerializeField] float iFrameDuration = 0.2f;
+    [SerializeField] float iFrameDuration = 1.5f;
+    [SerializeField] float iFrameDeltaTime = 0.10f; //For gradual loss of iframes
     [SerializeField] Color lerpColorMaxHealth;
     [SerializeField] Color lerpColorNoHealth;
     [Range(0.0f, 1.0f)] [SerializeField] float minimumSize = 0.5f; //Smallest size allowed
@@ -33,18 +31,13 @@ public class Player : MonoBehaviour
         //Load gameobjects
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         audioSource = GetComponent<AudioSource>();
-        playerGraphic = transform.Find("PlayerGraphic").gameObject;
+        playerGraphic = new playerGraphicController(transform.Find("PlayerGraphic").gameObject);
+        playerGraphic.setShrinkValues(shrinkSpeed, minimumSize);
 
-        //Set base scale values
-        playerScale = playerGraphic.transform.localScale;
-
-        //Calculate variables
-        shrinkScale = new Vector3(-shrinkSpeed, -shrinkSpeed, -shrinkSpeed);
-        shrinkGroundAdjustment = shrinkSpeed / 2;
         speed = baseSpeed;
         health = maxHealth;
 
-        StartCoroutine(ShortPause(0.2f));
+        StartCoroutine(ShortPause(0.1f));
     }
 
     // Update is called once per frame
@@ -62,37 +55,32 @@ public class Player : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
-
         CheckBoundaries();
     }
 
     //Shrink player when 'Down' is pressed
     void Shrink()
     {
-        //Shrink player down to half size when down is held
+        //Shrink player down to min size when down is held
         if (Input.GetButton("Down")){
             //if the player's current scale is higher than their original scale/minimunSize
-            if (playerGraphic.transform.localScale.x > playerScale.x * minimumSize)
+            if (playerGraphic.isBiggerThanMinimum())
             {
-                playerGraphic.transform.localScale += shrinkScale * Time.deltaTime;
-                playerGraphic.transform.Translate(0.0f,
-                    -shrinkGroundAdjustment * Time.deltaTime, 0.0f);
+                playerGraphic.Condense(true);
             }
         }//endif
         //Automatically grow player up to original size when down is not held
         else
         {
-            if(playerGraphic.transform.localScale.x < playerScale.x)
+            if (playerGraphic.isSmallerThanOriginal())
             {
-                playerGraphic.transform.localScale -= shrinkScale * Time.deltaTime;
-                playerGraphic.transform.Translate(0.0f,
-                    shrinkGroundAdjustment * Time.deltaTime, 0.0f);
+                playerGraphic.Condense(false);
             }
         }//endelse
-        currentScale = playerGraphic.transform.localScale.x / playerScale.x;
-
+        //Preserve current scale as percentage of maximum
+        currentScalePercent = playerGraphic.playerGraphic.transform.localScale.x / playerGraphic.playerScale.x;
         //Change speed proportionate to size change
-        speed = baseSpeed * currentScale;
+        speed = baseSpeed * currentScalePercent;
     }
 
     //Establishes level boundaries
@@ -120,6 +108,7 @@ public class Player : MonoBehaviour
             audioSource.clip = narrowDodgeClips[clipNum];
             audioSource.Play();
             //Do a happy animation
+
         }
     }
 
@@ -135,8 +124,8 @@ public class Player : MonoBehaviour
             if (health == 0)
             {
                 //Shift to last color
-                playerGraphic.GetComponent<Renderer>().material.SetColor(
-                    "_Color", Color.Lerp(lerpColorNoHealth, lerpColorMaxHealth, 0));
+                playerGraphic.SetGraphicColor(Color.Lerp(
+                    lerpColorNoHealth, lerpColorMaxHealth, 0));
 
                 //Make death SFX
 
@@ -146,9 +135,11 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(iFrames());
                 //Go down a color
-                playerGraphic.GetComponent<Renderer>().material.SetColor(
-                    "_Color", Color.Lerp(lerpColorNoHealth, lerpColorMaxHealth, (health/maxHealth)));
+                playerGraphic.SetGraphicColor(Color.Lerp(
+                    lerpColorNoHealth, lerpColorMaxHealth, (health / maxHealth)));
+
                 //Make a hurt sound
+
             }//endelse
         }//endif
     }
@@ -156,19 +147,146 @@ public class Player : MonoBehaviour
     //Timer for Invincibility Frames
     IEnumerator iFrames()
     {
-        //Visual indicator for iframes should go here
-
         invincibilityFramesOn = true;
-        yield return new WaitForSeconds(iFrameDuration);
+        playerGraphic.ToggleSquint();
+        for (float i = 0; i < iFrameDuration; i += iFrameDeltaTime)
+        {
+            playerGraphic.ToggleRendererVisibility();
+            yield return new WaitForSeconds(iFrameDeltaTime);
+        }
+        playerGraphic.ToggleRendererVisibility(true);
+        playerGraphic.ToggleOpen();
         invincibilityFramesOn = false;
-
-        //Turn off indicator
     }
 
-    //For delaying when needed
-    IEnumerator ShortPause(float pauseDuration)
+    //To delay player Start
+    IEnumerator ShortPause(float delayDuration)
     {
-        yield return new WaitForSeconds(pauseDuration);
+        yield return new WaitForSeconds(delayDuration);
         running = true;
     }
-}
+}//End Player
+
+
+
+//Holds reference to player graphics object and allows for its' manipulation
+public class playerGraphicController
+{
+    public GameObject playerGraphic { get; private set; }
+    private Renderer[] playerGraphicRenderers;
+    private GameObject openEyes;
+    private GameObject happyEyes;
+    private GameObject squintedEyes;
+
+    public Vector3 playerScale { get; private set; }
+    private Vector3 shrinkScale;
+    private float minimumSize;
+
+    public playerGraphicController(GameObject graphic)
+    {
+        playerGraphic = graphic;
+        playerGraphicRenderers = playerGraphic.GetComponentsInChildren<Renderer>();
+        playerScale = playerGraphic.transform.localScale;
+
+        GameObject eyes = playerGraphic.transform.Find("Eyes").gameObject;
+        openEyes = eyes.transform.Find("OpenEyes").gameObject;
+        happyEyes = eyes.transform.Find("ClosedEyesHappy").gameObject;
+        squintedEyes = eyes.transform.Find("SquintEyes").gameObject;
+    }
+
+    //Takes shrinkspeed parameter and stores as a vector and defines minimum shrink size
+    public void setShrinkValues(float shrinkSpeed, float minSize)
+    {
+        shrinkScale = new Vector3(-shrinkSpeed, -shrinkSpeed, -shrinkSpeed);
+        minimumSize = minSize;
+    }
+
+    //Changes the graphic's color
+    public void SetGraphicColor(Color color)
+    {
+        playerGraphic.GetComponent<Renderer>().material.SetColor(
+                    "_Color", color);
+    }
+
+    //Toggles renderer visibility from visible to non visible and vice versa
+    public void ToggleRendererVisibility()
+    {
+        foreach (Renderer renderer in playerGraphicRenderers)
+        {
+            bool vis = !renderer.isVisible;
+            renderer.enabled = vis;
+            if (vis){ ToggleAll(); }
+            else{ ToggleSquint(); }
+        }
+    }
+
+    //ToggleRendererVisibility overload, sets visibility to the given parameter
+    public void ToggleRendererVisibility(bool givenVisibility)
+    {
+        foreach (Renderer renderer in playerGraphicRenderers)
+        {
+            renderer.enabled = givenVisibility;
+            //currentEyes.SetActive(givenVisibility);
+        }
+    }
+
+    //Change Size
+    public void Condense(bool shrinking)
+    {
+        if (shrinking)
+        {
+            playerGraphic.transform.localScale += shrinkScale * Time.deltaTime;
+            playerGraphic.transform.Translate(0.0f,
+                shrinkScale.x / 2 * Time.deltaTime, 0.0f);
+
+            ToggleSquint();
+        }
+        else
+        {
+            playerGraphic.transform.localScale -= shrinkScale * Time.deltaTime;
+                playerGraphic.transform.Translate(0.0f,
+                    -shrinkScale.x / 2 * Time.deltaTime, 0.0f);
+            ToggleOpen();
+        }
+    }
+
+    //Returns true if the graphic is bigger than its' minimum size, false otherwise
+    public bool isBiggerThanMinimum()
+    {
+        return playerGraphic.transform.localScale.x > playerScale.x * minimumSize;
+    }
+
+    //Returns true if the graphic is smaller than its' original size, false otherwise
+    public bool isSmallerThanOriginal()
+    {
+        return playerGraphic.transform.localScale.x < playerScale.x;
+    }
+
+    //Toggles which set of eyes are visible
+    private void ToggleAll()
+    {
+        squintedEyes.SetActive(false);
+        openEyes.SetActive(false);
+        happyEyes.SetActive(false);
+    }
+    public void ToggleSquint(bool visible = true)
+    {
+        squintedEyes.SetActive(visible);
+        openEyes.SetActive(false);
+        happyEyes.SetActive(false);
+    }
+    public void ToggleHappy(bool visible = true)
+    {
+        squintedEyes.SetActive(false);
+        openEyes.SetActive(false);
+        happyEyes.SetActive(visible);
+    }
+    public void ToggleOpen(bool visible = true)
+    {
+        squintedEyes.SetActive(false);
+        openEyes.SetActive(visible);
+        happyEyes.SetActive(false);
+    }
+
+
+}//End playerGraphicController

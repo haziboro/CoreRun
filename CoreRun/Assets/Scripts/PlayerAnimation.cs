@@ -48,7 +48,7 @@ public class PlayerAnimation : MonoBehaviour
         }//endforeach
     }
 
-    //Makes the character stretch a little when he moves left or right
+    //Makes the character graphic stretch a little when it moves left or right
     void StrafeStretch()
     {
         //If moving horizontally 

@@ -502,6 +502,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1718110510}
+    - target: {fileID: 858791504225965559, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
+      propertyPath: controlling
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 858791505205607456, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -983,7 +987,7 @@ GameObject:
   - component: {fileID: 500163169}
   - component: {fileID: 500163168}
   m_Layer: 5
-  m_Name: Points
+  m_Name: HighScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2082,6 +2086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusicVolume: 0.25
   soundEffectsVolume: 0.25
+  highScore: 0
 --- !u!1 &1172575577
 GameObject:
   m_ObjectHideFlags: 0

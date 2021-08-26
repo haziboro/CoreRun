@@ -13,6 +13,7 @@ using UnityEditor;
 public class MainMenu : MonoBehaviour
 {
     private TextMeshProUGUI titleText;
+    private TextMeshProUGUI scoreText;
     [SerializeField] GameObject menu;
     [SerializeField] GameObject soundControl;
     [SerializeField] GameObject settings;
@@ -23,9 +24,11 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         titleText = GameObject.Find("GameTitle").GetComponent<TextMeshProUGUI>();
+        scoreText = GameObject.Find("HighScoreText").GetComponent<TextMeshProUGUI>();
         AssignSliders();
 
         ColorTitle();
+        UpdateHighScoreDisplay();
     }
 
     //Changes the title's individual letter colors
@@ -44,6 +47,13 @@ public class MainMenu : MonoBehaviour
             "<color=green>" + 'u' + "</color>" +
             "<color=orange>" + 'n' + "</color>"
             );
+    }
+
+    //Updates the High Score Display
+    void UpdateHighScoreDisplay()
+    {
+        scoreText.text = GameObject.Find("SceneDataTransfer").
+            GetComponent<SceneDataTransfer>().highScore.ToString();
     }
 
     //Opens the Settings and closes the menu

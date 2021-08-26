@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
         gameRunning = false;
         planet.keepSpinning = false;
         soundControl.StopMusic();
+        GameObject.Find("SceneDataTransfer").
+            GetComponent<SceneDataTransfer>().CheckHighScore(score);
         SceneManager.LoadScene(0);
     }
 

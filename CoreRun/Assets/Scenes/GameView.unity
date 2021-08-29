@@ -482,7 +482,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14072
+  m_Name: pb_Mesh-1228
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -646,7 +646,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14224
+  m_Name: pb_Mesh-1380
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1375,7 +1375,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14046
+  m_Name: pb_Mesh-1202
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1751,7 +1751,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14234
+  m_Name: pb_Mesh-1390
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2383,7 +2383,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14096
+  m_Name: pb_Mesh-1252
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2681,7 +2681,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14084
+  m_Name: pb_Mesh-1240
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2845,7 +2845,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14060
+  m_Name: pb_Mesh-1216
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3565,20 +3565,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf328b9457e0f794c8c28a4340ffd471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrinkPower: 100
   shrinkPowerCooldownThreshold: 30
   shrinkPowerConsumptionSpeed: 50
   shrinkPowerRegenSpeed: 25
+  shrinkSpeed: 3
+  minimumSize: 0.5
   currentSpeed: 0
   baseSpeed: 10
-  shrinkSpeed: 3
   levelBoundaries: 3.4
   maxHealth: 3
+  blinkCheckDelay: 0.1
   iFrameDuration: 1.5
   iFrameDeltaTime: 0.1
   lerpColorMaxHealth: {r: 0.24705882, g: 0.29411766, b: 0.7647059, a: 0}
   lerpColorNoHealth: {r: 0.6226415, g: 0.5315949, b: 0.5315949, a: 0}
-  minimumSize: 0.5
   narrowDodgeClips:
   - {fileID: 8300000, guid: 4cff568e76a08264882c59d2ec8060f2, type: 3}
   - {fileID: 8300000, guid: 6cfb20f51be25584fa29e1460d6eb12a, type: 3}
@@ -5111,6 +5111,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 919566585}
+    - target: {fileID: 858791503737966240, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 858791504575420550, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
       propertyPath: m_Mesh
       value: 

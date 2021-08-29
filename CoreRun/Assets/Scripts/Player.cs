@@ -13,22 +13,25 @@ public class Player : MonoBehaviour
     private bool running = false;
     private float health;//Must be float to lerp colors properly
     private bool invincibilityFramesOn = false;
-    [SerializeField]  private float shrinkPower = 100;//as a percent
+    private float shrinkPower = 100;//as a percent
     private bool shrinkPowerOnCooldown = false;
+    private float blinkCheckDelay = 0.2f;//Time delay between blink checks
 
     [SerializeField] float shrinkPowerCooldownThreshold = 15;//The value that shrinkPower has to reach to go off cooldown
     [SerializeField] float shrinkPowerConsumptionSpeed = 1.0f;
     [SerializeField] float shrinkPowerRegenSpeed = 1.0f;
+    [SerializeField] float shrinkSpeed = 1f;//Rate at which shrinking occurs
+    [Range(0.0f, 1.0f)] [SerializeField] float minimumSize = 0.5f; //Smallest size allowed
     [SerializeField] float currentSpeed;
     [SerializeField] float baseSpeed = 10;//left/right movement speed
-    [SerializeField] float shrinkSpeed = 1f;//Rate at which shrinking occurs
+    [SerializeField] int blinkFrequency = 10;//1 or 0 guarantees a blink every blinkCheckDelay, higher numbers make chance 1/blinkFrequency
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
     [SerializeField] int maxHealth = 3;
     [SerializeField] float iFrameDuration = 1.5f;
     [SerializeField] float iFrameDeltaTime = 0.10f; //For gradual loss of iframes
     [SerializeField] Color lerpColorMaxHealth;
     [SerializeField] Color lerpColorNoHealth;
-    [Range(0.0f, 1.0f)] [SerializeField] float minimumSize = 0.5f; //Smallest size allowed
+    
 
     //SFX
     [SerializeField] AudioClip[] narrowDodgeClips;
@@ -48,6 +51,9 @@ public class Player : MonoBehaviour
         health = maxHealth;
 
         StartCoroutine(ShortPause(0.1f));
+
+        //Makes the character occasionally blink
+        InvokeRepeating("randomBlink", 0.1f, blinkCheckDelay);
     }
 
     // Update is called once per frame
@@ -145,7 +151,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    //Reduced player health, changing their color and causing a sound.
+    //Reduces player health, changing their color and causing a sound.
     //Reports to GameManager when the player dies
     public void ReportImpact()
     {
@@ -182,6 +188,16 @@ public class Player : MonoBehaviour
         }//endif
     }
 
+    //Makes the character randomly blink their eyes occasionally
+    void randomBlink()
+    {
+        if (Random.Range(0,blinkFrequency) == 0)
+        {
+            playerGraphic.Blink();
+            StartCoroutine(BlinkPause());
+        }
+    }
+
     //Timer for Invincibility Frames
     IEnumerator iFrames()
     {
@@ -195,6 +211,12 @@ public class Player : MonoBehaviour
         playerGraphic.ToggleRendererVisibility(true);
         playerGraphic.ToggleOpen();
         invincibilityFramesOn = false;
+    }
+
+    IEnumerator BlinkPause()
+    {
+        yield return new WaitForSeconds(blinkCheckDelay);
+        playerGraphic.Blink();
     }
 
     //To delay player Start
@@ -219,6 +241,7 @@ public class playerGraphicController
     public Vector3 playerScale { get; private set; }
     private Vector3 shrinkScale;
     private float minimumSize;
+    private bool eyesClosed = false;
 
     public playerGraphicController(GameObject graphic)
     {
@@ -264,7 +287,6 @@ public class playerGraphicController
         foreach (Renderer renderer in playerGraphicRenderers)
         {
             renderer.enabled = givenVisibility;
-            //currentEyes.SetActive(givenVisibility);
         }
     }
 
@@ -325,5 +347,22 @@ public class playerGraphicController
         happyEyes.SetActive(false);
     }
 
+    public void Blink()
+    {
+        if (!eyesClosed)
+        {
+            openEyes.transform.localScale = new Vector3(
+            openEyes.transform.localScale.x,
+            openEyes.transform.localScale.y, 0);
+            eyesClosed = true;
+        }
+        else
+        {
+            openEyes.transform.localScale = new Vector3(
+            openEyes.transform.localScale.x,
+            openEyes.transform.localScale.y, 1);
+            eyesClosed = false;
+        }//endelse 
+    }//endBlink
 
 }//End playerGraphicController

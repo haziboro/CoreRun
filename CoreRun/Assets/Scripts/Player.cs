@@ -6,16 +6,20 @@ public class Player : MonoBehaviour
 {
     private GameManager gameManager;
     private AudioSource audioSource;
-    private playerGraphicController playerGraphic;
+    private UIManager ui;
+    private playerGraphicController playerGraphic;//Defined here
     private float currentScalePercent;//scale the player currently has out of 100
     private float horizontalInput;
     private bool running = false;
     private float health;//Must be float to lerp colors properly
     private bool invincibilityFramesOn = false;
+    [SerializeField]  private float shrinkPower = 100;//as a percent
+    private bool shrinkPowerOnCooldown = false;
 
-    [SerializeField] float speed;
-    [SerializeField] AudioClip[] narrowDodgeClips;
-    [SerializeField] AudioClip[] healthLossClips;
+    [SerializeField] float shrinkPowerCooldownThreshold = 15;//The value that shrinkPower has to reach to go off cooldown
+    [SerializeField] float shrinkPowerConsumptionSpeed = 1.0f;
+    [SerializeField] float shrinkPowerRegenSpeed = 1.0f;
+    [SerializeField] float currentSpeed;
     [SerializeField] float baseSpeed = 10;//left/right movement speed
     [SerializeField] float shrinkSpeed = 1f;//Rate at which shrinking occurs
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
@@ -26,16 +30,21 @@ public class Player : MonoBehaviour
     [SerializeField] Color lerpColorNoHealth;
     [Range(0.0f, 1.0f)] [SerializeField] float minimumSize = 0.5f; //Smallest size allowed
 
+    //SFX
+    [SerializeField] AudioClip[] narrowDodgeClips;
+    [SerializeField] AudioClip[] healthLossClips;
+
     // Start is called before the first frame update
     void Start()
     {
         //Load gameobjects
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         audioSource = GetComponent<AudioSource>();
+        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
         playerGraphic = new playerGraphicController(transform.Find("PlayerGraphic").gameObject);
         playerGraphic.setShrinkValues(shrinkSpeed, minimumSize);
 
-        speed = baseSpeed;
+        currentSpeed = baseSpeed;
         health = maxHealth;
 
         StartCoroutine(ShortPause(0.1f));
@@ -55,33 +64,56 @@ public class Player : MonoBehaviour
     void SideMovement()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * horizontalInput * currentSpeed * Time.deltaTime);
         CheckBoundaries();
     }
 
     //Shrink player when 'Down' is pressed
     void Shrink()
     {
-        //Shrink player down to min size when down is held
-        if (Input.GetButton("Down")){
-            //if the player's current scale is higher than their original scale/minimunSize
+        if (Input.GetButton("Down") && !shrinkPowerOnCooldown)
+        {
+            //Reduces Shrink Power While holding Down
+            shrinkPower -= shrinkPowerConsumptionSpeed * Time.deltaTime;
+            if (shrinkPower <= 0)
+            {
+                shrinkPower = 0;
+                ui.ShrinkBarOnCooldown(true);
+                shrinkPowerOnCooldown = true;
+            }
+            //Redcues player graphics size if shrink is held, down to minimum
             if (playerGraphic.isBiggerThanMinimum())
             {
                 playerGraphic.Condense(true);
-            }
+            }//endif
         }//endif
-        //Automatically grow player up to original size when down is not held
         else
         {
+            //Increase Shrink Power while down is not held
+            if (shrinkPower < 100)
+            {
+                shrinkPower += shrinkPowerRegenSpeed * Time.deltaTime;
+                shrinkPower = shrinkPower > 100 ? 100 : shrinkPower;
+                if (shrinkPowerOnCooldown && shrinkPower >= shrinkPowerCooldownThreshold)
+                {
+                    shrinkPowerOnCooldown = false;
+                    ui.ShrinkBarOnCooldown(false);
+                }//endif
+            }//endif
+            //Increases the player graphics size if it needs to grow
             if (playerGraphic.isSmallerThanOriginal())
             {
                 playerGraphic.Condense(false);
-            }
+            }//endif
         }//endelse
+
+        //Change UI localScale.x to the same as shrink power
+        ui.ModifyShrinkBar(shrinkPower / 100);
+
         //Preserve current scale as percentage of maximum
         currentScalePercent = playerGraphic.playerGraphic.transform.localScale.x / playerGraphic.playerScale.x;
         //Change speed proportionate to size change
-        speed = baseSpeed * currentScalePercent;
+        currentSpeed = baseSpeed * currentScalePercent;
     }
 
     //Establishes level boundaries
@@ -244,7 +276,6 @@ public class playerGraphicController
             playerGraphic.transform.localScale += shrinkScale * Time.deltaTime;
             playerGraphic.transform.Translate(0.0f,
                 shrinkScale.x / 2 * Time.deltaTime, 0.0f);
-
             ToggleSquint();
         }
         else

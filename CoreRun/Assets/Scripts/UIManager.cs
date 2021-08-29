@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 [DefaultExecutionOrder(1000)]
@@ -9,8 +10,11 @@ public class UIManager : MonoBehaviour
     private Camera mainCamera;
     private GameObject player;
     private GameObject pauseMenu;
+    private GameObject shrinkBar;
+    private Image shrinkBarImage;
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI layerText;
+    private bool onCooldown;
 
     [SerializeField] int dodgePopupDuration = 2;
     [SerializeField] int randomPopupRange = 30;//Bounds of popups random location spawn
@@ -18,16 +22,23 @@ public class UIManager : MonoBehaviour
     [SerializeField] Color PopupColorOne = Color.yellow;
     [SerializeField] Color PopupColorTwo = Color.red;
     [SerializeField] GameObject dodgePopup;
+    [SerializeField] Color shrinkPowerBarHigh = Color.green;
+    [SerializeField] Color shrinkPowerBarMedium = Color.yellow;
+    [SerializeField] Color shrinkPowerBarLow = Color.red;
+    [SerializeField] Color shrinkPowerBarOnCooldown = Color.black;
 
 
     private bool dodgePopupActive = false;
     private Color lerpedColor;
+    private Vector3 shrinkBarScale;
 
     // Start is called before the first frame update
     private void Start()
     {
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         player = GameObject.Find("PlayerCube");
+        shrinkBar = GameObject.Find("ShrinkBar");
+        shrinkBarImage = shrinkBar.GetComponent<Image>();
         pauseMenu = transform.Find("PauseMenu").gameObject;
         scoreText = transform.Find("ScoreBoard")
             .GetComponentInChildren<TextMeshProUGUI>();
@@ -36,6 +47,12 @@ public class UIManager : MonoBehaviour
 
         //For flashing dodge popup
         lerpedColor = PopupColorOne;
+
+        //Initialize shrinkBar
+        shrinkBarScale = new Vector3(shrinkBar.transform.localScale.x,
+            shrinkBar.transform.localScale.y,
+            shrinkBar.transform.localScale.z);
+        shrinkBar.GetComponent<Image>().color = shrinkPowerBarHigh;
     }
 
     // Update is called once per frame
@@ -65,6 +82,49 @@ public class UIManager : MonoBehaviour
         screenPos.y += Random.Range(-randomPopupRange, 0) - downOffset;
         dodgePopup.transform.position = screenPos;
         StartCoroutine(PopUpTimer(screenPos));
+    }
+
+    //Changes scale of shrink bar and its' color according to parameter
+    public void ModifyShrinkBar(float shrinkBarXScale)
+    {
+        shrinkBarScale.x = shrinkBarXScale;
+        shrinkBar.transform.localScale = shrinkBarScale;
+
+        ChangePowerBarColor(shrinkBarXScale);
+    }
+
+    //Changes shrink power bar's color based on given Input
+    public void ChangePowerBarColor(float barValue)
+    {
+        if (!onCooldown)
+        {
+            if (barValue < 0.3f)
+            {
+                shrinkBarImage.color = shrinkPowerBarLow;
+            }
+            else if (barValue < 0.67f)
+            {
+                shrinkBarImage.color = shrinkPowerBarMedium;
+            }
+            else
+            {
+                shrinkBarImage.color = shrinkPowerBarHigh;
+            }//endelse
+        }//endif
+        else
+        {
+            shrinkBarImage.color = shrinkPowerBarOnCooldown;
+        }//endelse
+    }
+
+    //Changes shrink bars color to its' cooldown color
+    public void ShrinkBarOnCooldown(bool isOnCooldown)
+    {
+        onCooldown = isOnCooldown;
+        if (isOnCooldown)
+        {
+            shrinkBarImage.color = shrinkPowerBarOnCooldown;
+        }
     }
 
     //Displays the pause menu

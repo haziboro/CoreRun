@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
 {
     private TextMeshProUGUI titleText;
     private TextMeshProUGUI scoreText;
+    [SerializeField] ScriptableBool gameRunning;
     [SerializeField] GameObject menu;
     [SerializeField] GameObject soundControl;
     [SerializeField] GameObject settings;
@@ -29,6 +30,7 @@ public class MainMenu : MonoBehaviour
 
         ColorTitle();
         UpdateHighScoreDisplay();
+        gameRunning.active = true;
     }
 
     //Changes the title's individual letter colors

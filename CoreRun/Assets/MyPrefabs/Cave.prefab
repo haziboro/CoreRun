@@ -2515,9 +2515,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb6a0dc15815e748879c5eebd08f366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHit: {fileID: 0}
+  normalDodge: {fileID: 0}
+  narrowDodge: {fileID: 0}
   playerAggroRange: 1
   spawnOffset: 5
   movementZone: 0
+  increaseLayer: {fileID: 11400000, guid: dfd01228d0ddb8f45917ca72983c4ab7, type: 2}
 --- !u!65 &7231133419140887616
 BoxCollider:
   m_ObjectHideFlags: 0

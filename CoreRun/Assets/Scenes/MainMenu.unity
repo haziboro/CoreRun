@@ -570,7 +570,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1365194334}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 743532672, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
 --- !u!1 &350801508
 GameObject:
@@ -653,7 +654,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-465924
+  m_Name: pb_Mesh-166058
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -817,7 +818,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-138778
+  m_Name: pb_Mesh-165900
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1814,6 +1815,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1668301136, guid: 55d380875bd1fbb4c9036f3c1b2db68a, type: 3}
+      propertyPath: gameRunning
+      value: 
+      objectReference: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
     - target: {fileID: 721671256737420026, guid: 55d380875bd1fbb4c9036f3c1b2db68a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2088,6 +2093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699cca7213163b44f84c974600e6b354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: {fileID: 11400000, guid: 8c55e0e0255e47347ab4df9fc1b91a3c, type: 2}
   backgroundMusicVolume: 0.25
   soundEffectsVolume: 0.25
   highScore: 0
@@ -2399,7 +2405,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-138968
+  m_Name: pb_Mesh-166096
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2719,6 +2725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b205cf3e08383b040b2ff144bed92cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
   menu: {fileID: 1450254417}
   soundControl: {fileID: 718380795}
   settings: {fileID: 1041694705}
@@ -2744,7 +2751,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-138908
+  m_Name: pb_Mesh-166036
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3352,7 +3359,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-138918
+  m_Name: pb_Mesh-166046
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3516,7 +3523,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-138944
+  m_Name: pb_Mesh-166072
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3891,7 +3898,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-138956
+  m_Name: pb_Mesh-166084
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

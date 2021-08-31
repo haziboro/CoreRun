@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724eb04facfa99e4080c53034901f0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHit: {fileID: 11400000, guid: d99d5fa7efcd5834bbe6989112045e9e, type: 2}
+  normalDodge: {fileID: 11400000, guid: 06646dde5b2cabb428c5cd4e4d252dbc, type: 2}
+  narrowDodge: {fileID: 11400000, guid: 34faf9df5563b2040bf0224b7e7c8986, type: 2}
   playerAggroRange: 10
   spawnOffset: 1.9
   movementZone: 0

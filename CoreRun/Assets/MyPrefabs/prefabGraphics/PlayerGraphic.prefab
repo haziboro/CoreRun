@@ -2979,8 +2979,11 @@ GameObject:
   - component: {fileID: 858791505205607468}
   - component: {fileID: 858791505205607456}
   - component: {fileID: 858791505205607471}
-  - component: {fileID: 858791504225965559}
   - component: {fileID: 858791504225965517}
+  - component: {fileID: 743532664}
+  - component: {fileID: 743532665}
+  - component: {fileID: 743532671}
+  - component: {fileID: 743532672}
   m_Layer: 0
   m_Name: PlayerGraphic
   m_TagString: Untagged
@@ -3838,26 +3841,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
---- !u!114 &858791504225965559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 858791505205607469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88fd03adf410c5040ab765471202589e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pupils:
-  - {fileID: 858791505300713055}
-  - {fileID: 858791505011906968}
-  pupilMovementRadius: 0.15
-  controlling: 1
-  maxStrafeStretchSize: 0.2
-  StrafeStretchGrowthSpeed: 1
-  StrafeStretchBounceBack: 2
 --- !u!114 &858791504225965517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3876,6 +3859,66 @@ MonoBehaviour:
   yScaleUp: 1
   zScaleUp: 1
   animationOn: 1
+--- !u!114 &743532664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858791505205607469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eae86073e8b7a048910f5d593cf96c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyes: {fileID: 858791503737966241}
+  blinkFrequency: 10
+--- !u!114 &743532665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858791505205607469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a39ed78f7b96d41a17aa10dae80bbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStrafeStretchSize: 0.2
+  StrafeStretchGrowthSpeed: 1
+  StrafeStretchBounceBack: 2
+--- !u!114 &743532671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858791505205607469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a4a3b9811b26644aa54616344551df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openEyes: {fileID: 858791503737966241}
+  happyEyes: {fileID: 858791504883745901}
+  squintedEyes: {fileID: 3605554537203846770}
+--- !u!114 &743532672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858791505205607469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c9392a67a739647a1cb9dcb5827c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pupils:
+  - {fileID: 858791505300713055}
+  - {fileID: 858791505011906968}
+  pupilMovementRadius: 0.15
 --- !u!1 &858791505300713055
 GameObject:
   m_ObjectHideFlags: 0

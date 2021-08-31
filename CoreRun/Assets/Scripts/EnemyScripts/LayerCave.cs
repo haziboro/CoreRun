@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LayerCave : Enemy
 {
+    [SerializeField] GameEvent increaseLayer;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -22,8 +24,9 @@ public class LayerCave : Enemy
     //Once the cave hits the player, it starts spawning
     protected override void OnTriggerEnter(Collider other)
     {
-        GameObject.Find("SpawnManager").
-            GetComponent<SpawnManager>().StartSpawning();
+        //Transition the lair once the player hits the cave
+        increaseLayer.Raise();
+
         Destroy(gameObject);
     }
 }

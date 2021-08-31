@@ -7,39 +7,38 @@ using TMPro;
 [DefaultExecutionOrder(1000)]
 public class UIManager : MonoBehaviour
 {
-    private Camera mainCamera;
-    private GameObject player;
-    private GameObject pauseMenu;
-    private GameObject shrinkBar;
-    private Image shrinkBarImage;
-    private TextMeshProUGUI scoreText;
-    private TextMeshProUGUI layerText;
-    private bool onCooldown;
+    [SerializeField] Camera mainCamera;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject shrinkBar;
+    [SerializeField] GameObject dodgePopup;
+
+    [SerializeField] ScoreAndLayer score;
 
     [SerializeField] int dodgePopupDuration = 2;
     [SerializeField] int randomPopupRange = 30;//Bounds of popups random location spawn
-    [SerializeField] int downOffset = 50;//How far down from player to spawn popup
+    [SerializeField] int upOffset = 50;//How far above bar to spawn popup
     [SerializeField] Color PopupColorOne = Color.yellow;
     [SerializeField] Color PopupColorTwo = Color.red;
-    [SerializeField] GameObject dodgePopup;
+
     [SerializeField] Color shrinkPowerBarHigh = Color.green;
     [SerializeField] Color shrinkPowerBarMedium = Color.yellow;
     [SerializeField] Color shrinkPowerBarLow = Color.red;
     [SerializeField] Color shrinkPowerBarOnCooldown = Color.black;
 
-
+    private Image shrinkBarImage;
+    private TextMeshProUGUI scoreText;
+    private TextMeshProUGUI layerText;
+    private bool onCooldown;
     private bool dodgePopupActive = false;
     private Color lerpedColor;
     private Vector3 shrinkBarScale;
 
+
     // Start is called before the first frame update
     private void Start()
     {
-        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        player = GameObject.Find("PlayerCube");
-        shrinkBar = GameObject.Find("ShrinkBar");
         shrinkBarImage = shrinkBar.GetComponent<Image>();
-        pauseMenu = transform.Find("PauseMenu").gameObject;
         scoreText = transform.Find("ScoreBoard")
             .GetComponentInChildren<TextMeshProUGUI>();
         layerText = transform.Find("LayerBoard")
@@ -62,26 +61,26 @@ public class UIManager : MonoBehaviour
     }
 
     //Display value of score on interface
-    public void UpdateScoreUI(int score)
+    public void UpdateScoreUI()
     {
-        scoreText.text = score.ToString();
+        scoreText.text = score.score.ToString();
     }
 
     //displays value of layer on interface
-    public void UpdateLayerUI(int layer)
+    public void UpdateLayerUI()
     {
-        layerText.text = layer.ToString();
+        layerText.text = score.layer.ToString();
     }
 
-    //Makes a popup appear at playerPos
-    public void NarrowDodgePopup(Vector3 playerPos)
+    //Makes a popup appear above the shrink bar
+    public void NarrowDodgePopup()
     {
-        Vector3 screenPos = mainCamera.WorldToScreenPoint(playerPos);
-        //Randomize the popup position in an area around the player
+        Vector3 screenPos = shrinkBar.transform.position;
+        //Randomize the popup position in an area around the shrinkBar
         screenPos.x += Random.Range(-randomPopupRange, randomPopupRange);
-        screenPos.y += Random.Range(-randomPopupRange, 0) - downOffset;
+        screenPos.y += Random.Range(0, randomPopupRange) + upOffset;
         dodgePopup.transform.position = screenPos;
-        StartCoroutine(PopUpTimer(screenPos));
+        StartCoroutine(PopUpTimer());
     }
 
     //Changes scale of shrink bar and its' color according to parameter
@@ -134,7 +133,7 @@ public class UIManager : MonoBehaviour
     }
 
     //Turns the popup on and initiates color changing
-    IEnumerator PopUpTimer(Vector3 screenPos)
+    IEnumerator PopUpTimer()
     {
         dodgePopup.SetActive(true);
         dodgePopupActive = true;

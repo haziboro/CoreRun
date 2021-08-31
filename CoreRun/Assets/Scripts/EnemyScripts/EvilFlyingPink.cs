@@ -44,7 +44,7 @@ public class EvilFlyingPink : Enemy
             lerpValue = 0.0f;
         }
 
-        CheckForRandomPause();
+        CheckForRandomPause(); //ATTENTION: Will make enemies pause more on faster computers
     }
 
     //Rolls to see if the enemy should randomly stop moving

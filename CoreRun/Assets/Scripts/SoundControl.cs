@@ -27,7 +27,7 @@ public class SoundControl : MonoBehaviour
     }
 
     //Pauses the background music
-    public void PauseMusic(bool pausing = true)
+    public void PauseMusic(bool pausing)
     {
         if(pausing)
         {

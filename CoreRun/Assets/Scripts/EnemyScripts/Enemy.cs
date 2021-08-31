@@ -10,6 +10,11 @@ public abstract class Enemy : MonoBehaviour
     protected bool aggro; //True when player has entered aggro range
     private bool narrowMiss; //True when player narrowly dodges
     private bool hitPlayer;//true when an enemy has already hit the player
+
+    [SerializeField] GameEvent playerHit;
+    [SerializeField] GameEvent normalDodge;
+    [SerializeField] GameEvent narrowDodge;
+
     public float playerAggroRange; //Distance of aggro range
     public float spawnOffset; //Offset for positioning flat on ground
     public float movementZone; //Defines how far from spawn an enemy can move
@@ -17,7 +22,10 @@ public abstract class Enemy : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start() 
     {
-        InitializeStartValues();
+        player = GameObject.Find("PlayerCube");
+        narrowMissField = player.GetComponentInChildren<CapsuleCollider>();
+        aggro = false;
+        narrowMiss = false;
     }
 
     // Update is called once per frame
@@ -37,16 +45,6 @@ public abstract class Enemy : MonoBehaviour
                 aggro = true;
             }
         }//endif
-        else//after aggro is entered, if the enemy leaves the player range destroy self
-        {
-            if (playerDistance > playerAggroRange)
-            {
-                //Report to the player that they have been passed
-                player.GetComponent<Player>().ReportEnemyAvoidance(
-                    hitPlayer ? false : narrowMiss);
-                Destroy(gameObject);
-            }
-        }//endelse
     }
 
     //Trigger ReportDeath() in player when colliding with them
@@ -56,20 +54,23 @@ public abstract class Enemy : MonoBehaviour
         {
             narrowMiss = true;
         }
+        else if (other.CompareTag("Sensor"))
+        {
+            if (!hitPlayer)
+            {
+                if (narrowMiss) { narrowDodge.Raise(); }
+                else { normalDodge.Raise();  }
+
+                //player.GetComponent<Player>().ReportEnemyAvoidance(narrowMiss);
+            }
+            Destroy(gameObject);
+        }
         else
         {
-            player.GetComponent<Player>().ReportImpact();
+            //player.GetComponent<Player>().ReportImpact();
+            playerHit.Raise();
             hitPlayer = true;
         }
-    }
-
-    //For initializing variables in subclasses
-    protected void InitializeStartValues()
-    {
-        player = GameObject.Find("PlayerCube");
-        narrowMissField = player.GetComponentInChildren<CapsuleCollider>();
-        aggro = false;
-        narrowMiss = false;
     }
 
     //Performs an enemy movement, if applicable

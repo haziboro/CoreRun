@@ -6,6 +6,9 @@ using System.IO;
 public class SceneDataTransfer : MonoBehaviour
 {
     public static SceneDataTransfer instance;
+
+    [SerializeField] ScoreAndLayer score;
+
     //Default Values
     public float backgroundMusicVolume = 0.25f;
     public float soundEffectsVolume = 0.25f;
@@ -23,13 +26,15 @@ public class SceneDataTransfer : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
         LoadScore();
+        score.score = 0;
+        score.layer = 1;
     }
 
-    public void CheckHighScore(int score)
+    public void CheckHighScore()
     {
-        if (score > highScore)
+        if (score.score > highScore)
         {
-            highScore = score;
+            highScore = score.score;
             SaveScore();
         }
     }

@@ -421,6 +421,13 @@ GameObject:
   - component: {fileID: 178876261}
   - component: {fileID: 178876260}
   - component: {fileID: 178876259}
+  - component: {fileID: 178876262}
+  - component: {fileID: 178876263}
+  - component: {fileID: 178876265}
+  - component: {fileID: 178876264}
+  - component: {fileID: 178876266}
+  - component: {fileID: 178876267}
+  - component: {fileID: 178876268}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -476,13 +483,341 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &178876262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178876258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 3dd01b1833bf2834da40904febc51427, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1506685772}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerDied
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 570429426}
+        m_TargetAssemblyTypeName: SoundControl, Assembly-CSharp
+        m_MethodName: StopMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1279577895}
+        m_TargetAssemblyTypeName: SceneDataTransfer, Assembly-CSharp
+        m_MethodName: CheckHighScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &178876263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178876258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: d99d5fa7efcd5834bbe6989112045e9e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1494081952}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ReportImpact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &178876264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178876258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 34faf9df5563b2040bf0224b7e7c8986, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1826712483}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: NarrowDodgePopup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1565662726}
+        m_TargetAssemblyTypeName: ScoreKeeper, Assembly-CSharp
+        m_MethodName: UpdateScore
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1826712483}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: UpdateScoreUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1494081952}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: NarrowDodge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &178876265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178876258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 06646dde5b2cabb428c5cd4e4d252dbc, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1565662726}
+        m_TargetAssemblyTypeName: ScoreKeeper, Assembly-CSharp
+        m_MethodName: UpdateScore
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1826712483}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: UpdateScoreUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &178876266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178876258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: dfd01228d0ddb8f45917ca72983c4ab7, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 465106092}
+        m_TargetAssemblyTypeName: PlanetControl, Assembly-CSharp
+        m_MethodName: IncreaseSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 658811826}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: IncreaseRate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 658811826}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: StartSpawning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1009326641}
+        m_TargetAssemblyTypeName: LayerCountdown, Assembly-CSharp
+        m_MethodName: IncreaseLayerLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1826712483}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: UpdateLayerUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &178876267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178876258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 53c0ed159abdb4f4bac482053c349483, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1009326641}
+        m_TargetAssemblyTypeName: LayerCountdown, Assembly-CSharp
+        m_MethodName: StartNewLayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 658811826}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: StartSpawning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &178876268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178876258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 5fce4a2abc76ea948a30c3d7645e02e5, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 658811826}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: SpawnLayerEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!43 &282450775
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1228
+  m_Name: pb_Mesh-147912
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -646,7 +981,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1380
+  m_Name: pb_Mesh-148068
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1096,6 +1431,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444448504}
   m_CullTransparentMesh: 1
+--- !u!1 &465106091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7950501105552387791, guid: 55d380875bd1fbb4c9036f3c1b2db68a, type: 3}
+  m_PrefabInstance: {fileID: 1684214434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &465106092 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1668301136, guid: 55d380875bd1fbb4c9036f3c1b2db68a, type: 3}
+  m_PrefabInstance: {fileID: 1684214434}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465106091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66dd725a66af83a42b1616cd0d43b4e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &570429425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,11 +1523,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cb74fa3402503488fdc542e00e3685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
+  planet: {fileID: 465106091}
   layerEnd: {fileID: 6898235962933311695, guid: 3dfb127928b6c884585eba50f2eb4fa1, type: 3}
   enemyPrefabs:
   - {fileID: 1642308191283485691, guid: 201265d56b9dc9e4e957d2ed19d31ffe, type: 3}
-  - {fileID: 1642308191283485691, guid: 201265d56b9dc9e4e957d2ed19d31ffe, type: 3}
-  - {fileID: 1642308191283485691, guid: 201265d56b9dc9e4e957d2ed19d31ffe, type: 3}
+  - {fileID: 3827720110340957503, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
+  - {fileID: 7579179625331258563, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
   spawnDegree: 15
   spawnDistance: 49.3
   baseSpawnRate: 2
@@ -1197,6 +1550,142 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &684227293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 684227296}
+  - component: {fileID: 684227295}
+  - component: {fileID: 684227294}
+  m_Layer: 0
+  m_Name: PauseEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &684227294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684227293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: b5af0e288b7d12a47a88a6e9628ab46f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 570429426}
+        m_TargetAssemblyTypeName: SoundControl, Assembly-CSharp
+        m_MethodName: PauseMusic
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 465106092}
+        m_TargetAssemblyTypeName: PlanetControl, Assembly-CSharp
+        m_MethodName: KeepSpinning
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1826712483}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: TogglePauseMenu
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &684227295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684227293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 00096b3073fc1f04fa973408ec8cb980, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 570429426}
+        m_TargetAssemblyTypeName: SoundControl, Assembly-CSharp
+        m_MethodName: PauseMusic
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 465106092}
+        m_TargetAssemblyTypeName: PlanetControl, Assembly-CSharp
+        m_MethodName: KeepSpinning
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1826712483}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: TogglePauseMenu
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!4 &684227296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684227293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.24625, y: 46.59019, z: -20.093082}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -1369,13 +1858,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706145769}
   m_CullTransparentMesh: 1
+--- !u!1 &743532663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 858791505205607469, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
+  m_PrefabInstance: {fileID: 858791503543041641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &746376122
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1202
+  m_Name: pb_Mesh77988
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1751,7 +2245,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1390
+  m_Name: pb_Mesh-148078
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2377,13 +2871,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984214416}
   m_CullTransparentMesh: 1
+--- !u!1 &1009326640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1009326642}
+  - component: {fileID: 1009326641}
+  m_Layer: 0
+  m_Name: LayerCountdown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1009326641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009326640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0fbedde64caf64496122842d6f5a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 11400000, guid: 8c55e0e0255e47347ab4df9fc1b91a3c, type: 2}
+  TransitionCurrentLayer: {fileID: 11400000, guid: 5fce4a2abc76ea948a30c3d7645e02e5, type: 2}
+  layerInterval: 20
+--- !u!4 &1009326642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009326640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 480, y: 24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1010963937
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1252
+  m_Name: pb_Mesh78018
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2681,7 +3221,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1240
+  m_Name: pb_Mesh-147924
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2845,7 +3385,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1216
+  m_Name: pb_Mesh-147900
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3123,6 +3663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699cca7213163b44f84c974600e6b354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: {fileID: 11400000, guid: 8c55e0e0255e47347ab4df9fc1b91a3c, type: 2}
   backgroundMusicVolume: 0.25
   soundEffectsVolume: 0.25
   highScore: 0
@@ -3546,6 +4087,7 @@ GameObject:
   - component: {fileID: 1494081953}
   - component: {fileID: 1494081952}
   - component: {fileID: 1494081954}
+  - component: {fileID: 1494081955}
   m_Layer: 0
   m_Name: PlayerCube
   m_TagString: Untagged
@@ -3565,16 +4107,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf328b9457e0f794c8c28a4340ffd471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrinkPowerCooldownThreshold: 30
-  shrinkPowerConsumptionSpeed: 50
-  shrinkPowerRegenSpeed: 25
-  shrinkSpeed: 3
-  minimumSize: 0.5
-  currentSpeed: 0
-  baseSpeed: 10
+  playerDied: {fileID: 11400000, guid: 3dd01b1833bf2834da40904febc51427, type: 2}
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
+  playerGraphic: {fileID: 743532663}
+  speed: 10
   levelBoundaries: 3.4
   maxHealth: 3
-  blinkCheckDelay: 0.1
   iFrameDuration: 1.5
   iFrameDeltaTime: 0.1
   lerpColorMaxHealth: {r: 0.24705882, g: 0.29411766, b: 0.7647059, a: 0}
@@ -3699,6 +4237,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1494081955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494081951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4150fa5b88ce09845baa05986580b7dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGraphic: {fileID: 743532663}
+  uiObject: {fileID: 1826712482}
+  shrinkPowerCooldownThreshold: 30
+  shrinkPowerConsumptionSpeed: 50
+  shrinkPowerRegenSpeed: 25
+  shrinkSpeed: 3
+  minimumSize: 0.5
 --- !u!1 &1506685771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3728,13 +4285,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5048839908608524080d2ab18ac4a8ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: 0
-  score: 0
-  dodgeBonus: 2
-  layerInterval: 30
+  planetObj: {fileID: 465106092}
+  uiObj: {fileID: 1826712483}
+  spawnerObj: {fileID: 658811826}
+  soundControlObj: {fileID: 570429426}
+  player: {fileID: 1494081951}
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
+  score: {fileID: 11400000, guid: 8c55e0e0255e47347ab4df9fc1b91a3c, type: 2}
+  startLayer: {fileID: 11400000, guid: 53c0ed159abdb4f4bac482053c349483, type: 2}
+  pause: {fileID: 11400000, guid: 00096b3073fc1f04fa973408ec8cb980, type: 2}
+  unpause: {fileID: 11400000, guid: b5af0e288b7d12a47a88a6e9628ab46f, type: 2}
   gamePaused: 0
-  gameRunning: 0
-  transitioningLayer: 0
 --- !u!4 &1506685773
 Transform:
   m_ObjectHideFlags: 0
@@ -3828,6 +4389,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554953610}
   m_CullTransparentMesh: 1
+--- !u!1 &1565662725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1565662727}
+  - component: {fileID: 1565662726}
+  m_Layer: 0
+  m_Name: ScoreKeeper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1565662726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565662725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ca7890f1dc14e45ab124f38e2203b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 11400000, guid: 8c55e0e0255e47347ab4df9fc1b91a3c, type: 2}
+  dodgeBonus: 2
+--- !u!4 &1565662727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565662725}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.5960865, y: 47.14518, z: -22.674957}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1583568713
 Mesh:
   m_ObjectHideFlags: 0
@@ -3992,6 +4598,67 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1650990899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1650990902}
+  - component: {fileID: 1650990901}
+  - component: {fileID: 1650990900}
+  m_Layer: 0
+  m_Name: EnemyDestroySensor
+  m_TagString: Sensor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!54 &1650990900
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650990899}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1650990901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650990899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.035884, y: 5.3153663, z: 1}
+  m_Center: {x: -0.5281658, y: 2.157681, z: 0.0000016407737}
+--- !u!4 &1650990902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650990899}
+  m_LocalRotation: {x: -0.1667749, y: -0, z: -0, w: 0.98599505}
+  m_LocalPosition: {x: 0.18, y: 44.89, z: -24.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: -19.201, y: 0, z: 0}
 --- !u!4 &1663648333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 858791505205607460, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
@@ -4004,6 +4671,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1668301136, guid: 55d380875bd1fbb4c9036f3c1b2db68a, type: 3}
+      propertyPath: gameRunning
+      value: 
+      objectReference: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
     - target: {fileID: 1668301136, guid: 55d380875bd1fbb4c9036f3c1b2db68a, type: 3}
       propertyPath: rotationSpeedPercentIncrease
       value: 20
@@ -4404,12 +5075,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a598095904e074c97b4c4a42462873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 963194227}
+  player: {fileID: 1494081951}
+  pauseMenu: {fileID: 1731728125}
+  shrinkBar: {fileID: 962733283}
+  dodgePopup: {fileID: 1781818615}
+  score: {fileID: 11400000, guid: 8c55e0e0255e47347ab4df9fc1b91a3c, type: 2}
   dodgePopupDuration: 2
   randomPopupRange: 30
-  downOffset: 50
+  upOffset: 50
   PopupColorOne: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   PopupColorTwo: {r: 1, g: 0, b: 0, a: 1}
-  dodgePopup: {fileID: 1781818615}
   shrinkPowerBarHigh: {r: 0, g: 1, b: 0, a: 1}
   shrinkPowerBarMedium: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   shrinkPowerBarLow: {r: 1, g: 0, b: 0, a: 1}
@@ -5111,10 +5787,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 919566585}
-    - target: {fileID: 858791503737966240, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 858791504575420550, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
       propertyPath: m_Mesh
       value: 

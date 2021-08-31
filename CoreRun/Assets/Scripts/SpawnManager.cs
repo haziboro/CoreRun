@@ -5,8 +5,8 @@ using UnityEngine;
 [DefaultExecutionOrder(1000)]
 public class SpawnManager : MonoBehaviour
 {
-    GameManager gameManager;
-    private GameObject planet;
+    [SerializeField] ScriptableBool gameRunning;
+    [SerializeField] GameObject planet;
     [SerializeField] GameObject layerEnd;//Spawns the layer end object
     [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] float spawnDegree = 15f;//Enemy spawn position in x-degrees relative to planet
@@ -14,8 +14,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] float baseSpawnRate = 3.0f; //Base rate which enemies spawn in seconds
     [SerializeField] float spawnRateModifier = 10; //How much(in percent) the spawnrate will increase when IncreaseRate() called
     [SerializeField] float trackWidthFromCenter = 3.4f; //Area for enemies to spawn in
-
-
     [SerializeField] float currentSpawnRate;//Spawnrate after modifier applied
 
     private bool readyToSpawn;
@@ -24,28 +22,24 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        planet = GameObject.Find("Earth");
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentSpawnRate = baseSpawnRate;
-
-        StartSpawning();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (readyToSpawn && gameManager.gameRunning)
+        if (readyToSpawn && gameRunning.active)
         {
             readyToSpawn = false;
             StartCoroutine("SpawnTimer");
         }
     }
 
-    //Spawns enemies on a delay
+    //Spawns enemies on a delay. When layer is ending the next enemy is replaced with layer end object.
     IEnumerator SpawnTimer()
     {
         yield return new WaitForSeconds(currentSpawnRate);
-        if (gameManager.gameRunning)
+        if (gameRunning.active)
         {
             if (!spawningLayerEnd)
             {
@@ -90,6 +84,12 @@ public class SpawnManager : MonoBehaviour
     {
         spawningLayerEnd = false;
         readyToSpawn = true;
+    }
+
+    //Spawns the end of the layer
+    public void SpawnLayerEnd()
+    {
+        spawningLayerEnd = true;
     }
 
     //Increases the spawnrate

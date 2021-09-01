@@ -10,8 +10,6 @@ public class SceneDataTransfer : MonoBehaviour
     [SerializeField] ScoreAndLayer score;
 
     //Default Values
-    public float backgroundMusicVolume = 0.25f;
-    public float soundEffectsVolume = 0.25f;
     public int highScore = 0;
 
     // Start is called before the first frame update

@@ -654,7 +654,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-166058
+  m_Name: pb_Mesh-1360
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -818,7 +818,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-165900
+  m_Name: pb_Mesh-1202
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1276,10 +1276,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 718380796}
         m_TargetAssemblyTypeName: SoundControl, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 4
+        m_MethodName: ChangeBackgroundMusicVolume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1317,9 +1317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb0e818673fa824bb6dd6178e1c417e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SFXsources: []
-  backgroundMusicVolume: 0.25
-  soundEffectsVolume: 0.25
+  setting: {fileID: 11400000, guid: b1d333375da55c84e9ccb24d19c3ff9d, type: 2}
+  updateSFXVolume: {fileID: 11400000, guid: 0ce9895b04bcb034095b977f9523ba5c, type: 2}
 --- !u!4 &718380797
 Transform:
   m_ObjectHideFlags: 0
@@ -2049,7 +2048,19 @@ MonoBehaviour:
   m_Value: 0.25
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 718380796}
+        m_TargetAssemblyTypeName: SoundControl, Assembly-CSharp
+        m_MethodName: ChangeEffectVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1132805039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,8 +2105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 11400000, guid: 8c55e0e0255e47347ab4df9fc1b91a3c, type: 2}
-  backgroundMusicVolume: 0.25
-  soundEffectsVolume: 0.25
   highScore: 0
 --- !u!1 &1172575577
 GameObject:
@@ -2239,7 +2248,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2405,7 +2414,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-166096
+  m_Name: pb_Mesh-1398
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2725,12 +2734,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b205cf3e08383b040b2ff144bed92cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setting: {fileID: 11400000, guid: b1d333375da55c84e9ccb24d19c3ff9d, type: 2}
   gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
   menu: {fileID: 1450254417}
-  soundControl: {fileID: 718380795}
   settings: {fileID: 1041694705}
   musicVolumeSlider: {fileID: 592339960}
-  soundEffectsVolumeSlider: {fileID: 1103575532}
+  SFXVolumeSlider: {fileID: 1103575532}
 --- !u!4 &1362174069
 Transform:
   m_ObjectHideFlags: 0
@@ -2751,7 +2760,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-166036
+  m_Name: pb_Mesh-1338
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3359,7 +3368,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-166046
+  m_Name: pb_Mesh-1348
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3523,7 +3532,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-166072
+  m_Name: pb_Mesh-1374
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3898,7 +3907,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-166084
+  m_Name: pb_Mesh-1386
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

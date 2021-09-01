@@ -5,6 +5,9 @@ using UnityEngine;
 [DefaultExecutionOrder(1000)]
 public class SpawnManager : MonoBehaviour
 {
+    private bool readyToSpawn;
+    public bool spawningLayerEnd;//true when transitioning layers.
+
     [SerializeField] ScriptableBool gameRunning;
     [SerializeField] GameObject planet;
     [SerializeField] GameObject layerEnd;//Spawns the layer end object
@@ -15,9 +18,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] float spawnRateModifier = 10; //How much(in percent) the spawnrate will increase when IncreaseRate() called
     [SerializeField] float trackWidthFromCenter = 3.4f; //Area for enemies to spawn in
     [SerializeField] float currentSpawnRate;//Spawnrate after modifier applied
-
-    private bool readyToSpawn;
-    public bool spawningLayerEnd;//true when transitioning layers.
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +54,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     //Instantiate an enemy
-    void SpawnEnemy(GameObject prefab)
+    public void SpawnEnemy(GameObject prefab)
     {
         //Spawn at default position
         GameObject enemy = Instantiate(prefab, Vector3.zero,

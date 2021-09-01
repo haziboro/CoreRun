@@ -3,45 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+//Controls player movement and responds to damage taken
 public class Player : MonoBehaviour
 {
-    private GameManager gameManager;
-    private AudioSource audioSource;
-    private PlayerGraphicsController playerGraphicControl;//Defined here
     private float horizontalInput;
-    private float health;//Must be float to lerp colors properly
-    private bool invincibilityFramesOn = false;
 
-    //Events
     [SerializeField] GameEvent playerDied;
-
-    //ScriptObj
+    [SerializeField] GameEvent iFramesOn;
     [SerializeField] ScriptableBool gameRunning;
-
-    [SerializeField] GameObject playerGraphic;
-    [SerializeField] float speed = 10;//left/right movement speed
+    [SerializeField] ScriptableBool gamePaused;
+    [SerializeField] ScriptableBool iFramesObj;
+    [SerializeField] ScriptableInt health;
+    [SerializeField] float speed = 10;//left-right movement speed
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
-    [SerializeField] int maxHealth = 3;
-    [SerializeField] float iFrameDuration = 1.5f;
-    [SerializeField] float iFrameDeltaTime = 0.10f; //For gradual loss of iframes
-    [SerializeField] Color lerpColorMaxHealth;
-    [SerializeField] Color lerpColorNoHealth;
-
-    //SFX
-    [SerializeField] AudioClip[] narrowDodgeClips;
-    [SerializeField] AudioClip[] healthLossClips;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Load gameobjects
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        audioSource = GetComponent<AudioSource>();
-
-        playerGraphicControl = playerGraphic.GetComponent<PlayerGraphicsController>();
-
-        health = maxHealth;
-    }
 
     // Update is called once per frame
     void Update()
@@ -51,7 +25,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameRunning.active && !gameManager.gamePaused)
+        if (gameRunning.active && !gamePaused.active)
         {
             SideMovement();
         }
@@ -78,76 +52,22 @@ public class Player : MonoBehaviour
         }
     }
 
-    //Report to GameManager that an enemy has been sucessfully passed
-    public void ReportEnemyAvoidance(bool isNarrowDodge)
+    //Reduces player health and changes their color when damaged
+    //Raise death flag when health is reduced to zero
+    public void TakeDamage()
     {
-        //gameManager.EnemyAvoided(isNarrowDodge);
-        if (isNarrowDodge)
+        if (!iFramesObj.active)
         {
-            //Play random dodge audio clip on succesful narrow dodge
-            int clipNum = Random.Range(0, narrowDodgeClips.Length);
-            audioSource.clip = narrowDodgeClips[clipNum];
-            audioSource.Play();
-        }
-    }
-
-    //Plays a sound clip when dodging
-    public void NarrowDodge()
-    {
-        int clipNum = Random.Range(0, narrowDodgeClips.Length);
-        audioSource.clip = narrowDodgeClips[clipNum];
-        audioSource.Play();
-    }
-
-    //Reduces player health, changing their color and causing a sound.
-    //Reports to GameManager when the player dies
-    public void ReportImpact()
-    {
-        if (!invincibilityFramesOn)
-        {
-            //Lose a life
-            health--;
-            //if health is zero, report death
-            if (health == 0)
+            health.health--;
+            if (health.health == 0)
             {
-                //Shift to last color
-                playerGraphicControl.SetGraphicColor(Color.Lerp(
-                    lerpColorNoHealth, lerpColorMaxHealth, 0));
-
-                //Make death SFX
                 playerDied.Raise();
             }
             else
             {
-                //Play random dodge audio clip on succesful narrow dodge
-                int clipNum = Random.Range(0, narrowDodgeClips.Length);
-                audioSource.clip = healthLossClips[clipNum];
-                audioSource.Play();
-
-                StartCoroutine(iFrames());
-                //Go down a color
-                playerGraphicControl.SetGraphicColor(Color.Lerp(
-                    lerpColorNoHealth, lerpColorMaxHealth, (health / maxHealth)));
-
-                //Make a hurt sound
-
+                iFramesOn.Raise();
             }//endelse
         }//endif
-    }
-
-    //Timer for Invincibility Frames
-    IEnumerator iFrames()
-    {
-        invincibilityFramesOn = true;
-        playerGraphicControl.ToggleSquint();
-        for (float i = 0; i < iFrameDuration; i += iFrameDeltaTime)
-        {
-            playerGraphicControl.ToggleRendererVisibility();
-            yield return new WaitForSeconds(iFrameDeltaTime);
-        }
-        playerGraphicControl.ToggleRendererVisibility(true);
-        playerGraphicControl.ToggleOpen();
-        invincibilityFramesOn = false;
-    }
+    }//end TakeDamage
 
 }//End Player

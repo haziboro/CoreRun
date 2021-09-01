@@ -9,27 +9,29 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
+//Controls the game's main menu interface
 [DefaultExecutionOrder(1000)]
 public class MainMenu : MonoBehaviour
 {
     private TextMeshProUGUI titleText;
     private TextMeshProUGUI scoreText;
+
+    [SerializeField] VolumeSettings setting;
     [SerializeField] ScriptableBool gameRunning;
     [SerializeField] GameObject menu;
-    [SerializeField] GameObject soundControl;
     [SerializeField] GameObject settings;
     [SerializeField] Slider musicVolumeSlider;
-    [SerializeField] Slider soundEffectsVolumeSlider;
+    [SerializeField] Slider SFXVolumeSlider;
 
     // Start is called before the first frame update
     void Start()
     {
         titleText = GameObject.Find("GameTitle").GetComponent<TextMeshProUGUI>();
         scoreText = GameObject.Find("HighScoreText").GetComponent<TextMeshProUGUI>();
-        AssignSliders();
 
         ColorTitle();
         UpdateHighScoreDisplay();
+        InitializeSliders();
         gameRunning.active = true;
     }
 
@@ -58,6 +60,13 @@ public class MainMenu : MonoBehaviour
             GetComponent<SceneDataTransfer>().highScore.ToString();
     }
 
+    //Set's sliders initial values to saved values
+    void InitializeSliders()
+    {
+        musicVolumeSlider.value = setting.backgroundMusicVolume;
+        SFXVolumeSlider.value = setting.SFXVolume;
+    }
+
     //Opens the Settings and closes the menu
     public void ToggleSettings()
     {
@@ -68,25 +77,8 @@ public class MainMenu : MonoBehaviour
     //Starts the game, loading saved values into scene data
     public void StartNewGame()
     {
-        //Save scene data
-        SceneDataTransfer sceneData = GameObject.Find("SceneDataTransfer")
-            .GetComponent<SceneDataTransfer>();
-        sceneData.backgroundMusicVolume = soundControl.
-            GetComponent<SoundControl>().backgroundMusicVolume;
-        sceneData.soundEffectsVolume = soundControl.
-            GetComponent<SoundControl>().soundEffectsVolume;
-
+        gameRunning.active = false;
         SceneManager.LoadScene(1);
-    }
-
-    //Assigns sliders
-    void AssignSliders()
-    {
-        SoundControl controller = soundControl.GetComponent<SoundControl>();
-        musicVolumeSlider.onValueChanged.AddListener(
-            delegate { controller.ChangeBackgroundMusicVolume(musicVolumeSlider.value); });
-        soundEffectsVolumeSlider.onValueChanged.AddListener(
-            delegate { controller.ChangeEffectVolume(soundEffectsVolumeSlider.value); });
     }
 
     //Quits the application

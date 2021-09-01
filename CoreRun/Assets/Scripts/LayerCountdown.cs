@@ -5,7 +5,6 @@ using UnityEngine;
 public class LayerCountdown : MonoBehaviour
 {
     [SerializeField] ScoreAndLayer score;
-    //[SerializeField] GameEvent increaseLayer;
     [SerializeField] GameEvent TransitionCurrentLayer;
     [SerializeField] int layerInterval = 20;//Number of seconds between layer transitions
 
@@ -13,12 +12,6 @@ public class LayerCountdown : MonoBehaviour
     void Start()
     {
         StartNewLayer();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     //Starts a new Layer
@@ -31,14 +24,12 @@ public class LayerCountdown : MonoBehaviour
     public void IncreaseLayerLevel()
     {
         score.layer++;
-        //increaseLayer.Raise();
     }
 
     //Initiate layer end after layerInterval seconds
     IEnumerator LayerTimer()
     {
         yield return new WaitForSeconds(layerInterval);
-        //Tell Spawner to spawn the end of layer object
         TransitionCurrentLayer.Raise();
     }
 }

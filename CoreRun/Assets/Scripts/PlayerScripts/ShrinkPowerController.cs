@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class ShrinkPowerController : MonoBehaviour
 {
-    private bool shrinkPowerOnCooldown = false;
-    private float shrinkPower;//amount out of 100
-    private UIManager ui;
     private PlayerGraphicsController playerGraphicControl;
     private bool ButtonDown;//Checks if down is held
     public Vector3 playerScale { get; private set; }
     private Vector3 shrinkScale;
 
+    [SerializeField] ShrinkPower shrinkPower;
     [SerializeField] GameObject playerGraphic;
-    [SerializeField] GameObject uiObject;
     [SerializeField] float shrinkPowerCooldownThreshold = 15;//The value that shrinkPower has to reach to go off cooldown
     [SerializeField] float shrinkPowerConsumptionSpeed = 1.0f;
     [SerializeField] float shrinkPowerRegenSpeed = 1.0f;
@@ -23,12 +20,9 @@ public class ShrinkPowerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Load Objects
-        ui = uiObject.GetComponent<UIManager>();
         playerGraphicControl = playerGraphic.GetComponent<PlayerGraphicsController>();
 
         //Set Constants
-        shrinkPower = 100;
         shrinkScale = new Vector3(-shrinkSpeed, -shrinkSpeed, -shrinkSpeed);
         playerScale = transform.localScale;
     }
@@ -47,15 +41,14 @@ public class ShrinkPowerController : MonoBehaviour
     //Shrink player when 'Down' is pressed
     void Shrink()
     {
-        if (ButtonDown && !shrinkPowerOnCooldown)
+        if (ButtonDown && !shrinkPower.onCooldown)
         {
             //Reduces Shrink Power While holding Down
-            shrinkPower -= shrinkPowerConsumptionSpeed * Time.deltaTime;
-            if (shrinkPower <= 0)
+            shrinkPower.value -= shrinkPowerConsumptionSpeed * Time.deltaTime;
+            if (shrinkPower.value <= 0)
             {
-                shrinkPower = 0;
-                ui.ShrinkBarOnCooldown(true);
-                shrinkPowerOnCooldown = true;
+                shrinkPower.value = 0;
+                shrinkPower.onCooldown = true;
             }
             //Redcues player graphics size if shrink is held, down to minimum
             if (isBiggerThanMinimum())
@@ -66,14 +59,13 @@ public class ShrinkPowerController : MonoBehaviour
         else
         {
             //Increase Shrink Power while down is not held
-            if (shrinkPower < 100)
+            if (shrinkPower.value < 100)
             {
-                shrinkPower += shrinkPowerRegenSpeed * Time.deltaTime;
-                shrinkPower = shrinkPower > 100 ? 100 : shrinkPower;
-                if (shrinkPowerOnCooldown && shrinkPower >= shrinkPowerCooldownThreshold)
+                shrinkPower.value += shrinkPowerRegenSpeed * Time.deltaTime;
+                shrinkPower.value = shrinkPower.value > 100 ? 100 : shrinkPower.value;
+                if (shrinkPower.onCooldown && shrinkPower.value >= shrinkPowerCooldownThreshold)
                 {
-                    shrinkPowerOnCooldown = false;
-                    ui.ShrinkBarOnCooldown(false);
+                    shrinkPower.onCooldown = false;
                 }//endif
             }//endif
             //Increases the player graphics size if it needs to grow
@@ -82,10 +74,7 @@ public class ShrinkPowerController : MonoBehaviour
                 Condense(false);
             }//endif
         }//endelse
-
-        //Change UI localScale.x to the same as shrink power
-        ui.ModifyShrinkBar(shrinkPower / 100);
-    }
+    }//End Shrink
 
     //Change Size
     public void Condense(bool shrinking)

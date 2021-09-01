@@ -10,8 +10,9 @@ public class PlayerGraphicsController : MonoBehaviour
     [SerializeField] GameObject openEyes;
     [SerializeField] GameObject happyEyes;
     [SerializeField] GameObject squintedEyes;
-
-    //private bool eyesClosed = false;
+    [SerializeField] ScriptableInt health;
+    [SerializeField] Color lerpColorMaxHealth;
+    [SerializeField] Color lerpColorNoHealth;
 
     // Start is called before the first frame update
     private void Start()
@@ -19,11 +20,19 @@ public class PlayerGraphicsController : MonoBehaviour
         playerGraphicRenderers = GetComponentsInChildren<Renderer>();
     }
 
-    //Changes the graphic's color
-    public void SetGraphicColor(Color color)
+    //Changes the graphic's color to the lowest lerp value
+    public void SetGraphicColor()
     {
-        GetComponent<Renderer>().material.SetColor(
-                    "_Color", color);
+        GetComponent<Renderer>().material.SetColor("_Color",
+            Color.Lerp(lerpColorNoHealth, lerpColorMaxHealth, 0));
+    }
+
+    //Sets color to specific lerp value
+    public void ShiftGraphicColor()
+    {
+        float lerpValue = (float)health.health / health.maxHealth;
+        GetComponent<Renderer>().material.SetColor("_Color",
+            Color.Lerp(lerpColorNoHealth, lerpColorMaxHealth, lerpValue));
     }
 
     //Toggles renderer visibility from visible to non visible and vice versa

@@ -5,25 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] SoundControl soundControlObj;
-    [SerializeField] GameObject player;
     [SerializeField] ScriptableBool gameRunning;
-    [SerializeField] ScoreAndLayer score;
+    [SerializeField] ScriptableBool gamePaused;
     [SerializeField] GameEvent startLayer;
-
-    //private UIManager ui;
-    private SoundControl soundControl;
-
     [SerializeField] GameEvent pause;
     [SerializeField] GameEvent unpause;
-
-    public bool gamePaused;
 
     //Start is called before the first frame update
     void Start()
     {
-        soundControl = soundControlObj.GetComponent<SoundControl>();
-
         StartGame();
     }
 
@@ -39,7 +29,7 @@ public class GameManager : MonoBehaviour
     //Ends the game
     public void GameOver()
     {
-        if (gamePaused)//unpause to prevent the game from starting paused
+        if (gamePaused.active)//unpause to prevent the game from starting paused
         {
             PauseToggle();
         }
@@ -51,25 +41,14 @@ public class GameManager : MonoBehaviour
     void StartGame()
     {
         gameRunning.active = true;
-
-        //Load in Menu data
-        SceneDataTransfer sceneData = GameObject.Find("SceneDataTransfer").
-            GetComponent<SceneDataTransfer>();
-
-        //Update sound volume from loaded data
-        soundControl.ChangeBackgroundMusicVolume(sceneData.backgroundMusicVolume);
-        soundControl.ChangeEffectVolume(sceneData.soundEffectsVolume);
-
-        //StartCoroutine(LayerCountdown());
         startLayer.Raise();
-
     }
 
     //Toggles pause feature during gameplay
     public void PauseToggle()
     {
-        gamePaused = !gamePaused;
-        if (gamePaused)
+        gamePaused.active = !gamePaused.active;
+        if (gamePaused.active)
         {
             pause.Raise();
             Time.timeScale = 0.0f;
@@ -81,7 +60,7 @@ public class GameManager : MonoBehaviour
         }//endelse
     }//end PauseToggle
 
-    //Called by player, ends the game when player has died
+    //Ends the game
     public void PlayerDied()
     {
         Debug.Log("The player has died");

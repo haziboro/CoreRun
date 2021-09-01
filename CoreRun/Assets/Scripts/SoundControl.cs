@@ -5,10 +5,9 @@ using UnityEngine;
 public class SoundControl : MonoBehaviour
 {
     private AudioSource backgroundMusic;
-    public List<GameObject> SFXsources;
 
-    public float backgroundMusicVolume = 0.25f;
-    public float soundEffectsVolume = 0.25f;
+    [SerializeField] VolumeSettings setting;
+    [SerializeField] GameEvent updateSFXVolume;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +20,8 @@ public class SoundControl : MonoBehaviour
     {
         backgroundMusic = GameObject.Find("Main Camera").GetComponent<AudioSource>();
 
-        ChangeBackgroundMusicVolume(backgroundMusicVolume);
-        ChangeEffectVolume(soundEffectsVolume);
+        ChangeBackgroundMusicVolume(setting.backgroundMusicVolume);
+        ChangeEffectVolume(setting.SFXVolume);
         backgroundMusic.Play();
     }
 
@@ -30,13 +29,9 @@ public class SoundControl : MonoBehaviour
     public void PauseMusic(bool pausing)
     {
         if(pausing)
-        {
-            backgroundMusic.Pause();
-        }
+        { backgroundMusic.Pause(); }
         else
-        {
-            backgroundMusic.Play();
-        }
+        { backgroundMusic.Play(); }
     }
 
     //Stop background music
@@ -46,23 +41,17 @@ public class SoundControl : MonoBehaviour
     }
 
     //Background Music Volume
-    public void ChangeBackgroundMusicVolume(float backgroundVolume)
+    public void ChangeBackgroundMusicVolume(float newVolume)
     {
-        backgroundMusic.volume = backgroundVolume;
-        backgroundMusicVolume = backgroundVolume;
+        backgroundMusic.volume = newVolume;
+        setting.backgroundMusicVolume = newVolume;
     }
 
     //Changes volume of all AudioSources in scene
-    public void ChangeEffectVolume(float volumeLevel)
+    public void ChangeEffectVolume(float newVolume)
     {
-        if (SFXsources != null)
-        {
-            foreach (GameObject obj in SFXsources)
-            {
-                obj.GetComponent<AudioSource>().volume = volumeLevel;
-            }//endforeach
-        }//endif
-        soundEffectsVolume = volumeLevel;
+        setting.SFXVolume = newVolume;
+        updateSFXVolume.Raise();
     }
 
     

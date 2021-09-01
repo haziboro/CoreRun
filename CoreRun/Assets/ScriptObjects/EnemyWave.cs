@@ -5,29 +5,35 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy Wave")]
 public class EnemyWave : ScriptableObject, ISerializationCallbackReceiver
 {
-    private int totalEnemies_ = 0;
+    private int numGroups_ = 0;
+    private int numEnemies_ = 0;
 
-    public List<EnemySubWave> enemySubWaves;
+    public List<EnemyGroup> enemyGroups;
 
     [System.NonSerialized]
-    public int totalEnemies;
+    public int numGroups;
+    [System.NonSerialized]
+    public int totalNumEnemies;
 
-    //Count and store total number of individual enemies in all waves
     public void OnAfterDeserialize()
     {
-        totalEnemies = totalEnemies_;
-        foreach (EnemySubWave s in enemySubWaves)
+        numGroups = numGroups_;
+        totalNumEnemies = numEnemies_;
+        foreach (EnemyGroup s in enemyGroups)
         {
-            totalEnemies += s.numEnemy;
+            totalNumEnemies += s.repeatAmount * s.seriesOfEnemies.Count;
         }
+        numGroups = enemyGroups.Count;
     }
 
     public void OnBeforeSerialize() { }
 
+    //Represents a group of enemies
     [System.Serializable]
-    public class EnemySubWave
+    public class EnemyGroup
     {
-        public int numEnemy = 1;
-        public Enemy enemy;
+        //Represents amount this group is repeated
+        public int repeatAmount = 1;
+        public List<Enemy> seriesOfEnemies;
     }
 }

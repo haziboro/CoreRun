@@ -482,7 +482,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-147912
+  m_Name: pb_Mesh-7136
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -646,7 +646,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-46234
+  m_Name: pb_Mesh-7290
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -804,6 +804,65 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &291059320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 291059322}
+  - component: {fileID: 291059321}
+  m_Layer: 0
+  m_Name: SpawnEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &291059321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291059320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 20b23bb9febface48a93fae785b64983, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 658811826}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: SpawnNextEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &291059322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291059320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 480, y: 300, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &304766354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,7 +1232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &658811826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,19 +1246,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawningLayerEnd: 0
-  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
+  nextEnemy: {fileID: 11400000, guid: a7c245454afeff04eb0823c26a04b8a8, type: 2}
   planet: {fileID: 465106091}
   layerEnd: {fileID: 6898235962933311695, guid: 3dfb127928b6c884585eba50f2eb4fa1, type: 3}
-  enemyPrefabs:
-  - {fileID: 1642308191283485691, guid: 201265d56b9dc9e4e957d2ed19d31ffe, type: 3}
-  - {fileID: 3827720110340957503, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
-  - {fileID: 7579179625331258563, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
   spawnDegree: 15
   spawnDistance: 49.3
-  baseSpawnRate: 2
-  spawnRateModifier: 15
   trackWidthFromCenter: 3.4
-  currentSpawnRate: 0
 --- !u!4 &658811827
 Transform:
   m_ObjectHideFlags: 0
@@ -1243,7 +1295,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d488c874b4f83c04ebe666f331476409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnNextEnemy: {fileID: 11400000, guid: 20b23bb9febface48a93fae785b64983, type: 2}
+  startLayer: {fileID: 11400000, guid: 53c0ed159abdb4f4bac482053c349483, type: 2}
   gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
+  layerInterval: {fileID: 11400000, guid: 5d428b863eb1e0243a6901f3f86c34c1, type: 2}
+  waveStartBufferTime: 4
+  nextEnemy: {fileID: 11400000, guid: a7c245454afeff04eb0823c26a04b8a8, type: 2}
   waves:
   - {fileID: 11400000, guid: 58de8983677c3bc4ab4295d9487c2330, type: 2}
 --- !u!4 &674486765
@@ -1271,8 +1328,9 @@ GameObject:
   - component: {fileID: 684227296}
   - component: {fileID: 684227295}
   - component: {fileID: 684227294}
+  - component: {fileID: 684227297}
   m_Layer: 0
-  m_Name: PauseEvents
+  m_Name: GameManagerEvents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1396,6 +1454,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684227297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684227293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: d0cd194e1b73ec843a5c0239673ff00f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1279577895}
+        m_TargetAssemblyTypeName: SceneDataTransfer, Assembly-CSharp
+        m_MethodName: CheckHighScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,7 +1675,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh77988
+  m_Name: pb_Mesh25476
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1965,7 +2051,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-46244
+  m_Name: pb_Mesh-7300
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2621,8 +2707,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 11400000, guid: 8c55e0e0255e47347ab4df9fc1b91a3c, type: 2}
-  TransitionCurrentLayer: {fileID: 11400000, guid: 5fce4a2abc76ea948a30c3d7645e02e5, type: 2}
-  layerInterval: 20
+  EndLayer: {fileID: 11400000, guid: 5fce4a2abc76ea948a30c3d7645e02e5, type: 2}
+  layerInterval: {fileID: 11400000, guid: 5d428b863eb1e0243a6901f3f86c34c1, type: 2}
 --- !u!4 &1009326642
 Transform:
   m_ObjectHideFlags: 0
@@ -2643,7 +2729,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh44862
+  m_Name: pb_Mesh25522
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2941,7 +3027,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-147924
+  m_Name: pb_Mesh-7148
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3105,7 +3191,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-147900
+  m_Name: pb_Mesh-7124
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3410,7 +3496,7 @@ GameObject:
   - component: {fileID: 1279577894}
   - component: {fileID: 1279577895}
   m_Layer: 0
-  m_Name: SceneDataTransfer
+  m_Name: SceneData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3443,7 +3529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 11400000, guid: 8c55e0e0255e47347ab4df9fc1b91a3c, type: 2}
-  highScore: 0
+  savedScore: {fileID: 11400000, guid: 8d6732cd97bf06e499cc613247cfa0cc, type: 2}
 --- !u!1 &1290586078
 GameObject:
   m_ObjectHideFlags: 0
@@ -3888,6 +3974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDied: {fileID: 11400000, guid: 3dd01b1833bf2834da40904febc51427, type: 2}
   iFramesOn: {fileID: 11400000, guid: 88ec1b24e530c7b41a51a767f418d73c, type: 2}
+  tookDamage: {fileID: 11400000, guid: 105197ec83619e8439e2f56fc79b81d8, type: 2}
   gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
   gamePaused: {fileID: 11400000, guid: 037d532d56a346c4c88189f254f72ac6, type: 2}
   iFramesObj: {fileID: 11400000, guid: b704225768fef8c4fadecd9e4ee39830, type: 2}
@@ -4096,6 +4183,7 @@ MonoBehaviour:
   startLayer: {fileID: 11400000, guid: 53c0ed159abdb4f4bac482053c349483, type: 2}
   pause: {fileID: 11400000, guid: 00096b3073fc1f04fa973408ec8cb980, type: 2}
   unpause: {fileID: 11400000, guid: b5af0e288b7d12a47a88a6e9628ab46f, type: 2}
+  saveGameData: {fileID: 11400000, guid: d0cd194e1b73ec843a5c0239673ff00f, type: 2}
 --- !u!4 &1506685773
 Transform:
   m_ObjectHideFlags: 0
@@ -4409,6 +4497,7 @@ GameObject:
   - component: {fileID: 1586983261}
   - component: {fileID: 1586983260}
   - component: {fileID: 1586983259}
+  - component: {fileID: 1586983263}
   - component: {fileID: 1586983258}
   - component: {fileID: 1586983257}
   - component: {fileID: 1586983262}
@@ -4551,30 +4640,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1494081956}
-        m_TargetAssemblyTypeName: PlayerAudio, Assembly-CSharp
-        m_MethodName: PlayPlayerHitAudio
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 743532665}
-        m_TargetAssemblyTypeName: PlayerGraphicsController, Assembly-CSharp
-        m_MethodName: ShiftGraphicColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1586983260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4672,6 +4737,46 @@ MonoBehaviour:
       - m_Target: {fileID: 1494081957}
         m_TargetAssemblyTypeName: IFrames, Assembly-CSharp
         m_MethodName: ActivateIFrames
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1586983263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586983256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 105197ec83619e8439e2f56fc79b81d8, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1494081956}
+        m_TargetAssemblyTypeName: PlayerAudio, Assembly-CSharp
+        m_MethodName: PlayPlayerHitAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 743532665}
+        m_TargetAssemblyTypeName: PlayerGraphicsController, Assembly-CSharp
+        m_MethodName: ShiftGraphicColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5065,9 +5170,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 658811826}
-        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
-        m_MethodName: StartSpawning
+      - m_Target: {fileID: 674486764}
+        m_TargetAssemblyTypeName: WaveManager, Assembly-CSharp
+        m_MethodName: LoadWave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5105,30 +5210,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 658811826}
-        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
-        m_MethodName: IncreaseRate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 658811826}
-        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
-        m_MethodName: StartSpawning
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1009326641}
         m_TargetAssemblyTypeName: LayerCountdown, Assembly-CSharp
         m_MethodName: IncreaseLayerLevel
@@ -5144,6 +5225,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1826712483}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: UpdateLayerUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 674486764}
+        m_TargetAssemblyTypeName: WaveManager, Assembly-CSharp
+        m_MethodName: WaveBuffer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

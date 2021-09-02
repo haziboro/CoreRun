@@ -60,14 +60,11 @@ public abstract class Enemy : MonoBehaviour
             {
                 if (narrowMiss) { narrowDodge.Raise(); }
                 else { normalDodge.Raise();  }
-
-                //player.GetComponent<Player>().ReportEnemyAvoidance(narrowMiss);
             }
             Destroy(gameObject);
         }
         else
         {
-            //player.GetComponent<Player>().ReportImpact();
             playerHit.Raise();
             hitPlayer = true;
         }

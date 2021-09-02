@@ -10,10 +10,11 @@ public class Player : MonoBehaviour
 
     [SerializeField] GameEvent playerDied;
     [SerializeField] GameEvent iFramesOn;
+    [SerializeField] GameEvent tookDamage;
     [SerializeField] ScriptableBool gameRunning;
     [SerializeField] ScriptableBool gamePaused;
     [SerializeField] ScriptableBool iFramesObj;
-    [SerializeField] ScriptableInt health;
+    [SerializeField] PlayerHealth health;
     [SerializeField] float speed = 10;//left-right movement speed
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
 
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
         if (!iFramesObj.active)
         {
             health.health--;
+            tookDamage.Raise();
             if (health.health == 0)
             {
                 playerDied.Raise();

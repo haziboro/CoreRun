@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameEvent startLayer;
     [SerializeField] GameEvent pause;
     [SerializeField] GameEvent unpause;
+    [SerializeField] GameEvent saveGameData;
 
     //Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
             PauseToggle();
         }
         gameRunning.active = false;
+        saveGameData.Raise();
         SceneManager.LoadScene(0);
     }
 

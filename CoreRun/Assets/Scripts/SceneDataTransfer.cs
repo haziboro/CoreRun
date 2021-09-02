@@ -5,24 +5,12 @@ using System.IO;
 
 public class SceneDataTransfer : MonoBehaviour
 {
-    public static SceneDataTransfer instance;
-
     [SerializeField] ScoreAndLayer score;
-
-    //Default Values
-    public int highScore = 0;
+    [SerializeField] HighScore savedScore;
 
     // Start is called before the first frame update
     void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
         LoadScore();
         score.score = 0;
         score.layer = 1;
@@ -30,9 +18,9 @@ public class SceneDataTransfer : MonoBehaviour
 
     public void CheckHighScore()
     {
-        if (score.score > highScore)
+        if (score.score > savedScore.highScore)
         {
-            highScore = score.score;
+            savedScore.highScore = score.score;
             SaveScore();
         }
     }
@@ -48,7 +36,7 @@ public class SceneDataTransfer : MonoBehaviour
     public void SaveScore()
     {
         playerData data = new playerData();
-        data.highScore = highScore;
+        data.highScore = savedScore.highScore;
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
@@ -63,11 +51,11 @@ public class SceneDataTransfer : MonoBehaviour
             string json = File.ReadAllText(path);
 
             playerData data = JsonUtility.FromJson<playerData>(json);
-            highScore = data.highScore;
+            savedScore.highScore = data.highScore;
         }
         else
         {
-            highScore = 0;
+            savedScore.highScore = 0;
         }
     }
 

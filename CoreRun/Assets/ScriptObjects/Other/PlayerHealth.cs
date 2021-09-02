@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableInt")]
-public class ScriptableInt : ScriptableObject, ISerializationCallbackReceiver
+[CreateAssetMenu(menuName = "Player Health")]
+public class PlayerHealth : ScriptableObject, ISerializationCallbackReceiver
 {
     [SerializeField] int maxHealth_;
 

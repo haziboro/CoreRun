@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     private TextMeshProUGUI titleText;
     private TextMeshProUGUI scoreText;
 
+    [SerializeField] HighScore savedScore;
     [SerializeField] VolumeSettings setting;
     [SerializeField] ScriptableBool gameRunning;
     [SerializeField] GameObject menu;
@@ -56,8 +57,7 @@ public class MainMenu : MonoBehaviour
     //Updates the High Score Display
     void UpdateHighScoreDisplay()
     {
-        scoreText.text = GameObject.Find("SceneDataTransfer").
-            GetComponent<SceneDataTransfer>().highScore.ToString();
+        scoreText.text = savedScore.highScore.ToString();
     }
 
     //Set's sliders initial values to saved values

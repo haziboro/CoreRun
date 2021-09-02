@@ -2072,7 +2072,7 @@ GameObject:
   - component: {fileID: 1132805040}
   - component: {fileID: 1132805041}
   m_Layer: 0
-  m_Name: SceneDataTransfer
+  m_Name: SceneData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2105,7 +2105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 11400000, guid: 8c55e0e0255e47347ab4df9fc1b91a3c, type: 2}
-  highScore: 0
+  savedScore: {fileID: 11400000, guid: 8d6732cd97bf06e499cc613247cfa0cc, type: 2}
 --- !u!1 &1172575577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,7 +2248,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2734,6 +2734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b205cf3e08383b040b2ff144bed92cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  savedScore: {fileID: 11400000, guid: 8d6732cd97bf06e499cc613247cfa0cc, type: 2}
   setting: {fileID: 11400000, guid: b1d333375da55c84e9ccb24d19c3ff9d, type: 2}
   gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
   menu: {fileID: 1450254417}

@@ -10,7 +10,7 @@ public class PlayerGraphicsController : MonoBehaviour
     [SerializeField] GameObject openEyes;
     [SerializeField] GameObject happyEyes;
     [SerializeField] GameObject squintedEyes;
-    [SerializeField] ScriptableInt health;
+    [SerializeField] PlayerHealth health;
     [SerializeField] Color lerpColorMaxHealth;
     [SerializeField] Color lerpColorNoHealth;
 
@@ -30,7 +30,7 @@ public class PlayerGraphicsController : MonoBehaviour
     //Sets color to specific lerp value
     public void ShiftGraphicColor()
     {
-        float lerpValue = (float)health.health / health.maxHealth;
+        float lerpValue = (float)(health.health) / health.maxHealth;
         GetComponent<Renderer>().material.SetColor("_Color",
             Color.Lerp(lerpColorNoHealth, lerpColorMaxHealth, lerpValue));
     }

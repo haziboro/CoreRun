@@ -5,6 +5,7 @@ using UnityEngine;
 public class LayerCave : Enemy
 {
     [SerializeField] GameEvent increaseLayer;
+    bool isColliding = true;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -18,15 +19,17 @@ public class LayerCave : Enemy
     // Update is called once per frame
     protected override void Update()
     {
-        
+        isColliding = false;
     }
 
     //Once the cave hits the player, it starts spawning
     protected override void OnTriggerEnter(Collider other)
     {
-        //Transition the lair once the player hits the cave
-        increaseLayer.Raise();
+        if (isColliding) return;
+        isColliding = true;
 
+        //Transition the layer once the player hits the cave
+        increaseLayer.Raise();
         Destroy(gameObject);
     }
 }

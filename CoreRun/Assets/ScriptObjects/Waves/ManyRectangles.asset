@@ -16,10 +16,12 @@ MonoBehaviour:
   - repeatAmount: 5
     seriesOfEnemies:
     - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
-  - repeatAmount: 1
-    seriesOfEnemies:
-    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
   - repeatAmount: 2
     seriesOfEnemies:
     - {fileID: 1642308191283485690, guid: 201265d56b9dc9e4e957d2ed19d31ffe, type: 3}
+  - repeatAmount: 5
+    seriesOfEnemies:
     - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+  - repeatAmount: 1
+    seriesOfEnemies:
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}

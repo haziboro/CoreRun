@@ -69025,4 +69025,4 @@ MonoBehaviour:
   baseRotationSpeed: 10
   currentRotationSpeed: 0
   rotationSpeedPercentIncrease: 10
-  keepSpinning: 1
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}

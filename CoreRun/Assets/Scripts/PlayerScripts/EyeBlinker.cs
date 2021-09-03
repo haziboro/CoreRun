@@ -5,6 +5,8 @@ using UnityEngine;
 public class EyeBlinker : MonoBehaviour
 {
     private bool eyesClosed = false;
+
+    [SerializeField] ScriptableBool gameRunning;
     [SerializeField] GameObject eyes;
     [SerializeField] int blinkFrequency = 10;//1 or 0 guarantees a blink every blinkCheckDelay, higher numbers make chance 1/blinkFrequency
     private float blinkCheckDelay = 0.2f;//Duration/Time delay between blink checks
@@ -44,10 +46,13 @@ public class EyeBlinker : MonoBehaviour
     //Makes the character randomly blink their eyes occasionally
     void randomBlink()
     {
-        if (Random.Range(0, blinkFrequency) == 0)
+        if (gameRunning.active)
         {
-            Blink();
-            StartCoroutine(BlinkPause());
+            if (Random.Range(0, blinkFrequency) == 0)
+            {
+                Blink();
+                StartCoroutine(BlinkPause());
+            }
         }
     }
 

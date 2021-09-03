@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Manages enabling/disabling of renderers activating/deactivating Eye objects
+//Manages enabling/disabling of renderers and activating/deactivating Eye objects
 public class PlayerGraphicsController : MonoBehaviour
 {
     //public GameObject playerGraphic { get; private set; }

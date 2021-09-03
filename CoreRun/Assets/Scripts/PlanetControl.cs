@@ -8,7 +8,6 @@ public class PlanetControl : MonoBehaviour
     [SerializeField] float currentRotationSpeed;
     [SerializeField] float rotationSpeedPercentIncrease;
 
-    public bool keepSpinning = true;
     [SerializeField] ScriptableBool gameRunning;
 
     // Start is called before the first frame update
@@ -35,11 +34,6 @@ public class PlanetControl : MonoBehaviour
     public void IncreaseSpeed()
     {
         currentRotationSpeed += baseRotationSpeed * (rotationSpeedPercentIncrease / 100);
-    }
-
-    public void KeepSpinning(bool spin)
-    {
-        keepSpinning = spin;
     }
 
 }

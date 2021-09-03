@@ -9,9 +9,6 @@ public class EvilRectangle : Enemy
     protected override void Start()
     {
         base.Start();
-        playerAggroRange = 5;
-        spawnOffset = 2.40f;
-
         Move();
     }
 

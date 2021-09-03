@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour
     private bool narrowMiss; //True when player narrowly dodges
     private bool hitPlayer;//true when an enemy has already hit the player
 
+    [SerializeField] protected ScriptableBool gameRunning;
     [SerializeField] GameEvent playerHit;
     [SerializeField] GameEvent normalDodge;
     [SerializeField] GameEvent narrowDodge;
@@ -31,7 +32,10 @@ public abstract class Enemy : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        DetectPlayerDistance();
+        if (gameRunning.active)
+        {
+            DetectPlayerDistance();
+        }
     }
 
     //Initiate variable behavior based on player distance

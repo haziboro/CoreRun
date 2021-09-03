@@ -15,8 +15,6 @@ public class EvilFlyingPink : Enemy
     protected override void Start()
     {
         base.Start();
-        playerAggroRange = 5;
-        spawnOffset = 2;
         lerpValue = Random.Range(0.0f,1.0f);
         moving = true;
         transform.Rotate(180,0,0);//Adjust self after spawning
@@ -26,8 +24,10 @@ public class EvilFlyingPink : Enemy
     protected override void Update()
     {
         base.Update();
-
-        Move();
+        if (gameRunning.active)
+        {
+            Move();
+        }
     }
 
     //Move

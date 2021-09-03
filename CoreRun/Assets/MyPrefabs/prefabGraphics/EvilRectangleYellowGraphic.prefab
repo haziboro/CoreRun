@@ -377,11 +377,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb7b74f9366499468cd7476e209b2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSpeed: 0.4
-  animationIntensity: 0.1
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
+  animationSpeed: 0.6
+  animationIntensity: 0.2
+  xScaleOn: 0
+  yScaleOn: 1
+  zScaleOn: 1
   xScaleUp: 0
-  yScaleUp: 0
-  zScaleUp: 0
+  yScaleUp: 1
+  zScaleUp: 1
   animationOn: 0
 --- !u!33 &2557109401679394333
 MeshFilter:

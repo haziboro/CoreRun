@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EyeController : MonoBehaviour
 {
+    [SerializeField] ScriptableBool gameRunning;
     [SerializeField] GameObject[] pupils;
     [SerializeField] float pupilMovementRadius = 0.15f;
 
@@ -18,7 +19,10 @@ public class EyeController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        MoveEyes();
+        if (gameRunning.active)
+        {
+            MoveEyes();
+        }
     }
 
     //Moves the attached eyes in response to movement

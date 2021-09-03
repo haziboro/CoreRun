@@ -502,6 +502,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1718110510}
+    - target: {fileID: 858791504225965517, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
+      propertyPath: xScaleOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 858791504225965517, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
+      propertyPath: yScaleOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 858791504225965517, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
+      propertyPath: zScaleOn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 858791504225965559, guid: a909c1a1af3fa2b4ea6e1f66204f95a0, type: 3}
       propertyPath: controlling
       value: 0
@@ -818,7 +830,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1202
+  m_Name: pb_Mesh-180700
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1757,9 +1769,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1362174068}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: StartNewGame
+      - m_Target: {fileID: 1362174070}
+        m_TargetAssemblyTypeName: RestartGame, Assembly-CSharp
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2117,6 +2129,7 @@ GameObject:
   - component: {fileID: 1172575580}
   - component: {fileID: 1172575579}
   - component: {fileID: 1172575578}
+  - component: {fileID: 1172575581}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2172,6 +2185,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1172575581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172575577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e2fb3a43c9fa4aa02dff1101bb1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8b3bab05b4f80b44f9b36bac756febfa, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1362174075}
+        m_TargetAssemblyTypeName: ColorizeText, Assembly-CSharp
+        m_MethodName: ColorText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1198295411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,9 +2696,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1362174068}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 1362174071}
+        m_TargetAssemblyTypeName: QuitGame, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2715,6 +2756,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1362174069}
   - component: {fileID: 1362174068}
+  - component: {fileID: 1362174071}
+  - component: {fileID: 1362174070}
+  - component: {fileID: 1362174072}
+  - component: {fileID: 1362174073}
+  - component: {fileID: 1362174074}
+  - component: {fileID: 1362174075}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -2734,13 +2781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b205cf3e08383b040b2ff144bed92cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savedScore: {fileID: 11400000, guid: 8d6732cd97bf06e499cc613247cfa0cc, type: 2}
-  setting: {fileID: 11400000, guid: b1d333375da55c84e9ccb24d19c3ff9d, type: 2}
   gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
-  menu: {fileID: 1450254417}
-  settings: {fileID: 1041694705}
-  musicVolumeSlider: {fileID: 592339960}
-  SFXVolumeSlider: {fileID: 1103575532}
+  colorTitle: {fileID: 11400000, guid: 8b3bab05b4f80b44f9b36bac756febfa, type: 2}
 --- !u!4 &1362174069
 Transform:
   m_ObjectHideFlags: 0
@@ -2755,13 +2797,96 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1362174070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362174067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfbbcf71ad5cdcb4ebd1082a7bb109aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
+--- !u!114 &1362174071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362174067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d3e4ea3f0a0ab4c92a2a1504160877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1362174072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362174067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86fb87823afe7b42aa2e05f9535fb69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 1450254417}
+  settings: {fileID: 1041694705}
+--- !u!114 &1362174073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362174067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6b914eb1a110e49902eaacc13e3b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setting: {fileID: 11400000, guid: b1d333375da55c84e9ccb24d19c3ff9d, type: 2}
+  musicVolumeSlider: {fileID: 592339960}
+  SFXVolumeSlider: {fileID: 1103575532}
+--- !u!114 &1362174074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362174067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16084fe88017bf40a996f1aed9c6c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreTextObj: {fileID: 500163166}
+  savedScore: {fileID: 11400000, guid: 8d6732cd97bf06e499cc613247cfa0cc, type: 2}
+--- !u!114 &1362174075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362174067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf9a7555d3e2b478c8acefe778acea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleTextObj: {fileID: 1890724918}
+  flickerDuration: 0
+  numFlickers: 0
 --- !u!43 &1365194334
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1338
+  m_Name: pb_Mesh-180836
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3034,9 +3159,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1362174068}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ToggleSettings
+      - m_Target: {fileID: 1362174072}
+        m_TargetAssemblyTypeName: ToggleSettings, Assembly-CSharp
+        m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3369,7 +3494,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1348
+  m_Name: pb_Mesh-180846
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4148,9 +4273,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1362174068}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ToggleSettings
+      - m_Target: {fileID: 1362174072}
+        m_TargetAssemblyTypeName: ToggleSettings, Assembly-CSharp
+        m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

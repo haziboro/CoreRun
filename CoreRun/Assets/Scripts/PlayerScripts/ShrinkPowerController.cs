@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Coupled with playerGraphicController to avoid calling events on Update()
 public class ShrinkPowerController : MonoBehaviour
 {
     private PlayerGraphicsController playerGraphicControl;

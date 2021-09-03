@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Adds idle animation to the attached object based on scaling
+//Adds idle animation to the attached object, scaling them repeatadly by within a constant margin
 public class JiggleAnimation : MonoBehaviour
 {
-
+    [SerializeField] ScriptableBool gameRunning;
     [SerializeField] float animationSpeed = 0.4f;//How quickly size will change
     [SerializeField] float animationIntensity = 0.1f;//How much size can change
 
-    //Set to determine which axes scale up simaltaneously during idle animation
+    //Set to true for jiggling on that axis to be active
+    [SerializeField] bool xScaleOn;
+    [SerializeField] bool yScaleOn;
+    [SerializeField] bool zScaleOn;
+
+    //set to true to scale up, false to scale down
     [SerializeField] bool xScaleUp;
     [SerializeField] bool yScaleUp;
     [SerializeField] bool zScaleUp;
@@ -23,7 +28,7 @@ public class JiggleAnimation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (animationOn)
+        if (gameRunning.active)
         {
             MovementAnimation();
         }
@@ -58,10 +63,23 @@ public class JiggleAnimation : MonoBehaviour
     {
         //Debug.Log("X: " + x + " " + "Y: " + y + " " + "Z: " + z);
         transform.localScale = new Vector3(
-            transform.localScale.x + (x ? 1 : -1) * sizeDelta,
+            transform.localScale.x + CalculateSizeChange(xScaleOn, x),
+            transform.localScale.y + CalculateSizeChange(yScaleOn, y),
+            transform.localScale.z + CalculateSizeChange(zScaleOn, z)
+            /*transform.localScale.x + (x ? 1 : -1) * sizeDelta,
             transform.localScale.y + (y ? 1 : -1) * sizeDelta,
-            transform.localScale.z + (z ? 1 : -1) * sizeDelta);
+            transform.localScale.z + (z ? 1 : -1) * sizeDelta*/);
     }
+
+    //Calculate how the scale is modified for a single axis
+    float CalculateSizeChange(bool isJiggling, bool jiggleType)
+    {
+        if (isJiggling)
+        { return (jiggleType ? 1 : -1) * sizeDelta; }
+        else
+        { return 0; }
+    }
+
 
     //Toggles animation
     public void ToggleAnimation()

@@ -7696,8 +7696,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb7b74f9366499468cd7476e209b2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
   animationSpeed: 0.8
   animationIntensity: 0.05
+  xScaleOn: 1
+  yScaleOn: 1
+  zScaleOn: 1
   xScaleUp: 1
   yScaleUp: 0
   zScaleUp: 1

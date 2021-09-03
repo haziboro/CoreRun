@@ -13,8 +13,6 @@ public class EvilBigRed : Enemy
     protected override void Start()
     {
         base.Start();
-        playerAggroRange = 10;
-        spawnOffset = 1.9f;
         transform.Rotate(90, 0, 0);//Adjust self after spawning
         Move();
     }

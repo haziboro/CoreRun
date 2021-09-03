@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameEvent startLayer;
     [SerializeField] GameEvent pause;
     [SerializeField] GameEvent unpause;
-    [SerializeField] GameEvent saveGameData;
 
     //Start is called before the first frame update
     void Start()
@@ -27,16 +26,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //Ends the game
-    public void GameOver()
+    //Unpause and return to menu
+    public void ReturnToMenu()
     {
         if (gamePaused.active)//unpause to prevent the game from starting paused
         {
             PauseToggle();
         }
-        gameRunning.active = false;
-        saveGameData.Raise();
         SceneManager.LoadScene(0);
+    }
+
+    //Stops running the game
+    public void GameOver()
+    {
+        gameRunning.active = false;
     }
 
     //Starts the game
@@ -61,11 +64,4 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1.0f;
         }//endelse
     }//end PauseToggle
-
-    //Ends the game
-    public void PlayerDied()
-    {
-        Debug.Log("The player has died");
-        GameOver();
-    }
 }

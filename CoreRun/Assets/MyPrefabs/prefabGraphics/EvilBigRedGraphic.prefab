@@ -17070,6 +17070,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724eb04facfa99e4080c53034901f0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHit: {fileID: 0}
+  normalDodge: {fileID: 0}
+  narrowDodge: {fileID: 0}
   playerAggroRange: 10
   spawnOffset: 1.9
   movementZone: 0
@@ -17088,6 +17091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb7b74f9366499468cd7476e209b2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
   animationSpeed: 0.3
   animationIntensity: 0.2
   xScaleUp: 1

@@ -18,6 +18,12 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 10;//left-right movement speed
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
 
+    // Start is called before the first frame update
+    private void Start()
+    {
+        health.health = health.maxHealth;
+    }
+
     // Update is called once per frame
     void Update()
     {

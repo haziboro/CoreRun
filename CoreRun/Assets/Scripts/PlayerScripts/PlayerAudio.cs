@@ -9,6 +9,8 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] VolumeSettings setting;
     [SerializeField] AudioClip[] narrowDodgeClips;
     [SerializeField] AudioClip[] healthLossClips;
+    [SerializeField] AudioClip[] playerDeathClips;
+    [SerializeField] AudioClip[] layerCompleteClips;
 
     private void Awake()
     {
@@ -31,6 +33,22 @@ public class PlayerAudio : MonoBehaviour
         //Play random dodge audio clip on succesful narrow dodge
         int clipNum = Random.Range(0, healthLossClips.Length);
         playerAudio.clip = healthLossClips[clipNum];
+        playerAudio.Play();
+    }
+
+    //Plays a random death SFX
+    public void PlayPlayerDeathAudio()
+    {
+        int clipNum = Random.Range(0, playerDeathClips.Length);
+        playerAudio.clip = playerDeathClips[clipNum];
+        playerAudio.Play();
+    }
+
+    //Plays a random layer complete SFX
+    public void PlayLayerCompleteAudio()
+    {
+        int clipNum = Random.Range(0, layerCompleteClips.Length);
+        playerAudio.clip = layerCompleteClips[clipNum];
         playerAudio.Play();
     }
 

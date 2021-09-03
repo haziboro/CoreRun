@@ -25,13 +25,6 @@ public class WaveManager : MonoBehaviour
     void Awake()
     {
         enemyQueue = new Queue<SpawnInstruction>();
-
-        /*//For testing
-        for (int i = 0; i < count; i++)
-        {
-            SpawnInstruction f = enemyQueue.Dequeue();
-            Debug.Log("Instance: " + f.enemy.name + " Timer: " + f.timer);
-        }*/
     }
 
     // Update is called once per frame

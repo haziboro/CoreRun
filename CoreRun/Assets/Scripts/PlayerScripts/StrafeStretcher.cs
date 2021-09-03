@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StrafeStretcher : MonoBehaviour
 {
+    [SerializeField] ScriptableBool gameRunning;
     [SerializeField] float maxStrafeStretchSize = 0.2f;
     [SerializeField] float StrafeStretchGrowthSpeed = 1;//How quickly the attached changes size
     [SerializeField] float StrafeStretchBounceBack = 2;//How quickly the attached restores its' original size
@@ -23,7 +24,10 @@ public class StrafeStretcher : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        StrafeStretch();
+        if (gameRunning.active)
+        {
+            StrafeStretch();
+        }
     }
 
     //Makes the character graphic stretch a little when it moves left or right

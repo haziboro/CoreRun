@@ -3853,6 +3853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb7b74f9366499468cd7476e209b2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
   animationSpeed: 0.4
   animationIntensity: 0.1
   xScaleUp: 0
@@ -3871,6 +3872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eae86073e8b7a048910f5d593cf96c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
   eyes: {fileID: 858791503737966241}
   blinkFrequency: 10
 --- !u!114 &743532665
@@ -3885,6 +3887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a39ed78f7b96d41a17aa10dae80bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
   maxStrafeStretchSize: 0.2
   StrafeStretchGrowthSpeed: 1
   StrafeStretchBounceBack: 2
@@ -3903,6 +3906,9 @@ MonoBehaviour:
   openEyes: {fileID: 858791503737966241}
   happyEyes: {fileID: 858791504883745901}
   squintedEyes: {fileID: 3605554537203846770}
+  health: {fileID: 11400000, guid: e8b13f715fe4be647bb2eb870ad622cb, type: 2}
+  lerpColorMaxHealth: {r: 0.24705882, g: 0.29411766, b: 0.7647059, a: 0}
+  lerpColorNoHealth: {r: 1, g: 0, b: 0, a: 0}
 --- !u!114 &743532672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3915,6 +3921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c9392a67a739647a1cb9dcb5827c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
   pupils:
   - {fileID: 858791505300713055}
   - {fileID: 858791505011906968}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3088b9daa06100946879af50c3262393, type: 3}
-  m_Name: ManyRectangles
+  m_Name: ManyPinks
   m_EditorClassIdentifier: 
   enemyGroups:
   - repeatAmount: 20
     seriesOfEnemies:
-    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+    - {fileID: 1642308191283485690, guid: 201265d56b9dc9e4e957d2ed19d31ffe, type: 3}

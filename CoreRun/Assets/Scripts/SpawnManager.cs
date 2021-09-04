@@ -26,7 +26,6 @@ public class SpawnManager : MonoBehaviour
         enemy.transform.position = planet.transform.position;
         //Rotate enemy relative to planet to position just beyond horizon
         enemy.transform.Rotate(spawnDegree, 0, 0);
-
         //Move unit to surface, offset by their spawnOffset parameter
         enemy.transform.Translate(0, 0,
             spawnDistance + enemy.GetComponent<Enemy>().spawnOffset);

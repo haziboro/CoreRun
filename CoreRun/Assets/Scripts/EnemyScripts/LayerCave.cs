@@ -23,7 +23,7 @@ public class LayerCave : Enemy
     }
 
     //Once the cave hits the player, it starts spawning
-    protected override void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter(Collider other)
     {
         if (isColliding) return;
         isColliding = true;
@@ -32,4 +32,6 @@ public class LayerCave : Enemy
         increaseLayer.Raise();
         Destroy(gameObject);
     }
+
+    protected override void AggroTrigger() { }
 }

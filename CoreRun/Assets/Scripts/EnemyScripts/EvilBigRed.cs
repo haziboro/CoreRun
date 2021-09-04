@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EvilBigRed : Enemy
 {
+    private AnimatorController anim;
+    private bool charging = false;
 
-    public bool charging = false;
     public float wallOffset = 0.4f;
     [SerializeField] float speed = 10;
 
@@ -14,6 +15,7 @@ public class EvilBigRed : Enemy
     {
         base.Start();
         transform.Rotate(90, 0, 0);//Adjust self after spawning
+        anim = GetComponent<AnimatorController>();
         Move();
     }
 
@@ -50,15 +52,15 @@ public class EvilBigRed : Enemy
         if (!charging)//runs the first time function called
         {
             charging = true;
-            //Find the children (openMouth,ClosedMouth)
-            //Set the mouth to active and the other to inactive
-            GameObject bigRed = transform.Find("EvilBigRed (1)").gameObject;
-            bigRed.transform.Find("OpenMouth").gameObject.SetActive(true);
-            bigRed.transform.Find("ClosedMouth").gameObject.SetActive(false);
+            anim.enemyAnimator.SetBool("Awake", true);
         }
 
         //Charging movement
         transform.Translate(new Vector3(0,-0.05f,-1)  * speed * Time.deltaTime);
     }
 
+    protected override void AggroTrigger()
+    {
+
+    }
 }

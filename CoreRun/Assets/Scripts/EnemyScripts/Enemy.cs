@@ -23,8 +23,11 @@ public abstract class Enemy : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start() 
     {
+        //For player tracking
         player = GameObject.Find("PlayerCube");
         narrowMissField = player.GetComponentInChildren<CapsuleCollider>();
+
+        //variables
         aggro = false;
         narrowMiss = false;
     }
@@ -47,12 +50,18 @@ public abstract class Enemy : MonoBehaviour
             if (playerDistance < playerAggroRange)//Once they enter aggro, set aggro to true
             {
                 aggro = true;
+                AggroTrigger();
             }
         }//endif
     }
 
+    public virtual void OnTriggerEnter(Collider other)
+    {
+        OnTriggerFire(other);
+    }
+
     //Trigger ReportDeath() in player when colliding with them
-    protected virtual void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerFire(Collider other)
     {
         if(other.name == narrowMissField.name)
         {
@@ -79,6 +88,9 @@ public abstract class Enemy : MonoBehaviour
     {
         //Do nothing, implement in subclass
     }
+
+    //Action to trigger when the enemy first enter aggro range
+    protected abstract void AggroTrigger();
 
     //Returns how far from the level wall an enemy should be when spawned
     public virtual float WallOffset()

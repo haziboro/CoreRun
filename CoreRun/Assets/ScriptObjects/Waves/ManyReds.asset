@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3088b9daa06100946879af50c3262393, type: 3}
-  m_Name: ManyRectangles
+  m_Name: ManyReds
   m_EditorClassIdentifier: 
   enemyGroups:
   - repeatAmount: 20
     seriesOfEnemies:
-    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}

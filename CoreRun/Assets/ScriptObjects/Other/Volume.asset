@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Volume
   m_EditorClassIdentifier: 
   savedBackgroundVolume: 0.16
-  savedSFXVolume: 0.26002502
+  savedSFXVolume: 0.19

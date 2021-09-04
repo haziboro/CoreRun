@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LayerCountdown : MonoBehaviour
 {
+    [SerializeField] ScriptableBool gameRunning;
     [SerializeField] ScoreAndLayer score;
     [SerializeField] GameEvent EndLayer;
     [SerializeField] ScriptableInt layerInterval;//Number of seconds between layer transitions
@@ -11,7 +12,6 @@ public class LayerCountdown : MonoBehaviour
     //Starts a new Layer
     public void StartNewLayer()
     {
-        //Debug.Log("Layer Countdown Starting a new layer");
         StartCoroutine(LayerTimer());
     }
 
@@ -25,7 +25,9 @@ public class LayerCountdown : MonoBehaviour
     IEnumerator LayerTimer()
     {
         yield return new WaitForSeconds(layerInterval.value);
-        //Debug.Log("Layer Countdown ending the layer");
-        EndLayer.Raise();
+        if (gameRunning.active)
+        {
+            EndLayer.Raise();
+        }
     }
 }

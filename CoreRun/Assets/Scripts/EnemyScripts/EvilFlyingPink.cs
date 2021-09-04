@@ -88,8 +88,4 @@ public class EvilFlyingPink : Enemy
         moving = true;
     }
 
-    protected override void AggroTrigger()
-    {
-
-    }
 }

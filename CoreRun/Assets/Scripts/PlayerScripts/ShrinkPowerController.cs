@@ -10,6 +10,7 @@ public class ShrinkPowerController : MonoBehaviour
     public Vector3 playerScale { get; private set; }
     private Vector3 shrinkScale;
 
+    [SerializeField] ScriptableBool gameRunning;
     [SerializeField] ShrinkPower shrinkPower;
     [SerializeField] GameObject playerGraphic;
     [SerializeField] float shrinkPowerCooldownThreshold = 15;//The value that shrinkPower has to reach to go off cooldown
@@ -36,7 +37,10 @@ public class ShrinkPowerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Shrink();
+        if (gameRunning.active)
+        {
+            Shrink();
+        }
     }
 
     //Shrink player when 'Down' is pressed

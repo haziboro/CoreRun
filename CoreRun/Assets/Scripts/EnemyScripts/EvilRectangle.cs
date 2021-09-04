@@ -7,6 +7,7 @@ public class EvilRectangle : Enemy
 {
     private bool falling = false;
     private AnimatorController anim;
+    private AggroDetection detector;
 
     [Range(0, 100)] [SerializeField] int fallChancePercent;
 
@@ -15,6 +16,7 @@ public class EvilRectangle : Enemy
     {
         base.Start();
         anim = GetComponent<AnimatorController>();
+        detector = GetComponent<AggroDetection>();
         if (Random.Range(0, 100) < fallChancePercent)
         {
             anim.enemyAnimator.SetBool("Falling", true);
@@ -28,6 +30,10 @@ public class EvilRectangle : Enemy
     protected override void Update()
     {
         base.Update();
+        if (detector.aggro)
+        {
+            AggroTrigger();
+        }
     }
 
     //Evil Rectangle will move itself randomly after its' spawned
@@ -40,7 +46,7 @@ public class EvilRectangle : Enemy
     }
 
     //Makes the rectangle animate an angry face when near the player, or fall if falling
-    protected override void AggroTrigger()
+    public void AggroTrigger()
     {
         if(falling)
         {

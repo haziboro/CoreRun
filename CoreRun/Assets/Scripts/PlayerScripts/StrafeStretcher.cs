@@ -24,7 +24,7 @@ public class StrafeStretcher : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gameRunning.active)
+        if (true)
         {
             StrafeStretch();
         }

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     //Start is called before the first frame update
     void Start()
     {
-        StartGame();
+        //StartGame();
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Starts the game
-    void StartGame()
+    public void StartGame()
     {
         gameRunning.active = true;
         startLayer.Raise();

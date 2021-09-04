@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 1067262921629092238}
   - component: {fileID: 7390697306831593744}
   - component: {fileID: 5178513606064644171}
+  - component: {fileID: 4880432440952415983}
   m_Layer: 0
   m_Name: EvilRectangleYellow
   m_TagString: Untagged
@@ -63,10 +64,9 @@ MonoBehaviour:
   playerHit: {fileID: 11400000, guid: d99d5fa7efcd5834bbe6989112045e9e, type: 2}
   normalDodge: {fileID: 11400000, guid: 06646dde5b2cabb428c5cd4e4d252dbc, type: 2}
   narrowDodge: {fileID: 11400000, guid: 34faf9df5563b2040bf0224b7e7c8986, type: 2}
-  playerAggroRange: 15
   spawnOffset: 2.3
   movementZone: 0
-  fallChancePercent: 100
+  fallChancePercent: 20
 --- !u!95 &7390697306831593744
 Animator:
   serializedVersion: 3
@@ -99,6 +99,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomizeAnimation: 1
+  reverseAnimation: 0
+--- !u!114 &4880432440952415983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579179625331258563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b81820a07e0b2041b97f0f282a79c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameRunning: {fileID: 11400000, guid: af6bb628839fd2b4298c57098e5301bf, type: 2}
+  aggro: 0
+  playerAggroRange: 13
 --- !u!1001 &3628805539875027793
 PrefabInstance:
   m_ObjectHideFlags: 0

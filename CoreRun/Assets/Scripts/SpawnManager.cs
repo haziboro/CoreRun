@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
 {
     public bool spawningLayerEnd;//true when transitioning layers.
 
+    [SerializeField] ScriptableBool gameRunning;
     [SerializeField] NextEnemy nextEnemy;
     [SerializeField] GameObject planet;
     [SerializeField] GameObject layerEnd;//Spawns the layer end object
@@ -35,13 +36,18 @@ public class SpawnManager : MonoBehaviour
     //SpawnNextEnemy
     public void SpawnNextEnemy()
     {
-        SpawnEnemy(nextEnemy.enemy.gameObject);
+        if (gameRunning.active)
+        {
+            SpawnEnemy(nextEnemy.enemy.gameObject);
+        }
     }
 
     //Spawns the end of the layer
     public void SpawnLayerEnd()
     {
-        //spawningLayerEnd = true;
-        SpawnEnemy(layerEnd);
+        if (gameRunning.active)
+        {
+            SpawnEnemy(layerEnd);
+        }
     }
 }

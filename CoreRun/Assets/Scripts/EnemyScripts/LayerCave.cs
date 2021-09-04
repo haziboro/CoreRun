@@ -12,7 +12,6 @@ public class LayerCave : Enemy
     {
         base.Start();
         spawnOffset = 5;
-        playerAggroRange = 1;
         transform.Rotate(90, 0, 0);//Adjust self after spawning
     }
 
@@ -32,6 +31,4 @@ public class LayerCave : Enemy
         increaseLayer.Raise();
         Destroy(gameObject);
     }
-
-    protected override void AggroTrigger() { }
 }

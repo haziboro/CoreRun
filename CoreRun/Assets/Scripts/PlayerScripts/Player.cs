@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
     //Raise death flag when health is reduced to zero
     public void TakeDamage()
     {
-        if (!iFramesObj.active)
+        if (!iFramesObj.active && gameRunning.active)
         {
             health.health--;
             tookDamage.Raise();

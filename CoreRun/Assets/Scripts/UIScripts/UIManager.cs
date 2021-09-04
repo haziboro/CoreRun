@@ -9,11 +9,11 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI layerText;
     private TextMeshProUGUI highScoreText;
-    private TextMeshProUGUI gameOverText;
+    //private TextMeshProUGUI gameOverText;
 
     [SerializeField] GameObject scoreTextObj;
     [SerializeField] GameObject layerTextObj;
-    [SerializeField] GameObject gameOverTextObj;
+    //[SerializeField] GameObject gameOverTextObj;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject gameOverMenu;
     [SerializeField] ScoreAndLayer score;
@@ -23,12 +23,12 @@ public class UIManager : MonoBehaviour
     {
         scoreText = scoreTextObj.GetComponent<TextMeshProUGUI>();
         layerText = layerTextObj.GetComponent<TextMeshProUGUI>();
-        gameOverText = gameOverTextObj.GetComponent<TextMeshProUGUI>();
+        //gameOverText = gameOverTextObj.GetComponent<TextMeshProUGUI>();
 
-        colorGameOverText();
+        //colorGameOverText();
     }
 
-    //Colors game over text
+    /*//Colors game over text
     private void colorGameOverText()
     {
         gameOverText.text = gameOverText.text.Replace(gameOverText.text.ToString(),
@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
             "<color=yellow>" + 'p' + "</color>" +
             "<color=green>" + '!' + "</color>"
             );
-    }
+    }*/
 
     //Display value of score on interface
     public void UpdateScoreUI()

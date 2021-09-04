@@ -6,9 +6,11 @@ public class EvilBigRed : Enemy
 {
     private AnimatorController anim;
     private bool charging = false;
+    private AggroDetection detector;
 
     public float wallOffset = 0.4f;
     [SerializeField] float speed = 10;
+
 
     // Start is called before the first frame update
     protected override void Start()
@@ -16,6 +18,7 @@ public class EvilBigRed : Enemy
         base.Start();
         transform.Rotate(90, 0, 0);//Adjust self after spawning
         anim = GetComponent<AnimatorController>();
+        detector = GetComponent<AggroDetection>();
         Move();
     }
 
@@ -23,7 +26,7 @@ public class EvilBigRed : Enemy
     protected override void Update()
     {
         base.Update();
-        if (aggro)
+        if (detector.aggro)
         {
             Charge();
         }
@@ -59,8 +62,4 @@ public class EvilBigRed : Enemy
         transform.Translate(new Vector3(0,-0.05f,-1)  * speed * Time.deltaTime);
     }
 
-    protected override void AggroTrigger()
-    {
-
-    }
 }

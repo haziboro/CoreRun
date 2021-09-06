@@ -13,7 +13,6 @@ public class AnimatorController : MonoBehaviour
     [SerializeField] bool randomizeAnimation;
     [SerializeField] bool reverseAnimation;
 
-    // Start is called before the first frame update
     void Awake()
     {
         enemyAnimator = GetComponent<Animator>();

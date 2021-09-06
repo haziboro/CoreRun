@@ -56,12 +56,24 @@ public class GameManager : MonoBehaviour
         if (gamePaused.active)
         {
             pause.Raise();
-            Time.timeScale = 0.0f;
+            FreezeTime(true);
         }
         else
         {
             unpause.Raise();
-            Time.timeScale = 1.0f;
+            FreezeTime(false);
         }//endelse
     }//end PauseToggle
+
+    public void FreezeTime(bool freeze)
+    {
+        if (freeze)
+        {
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+        }
+    }
 }

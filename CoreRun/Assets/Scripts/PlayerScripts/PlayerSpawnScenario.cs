@@ -9,7 +9,7 @@ public class PlayerSpawnScenario : MonoBehaviour
     [SerializeField] GameEvent startGame;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerAnimator = GetComponent<Animator>();
         float t = playerAnimator.GetCurrentAnimatorClipInfo(0).Length;

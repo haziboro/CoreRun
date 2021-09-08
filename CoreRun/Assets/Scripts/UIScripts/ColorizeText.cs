@@ -13,14 +13,14 @@ public class ColorizeText : MonoBehaviour
     private List<string> letterColors;
     private int counter = 0;
 
-    [SerializeField] GameObject titleTextObj;
+    [SerializeField] GameObject gameTextObj;
     [SerializeField] float flickerDuration;
     [SerializeField] int numFlickers;
 
     // Start is called before the first frame update
     void Start()
     {
-        textObject = titleTextObj.GetComponent<TextMeshProUGUI>();
+        textObject = gameTextObj.GetComponent<TextMeshProUGUI>();
         word = textObject.text.ToString();
         letterColors = new List<string>();
         AddColorsToList();

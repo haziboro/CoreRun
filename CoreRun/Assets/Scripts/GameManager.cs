@@ -10,12 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameEvent startLayer;
     [SerializeField] GameEvent pause;
     [SerializeField] GameEvent unpause;
-
-    //Start is called before the first frame update
-    void Start()
-    {
-        //StartGame();
-    }
+    [SerializeField] GameEvent loadMainMenu;
 
     // Update is called once per frame
     void Update()
@@ -33,7 +28,7 @@ public class GameManager : MonoBehaviour
         {
             PauseToggle();
         }
-        SceneManager.LoadScene(0);
+        loadMainMenu.Raise();
     }
 
     //Stops running the game

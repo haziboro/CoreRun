@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class RestartGame : MonoBehaviour
 {
     [SerializeField] ScriptableBool gameRunning;
+    [SerializeField] GameEvent loadEarth;
 
     //Restart Game
     public void Restart()
     {
         gameRunning.active = false;
-        SceneManager.LoadScene(1);
+        loadEarth.Raise();
     }
 }

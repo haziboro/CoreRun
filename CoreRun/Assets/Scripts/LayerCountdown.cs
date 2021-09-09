@@ -5,6 +5,7 @@ using UnityEngine;
 public class LayerCountdown : MonoBehaviour
 {
     [SerializeField] ScriptableBool gameRunning;
+    [SerializeField] ScriptableBool doneSpawning;
     [SerializeField] ScoreAndLayer score;
     [SerializeField] GameEvent EndLayer;
     [SerializeField] ScriptableInt layerInterval;//Number of seconds between layer transitions
@@ -25,6 +26,18 @@ public class LayerCountdown : MonoBehaviour
     IEnumerator LayerTimer()
     {
         yield return new WaitForSeconds(layerInterval.value);
+        //Wait for wave manager to finish
+        StartCoroutine(WaitForWaveEnd());
+    }
+
+    //Waits for spawncycle to complete, then spawns the layer end
+    IEnumerator WaitForWaveEnd()
+    {
+        while (!doneSpawning.active)
+        {
+            yield return null;
+        }
+
         if (gameRunning.active)
         {
             EndLayer.Raise();

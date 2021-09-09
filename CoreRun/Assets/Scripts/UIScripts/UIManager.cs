@@ -9,11 +9,9 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI layerText;
     private TextMeshProUGUI highScoreText;
-    //private TextMeshProUGUI gameOverText;
 
     [SerializeField] GameObject scoreTextObj;
     [SerializeField] GameObject layerTextObj;
-    //[SerializeField] GameObject gameOverTextObj;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject gameOverMenu;
     [SerializeField] ScoreAndLayer score;
@@ -23,21 +21,7 @@ public class UIManager : MonoBehaviour
     {
         scoreText = scoreTextObj.GetComponent<TextMeshProUGUI>();
         layerText = layerTextObj.GetComponent<TextMeshProUGUI>();
-        //gameOverText = gameOverTextObj.GetComponent<TextMeshProUGUI>();
-
-        //colorGameOverText();
     }
-
-    /*//Colors game over text
-    private void colorGameOverText()
-    {
-        gameOverText.text = gameOverText.text.Replace(gameOverText.text.ToString(),
-            "<color=red>" + 'P' + "</color>" +
-            "<color=blue>" + 'o' + "</color>" +
-            "<color=yellow>" + 'p' + "</color>" +
-            "<color=green>" + '!' + "</color>"
-            );
-    }*/
 
     //Display value of score on interface
     public void UpdateScoreUI()

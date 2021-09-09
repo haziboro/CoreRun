@@ -19,6 +19,10 @@ public class EvilRectangle : Enemy
         detector = GetComponent<AggroDetection>();
         if (Random.Range(0, 100) < fallChancePercent)
         {
+            if((Random.value > 0.5f))//50/50 split between left or right fall
+            {
+                anim.enemyAnimator.SetBool("FallRight", false);
+            }
             anim.enemyAnimator.SetBool("Falling", true);
             anim.enemyAnimator.SetBool("Idle", false);
             falling = true;

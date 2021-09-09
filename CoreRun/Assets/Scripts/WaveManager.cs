@@ -14,6 +14,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] GameEvent SpawnNextEnemy;
     [SerializeField] GameEvent startLayer;
     [SerializeField] ScriptableBool gameRunning;
+    [SerializeField] ScriptableBool doneSpawning;
     [SerializeField] ScriptableInt layerInterval;
     [SerializeField] float waveStartBufferTime;//Time after the layer transition before the next wave starts
     [SerializeField] NextEnemy nextEnemy;
@@ -36,7 +37,11 @@ public class WaveManager : MonoBehaviour
             if (enemyQueue.Count != 0)
             {
                 StartCoroutine("RequestNewEnemy");
-            }//endif
+            }
+            else
+            {
+                doneSpawning.active = true;
+            }//endelse
         }//endif
     }
 
@@ -59,6 +64,7 @@ public class WaveManager : MonoBehaviour
     private IEnumerator WaveBufferTimer()
     {
         yield return new WaitForSeconds(waveStartBufferTime);
+        doneSpawning.active = false;
         startLayer.Raise();
     }
 

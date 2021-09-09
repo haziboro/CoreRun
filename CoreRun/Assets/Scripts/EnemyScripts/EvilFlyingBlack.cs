@@ -8,12 +8,5 @@ public class EvilFlyingBlack : Enemy
     protected override void Start()
     {
         base.Start();
-       
-    }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
     }
 }

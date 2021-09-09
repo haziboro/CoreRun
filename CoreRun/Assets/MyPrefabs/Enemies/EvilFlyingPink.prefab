@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3268974332382950397}
   - component: {fileID: 6478061393321071388}
   - component: {fileID: -3246683897108682657}
+  - component: {fileID: 9025872351695459961}
   m_Layer: 0
   m_Name: EvilFlyingPink
   m_TagString: Untagged
@@ -101,8 +102,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652cbe55c6c21e144874c6730b668c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeedMultiplier: {fileID: 11400000, guid: 8934314f33aba0049a4050e98df1bbb3, type: 2}
   randomizeAnimation: 1
-  reverseAnimation: 0
+--- !u!114 &9025872351695459961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642308191283485691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942da649d097465428bbe412b1f66f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reverseAnimation: 1
 --- !u!114 &7176655194554292683
 MonoBehaviour:
   m_ObjectHideFlags: 0

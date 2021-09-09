@@ -56,7 +56,6 @@ MonoBehaviour:
   movementZone: 0
   wallOffset: 0.5
   speed: 10
-  detector: {fileID: 0}
 --- !u!65 &4157567402162172953
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -101,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652cbe55c6c21e144874c6730b668c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeedMultiplier: {fileID: 11400000, guid: 8934314f33aba0049a4050e98df1bbb3, type: 2}
   randomizeAnimation: 0
-  reverseAnimation: 0
 --- !u!114 &4208196966391234107
 MonoBehaviour:
   m_ObjectHideFlags: 0

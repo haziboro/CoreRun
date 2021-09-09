@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6624632545462264611}
   - component: {fileID: 371356925434403097}
   - component: {fileID: 8434063967602012856}
+  - component: {fileID: -6299567938553778626}
   m_Layer: 0
   m_Name: EvilFlyingBlack
   m_TagString: Untagged
@@ -79,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652cbe55c6c21e144874c6730b668c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeedMultiplier: {fileID: 11400000, guid: 8934314f33aba0049a4050e98df1bbb3, type: 2}
   randomizeAnimation: 1
-  reverseAnimation: 0
 --- !u!114 &8434063967602012856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +100,19 @@ MonoBehaviour:
   narrowDodge: {fileID: 11400000, guid: 34faf9df5563b2040bf0224b7e7c8986, type: 2}
   spawnOffset: 3.4
   movementZone: 0
+--- !u!114 &-6299567938553778626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642308191283485691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942da649d097465428bbe412b1f66f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reverseAnimation: 1
 --- !u!136 &2040988723613541239
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -22,15 +22,12 @@ public class EvilFlyingPink : Enemy
         moving = true;
         anim = GetComponent<AnimatorController>();
 
-        CheckForReversal();
-
         transform.Rotate(180,0,0);//Adjust self after spawning
     }
 
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
-        base.Update();
         if (gameRunning.active)
         {
             Move();
@@ -60,15 +57,6 @@ public class EvilFlyingPink : Enemy
         if (Random.Range(0,pauseChance) == 0)
         {
             StartCoroutine(RandomPause());
-        }
-    }
-
-    //Randomly determine if the animation will be reversed
-    private void CheckForReversal()
-    {
-        if (Random.Range(0, 2) == 0)
-        {
-            anim.enemyAnimator.SetTrigger("ReverseAnim");
         }
     }
 

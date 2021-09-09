@@ -31,9 +31,8 @@ public class EvilRectangle : Enemy
     }
 
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
-        base.Update();
         if (detector.aggro)
         {
             AggroTrigger();

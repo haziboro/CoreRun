@@ -12,7 +12,6 @@ public class ShrinkPowerController : MonoBehaviour
 
     [SerializeField] ScriptableBool gameRunning;
     [SerializeField] ShrinkPower shrinkPower;
-    [SerializeField] GameObject playerGraphic;
     [SerializeField] float shrinkPowerCooldownThreshold = 15;//The value that shrinkPower has to reach to go off cooldown
     [SerializeField] float shrinkPowerConsumptionSpeed = 1.0f;
     [SerializeField] float shrinkPowerRegenSpeed = 1.0f;
@@ -22,7 +21,7 @@ public class ShrinkPowerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerGraphicControl = playerGraphic.GetComponent<PlayerGraphicsController>();
+        playerGraphicControl = GetComponentInChildren<PlayerGraphicsController>();
 
         //Set Constants
         shrinkScale = new Vector3(-shrinkSpeed, -shrinkSpeed, -shrinkSpeed);

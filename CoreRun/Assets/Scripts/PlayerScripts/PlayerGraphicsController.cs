@@ -5,8 +5,10 @@ using UnityEngine;
 //Manages enabling/disabling of renderers and activating/deactivating Eye objects
 public class PlayerGraphicsController : MonoBehaviour
 {
-    //public GameObject playerGraphic { get; private set; }
     private Renderer[] playerGraphicRenderers;
+    private GameObject playerGraphic;
+
+    [SerializeField] PlayerGraphicContainer container;
     [SerializeField] GameObject openEyes;
     [SerializeField] GameObject happyEyes;
     [SerializeField] GameObject squintedEyes;
@@ -17,6 +19,7 @@ public class PlayerGraphicsController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        playerGraphic = container.playerGraphic;
         playerGraphicRenderers = GetComponentsInChildren<Renderer>();
     }
 

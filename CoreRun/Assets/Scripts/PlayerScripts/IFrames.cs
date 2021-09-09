@@ -9,7 +9,6 @@ public class IFrames : MonoBehaviour
     private PlayerGraphicsController playerGraphicControl;
 
     [SerializeField] ScriptableBool iFramesObj;
-    [SerializeField] GameObject playerGraphic;
     [SerializeField] float iFrameDuration = 1.5f;
     [SerializeField] float iFrameDeltaTime = 0.10f;
 
@@ -17,7 +16,7 @@ public class IFrames : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerGraphicControl = playerGraphic.GetComponent<PlayerGraphicsController>();
+        playerGraphicControl = GetComponentInChildren<PlayerGraphicsController>();
     }
 
     //Activates IFrame co-routine

@@ -25,12 +25,6 @@ public abstract class Enemy : MonoBehaviour
         narrowMiss = false;
     }
 
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-        
-    }
-
     public virtual void OnTriggerEnter(Collider other)
     {
         OnTriggerFire(other);

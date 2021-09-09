@@ -16,7 +16,7 @@ public class LayerCave : Enemy
     }
 
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
         isColliding = false;
     }
@@ -27,7 +27,7 @@ public class LayerCave : Enemy
         if (isColliding) return;
         isColliding = true;
 
-        //Transition the layer once the player hits the cave
+        //Transition the layer once the player hits the collider
         increaseLayer.Raise();
         Destroy(gameObject);
     }

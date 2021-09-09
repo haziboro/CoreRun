@@ -23,9 +23,9 @@ public class EvilBigRed : Enemy
     }
 
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
-        base.Update();
+        //base.Update();
         if (detector.aggro)
         {
             Charge();

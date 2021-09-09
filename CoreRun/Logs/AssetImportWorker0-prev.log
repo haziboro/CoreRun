@@ -1,0 +1,350 @@
+Using pre-set license
+Built from '2020.3/release' branch; Version is '2020.3.7f1 (dd97f2c94397) revision 14522354'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19042.1165; Version 2009; 64bit' Language: 'en' Physical Memory: 16325 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.7f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+E:/UnityProjects/DesignAndPublishUnity/CoreRun/CoreRun/CoreRun
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+61974
+Successfully changed project path to: E:/UnityProjects/DesignAndPublishUnity/CoreRun/CoreRun/CoreRun
+E:/UnityProjects/DesignAndPublishUnity/CoreRun/CoreRun/CoreRun
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 28.37 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.7f1 (dd97f2c94397)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/UnityProjects/DesignAndPublishUnity/CoreRun/CoreRun/CoreRun/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1c03)
+    Vendor:   
+    VRAM:     6052 MB
+    Driver:   27.21.14.6079
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56388
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004317 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 29.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.250 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000504 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.27 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.867 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.27 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1543 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 149.6 MB.
+System memory in use after: 149.6 MB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 1993.
+Total: 2.050800 ms (FindLiveObjects: 0.249400 ms CreateObjectMapping: 0.097500 ms MarkObjects: 1.543300 ms  DeleteObjects: 0.159900 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Animations/BigRed/EvilBigRed.controller
+  artifactKey: Guid(f74feb9b4e1c0c04d9915a8b54eacef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/BigRed/EvilBigRed.controller using Guid(f74feb9b4e1c0c04d9915a8b54eacef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae2be525fbd1d242b29bec5dda0a52b0') in 0.043573 seconds
+  Import took 0.046476 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000201 seconds.
+  path: Assets/Animations/BigRed/BigRedWaking.anim
+  artifactKey: Guid(5ece20c02b166dd4a9959a1885fddd55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/BigRed/BigRedWaking.anim using Guid(5ece20c02b166dd4a9959a1885fddd55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea5c8308156e87187ccfa5a1d1cf92d4') in 0.003764 seconds
+  Import took 0.006207 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000639 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.27 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.863 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1502 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 146.0 MB.
+System memory in use after: 146.1 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1996.
+Total: 2.200100 ms (FindLiveObjects: 0.139300 ms CreateObjectMapping: 0.064300 ms MarkObjects: 1.893300 ms  DeleteObjects: 0.101700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000683 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.27 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.802 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.30 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1502 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 146.0 MB.
+System memory in use after: 146.1 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1999.
+Total: 2.066600 ms (FindLiveObjects: 0.205800 ms CreateObjectMapping: 0.093700 ms MarkObjects: 1.650000 ms  DeleteObjects: 0.116200 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 816.291283 seconds.
+  path: Assets/MyPrefabs/Enemies/EvilFlyingPink.prefab
+  artifactKey: Guid(201265d56b9dc9e4e957d2ed19d31ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MyPrefabs/Enemies/EvilFlyingPink.prefab using Guid(201265d56b9dc9e4e957d2ed19d31ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b13a77f52f88482d26af6e653df6d23') in 0.056135 seconds
+  Import took 0.060111 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000593 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.33 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.834 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1502 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 146.1 MB.
+System memory in use after: 146.2 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2002.
+Total: 1.786900 ms (FindLiveObjects: 0.180100 ms CreateObjectMapping: 0.073300 ms MarkObjects: 1.380000 ms  DeleteObjects: 0.152800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 111.306709 seconds.
+  path: Assets/Scripts/WaveManager.cs
+  artifactKey: Guid(d488c874b4f83c04ebe666f331476409) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/WaveManager.cs using Guid(d488c874b4f83c04ebe666f331476409) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b83fbc77e98935e5278d2d588584eeae') in 0.013229 seconds
+  Import took 0.016292 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.466751 seconds.
+  path: Assets/Scripts/ReverseAnimation.cs
+  artifactKey: Guid(942da649d097465428bbe412b1f66f82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ReverseAnimation.cs using Guid(942da649d097465428bbe412b1f66f82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2f35f2f91dc1092a91cb1917123d838') in 0.001850 seconds
+  Import took 0.004742 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000874 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.37 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.853 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.27 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1503 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 146.1 MB.
+System memory in use after: 146.2 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2006.
+Total: 2.057800 ms (FindLiveObjects: 0.263100 ms CreateObjectMapping: 0.108600 ms MarkObjects: 1.582100 ms  DeleteObjects: 0.102800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000668 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.827 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1503 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 146.1 MB.
+System memory in use after: 146.2 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2009.
+Total: 1.798500 ms (FindLiveObjects: 0.136300 ms CreateObjectMapping: 0.042800 ms MarkObjects: 1.490100 ms  DeleteObjects: 0.128200 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 114.913865 seconds.
+  path: Assets/Scripts/ReverseAnimation.cs
+  artifactKey: Guid(942da649d097465428bbe412b1f66f82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ReverseAnimation.cs using Guid(942da649d097465428bbe412b1f66f82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13db6f5438355cd0dcc73e02de94b800') in 0.003989 seconds
+  Import took 0.011510 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.540636 seconds.
+  path: Assets/MyPrefabs/Enemies/EvilFlyingBlack.prefab
+  artifactKey: Guid(e640064af11247442883a7e57307a0b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MyPrefabs/Enemies/EvilFlyingBlack.prefab using Guid(e640064af11247442883a7e57307a0b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cefe6a18252691e0429854fd8ed9b84') in 0.034888 seconds
+  Import took 0.041899 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.007656 seconds.
+  path: Assets/MyPrefabs/Enemies/EvilFlyingBlack.prefab
+  artifactKey: Guid(e640064af11247442883a7e57307a0b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MyPrefabs/Enemies/EvilFlyingBlack.prefab using Guid(e640064af11247442883a7e57307a0b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cefe6a18252691e0429854fd8ed9b84') in 0.006394 seconds
+  Import took 0.009714 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.107838 seconds.
+  path: Assets/MyPrefabs/Enemies/EvilFlyingPink.prefab
+  artifactKey: Guid(201265d56b9dc9e4e957d2ed19d31ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MyPrefabs/Enemies/EvilFlyingPink.prefab using Guid(201265d56b9dc9e4e957d2ed19d31ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e44961ec065de60cabc857677d872122') in 0.010278 seconds
+  Import took 0.018113 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.876225 seconds.
+  path: Assets/MyPrefabs/Enemies/EvilFlyingPink.prefab
+  artifactKey: Guid(201265d56b9dc9e4e957d2ed19d31ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MyPrefabs/Enemies/EvilFlyingPink.prefab using Guid(201265d56b9dc9e4e957d2ed19d31ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3eef14da34942104d693e26ddd9f1cb6') in 0.010099 seconds
+  Import took 0.013630 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.756707 seconds.
+  path: Assets/MyPrefabs/Enemies/EvilFlyingPink.prefab
+  artifactKey: Guid(201265d56b9dc9e4e957d2ed19d31ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MyPrefabs/Enemies/EvilFlyingPink.prefab using Guid(201265d56b9dc9e4e957d2ed19d31ffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e914591ae44344ea59f4a1c15a2aa443') in 0.008971 seconds
+  Import took 0.012237 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000611 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.809 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1503 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 146.1 MB.
+System memory in use after: 146.2 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2012.
+Total: 2.226100 ms (FindLiveObjects: 0.232700 ms CreateObjectMapping: 0.147700 ms MarkObjects: 1.721500 ms  DeleteObjects: 0.123500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 191.011200 seconds.
+  path: Assets/Animations/FlyingBlack/EvilFlyingBlack.controller
+  artifactKey: Guid(e80004154109d574eb27f240d9c53fdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/FlyingBlack/EvilFlyingBlack.controller using Guid(e80004154109d574eb27f240d9c53fdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'defc9b5d857c1b7f41247e1ff7df865a') in 0.020712 seconds
+  Import took 0.024660 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.535026 seconds.
+  path: Assets/Animations/FlyingBlack/EvilFlyingBlack.anim
+  artifactKey: Guid(dcd2d759a00c1e941819dbc769e0be33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/FlyingBlack/EvilFlyingBlack.anim using Guid(dcd2d759a00c1e941819dbc769e0be33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e93ed3972a5991146e5dc584c146e2f8') in 0.003147 seconds
+  Import took 0.009631 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003337 seconds.
+  path: Assets/Animations/FlyingBlack/EvilFlyingBlack.anim
+  artifactKey: Guid(dcd2d759a00c1e941819dbc769e0be33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/FlyingBlack/EvilFlyingBlack.anim using Guid(dcd2d759a00c1e941819dbc769e0be33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e93ed3972a5991146e5dc584c146e2f8') in 0.003435 seconds
+  Import took 0.006785 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.353782 seconds.
+  path: Assets/Animations/FlyingBlack/EvilFlyingBlack 1.anim
+  artifactKey: Guid(c2e673d065480204987f479ffc5bf266) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/FlyingBlack/EvilFlyingBlack 1.anim using Guid(c2e673d065480204987f479ffc5bf266) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '444389dca58a8f1d63f18a220817d1f0') in 0.004900 seconds
+  Import took 0.008461 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001071 seconds.
+  path: Assets/Animations/FlyingBlack/EvilFlyingBlack 1.anim
+  artifactKey: Guid(c2e673d065480204987f479ffc5bf266) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/FlyingBlack/EvilFlyingBlack 1.anim using Guid(c2e673d065480204987f479ffc5bf266) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '444389dca58a8f1d63f18a220817d1f0') in 0.002343 seconds
+  Import took 0.004906 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 27.467964 seconds.
+  path: Assets/Animations/FlyingBlack/EvilFlyingBlack 1.anim
+  artifactKey: Guid(c2e673d065480204987f479ffc5bf266) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/FlyingBlack/EvilFlyingBlack 1.anim using Guid(c2e673d065480204987f479ffc5bf266) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11afb47afb2bc006eeb3fe68a67c2b61') in 0.004966 seconds
+  Import took 0.008906 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003659 seconds.
+  path: Assets/Animations/FlyingBlack/EvilFlyingBlack 1.anim
+  artifactKey: Guid(c2e673d065480204987f479ffc5bf266) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/FlyingBlack/EvilFlyingBlack 1.anim using Guid(c2e673d065480204987f479ffc5bf266) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11afb47afb2bc006eeb3fe68a67c2b61') in 0.001960 seconds
+  Import took 0.004643 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.434194 seconds.
+  path: Assets/Animations/FlyingBlack/EvilFlyingBlackReverse.anim
+  artifactKey: Guid(c2e673d065480204987f479ffc5bf266) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/FlyingBlack/EvilFlyingBlackReverse.anim using Guid(c2e673d065480204987f479ffc5bf266) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44c0132fd0dd5cf95cdca3d142d19da0') in 0.004171 seconds
+  Import took 0.007293 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

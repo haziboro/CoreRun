@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088b9daa06100946879af50c3262393, type: 3}
+  m_Name: 321
+  m_EditorClassIdentifier: 
+  enemyGroups:
+  - repeatAmount: 5
+    seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+    - {fileID: 1642308191283485690, guid: 201265d56b9dc9e4e957d2ed19d31ffe, type: 3}
+    - {fileID: 1642308191283485690, guid: 201265d56b9dc9e4e957d2ed19d31ffe, type: 3}
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}

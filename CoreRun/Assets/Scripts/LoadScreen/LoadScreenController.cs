@@ -25,7 +25,10 @@ public class LoadScreenController : MonoBehaviour
         loadScreenOrigin = loadScreenObj.transform.position;
         loadScreenHeight = loadScreenObj.transform.
             GetComponent<RectTransform>().sizeDelta.y;
+    }
 
+    private void Start()
+    {
         UnfillLoadScreen();
     }
 

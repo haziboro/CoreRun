@@ -15,7 +15,7 @@ public class LoadScreenImage : MonoBehaviour
     [SerializeField] int imageWidth;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         loadScreen = loadScreenObj.GetComponent<Image>();
 
@@ -23,12 +23,11 @@ public class LoadScreenImage : MonoBehaviour
         loadScreen.color = loadScreenColor;
         loadScreen.GetComponent<RectTransform>().sizeDelta =
             new Vector2(imageHeight, imageWidth);
+    }
+
+    private void Start()
+    {
         colorLoadText.Raise();
     }
 
-    //Randomly changes loadScreens displayed text
-    public void randomText()
-    {
-
-    }
 }

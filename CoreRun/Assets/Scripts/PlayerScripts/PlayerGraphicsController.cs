@@ -6,20 +6,17 @@ using UnityEngine;
 public class PlayerGraphicsController : MonoBehaviour
 {
     private Renderer[] playerGraphicRenderers;
-    private GameObject playerGraphic;
 
-    [SerializeField] PlayerGraphicContainer container;
     [SerializeField] GameObject openEyes;
     [SerializeField] GameObject happyEyes;
     [SerializeField] GameObject squintedEyes;
     [SerializeField] PlayerHealth health;
     [SerializeField] Color lerpColorMaxHealth;
     [SerializeField] Color lerpColorNoHealth;
-
+    
     // Start is called before the first frame update
     private void Start()
     {
-        playerGraphic = container.playerGraphic;
         playerGraphicRenderers = GetComponentsInChildren<Renderer>();
     }
 

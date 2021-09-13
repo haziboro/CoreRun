@@ -12,6 +12,7 @@ public class LoadScreenController : MonoBehaviour
     [SerializeField] ScriptableBool loadScreen;
     [SerializeField] GameObject loadScreenObj;
     [SerializeField] float loadScreenSpeed;
+    [SerializeField] float unloadScreenDelay;
 
 
 
@@ -44,8 +45,15 @@ public class LoadScreenController : MonoBehaviour
     {
         if (!moving)
         {
-            StartCoroutine(UnfillTimer());
+            StartCoroutine(ShortPause());
         }
+    }
+
+    //Pause before moving load screen
+    IEnumerator ShortPause()
+    {
+        yield return new WaitForSeconds(unloadScreenDelay);
+        StartCoroutine(UnfillTimer());
     }
 
     IEnumerator FillTimer()

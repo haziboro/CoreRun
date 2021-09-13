@@ -18,7 +18,7 @@ public class ColorizeText : MonoBehaviour
     [SerializeField] int numFlickers;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         textObject = gameTextObj.GetComponent<TextMeshProUGUI>();
         word = textObject.text.ToString();

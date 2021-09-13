@@ -15,6 +15,11 @@ public class ShrinkPowerBarUI : MonoBehaviour
     [SerializeField] Color shrinkPowerBarLow = Color.red;
     [SerializeField] Color shrinkPowerBarOnCooldown = Color.black;
 
+    private void Awake()
+    {
+        shrinkPower.value = 100;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

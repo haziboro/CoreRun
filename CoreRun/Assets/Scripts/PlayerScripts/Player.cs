@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
     //Raise death flag when health is reduced to zero
     public void TakeDamage()
     {
+        health.lostHealth = true;
         if (!iFramesObj.active && gameRunning.active)
         {
             health.health--;
@@ -77,5 +78,23 @@ public class Player : MonoBehaviour
             }//endelse
         }//endif
     }//end TakeDamage
+
+    //If the player completed a layer without getting hit, this will give them another life
+    public void GainHealth()
+    {
+        if (!health.lostHealth)
+        {
+            if (health.health < health.maxHealth)
+            {
+                health.health += 1;
+            }//endif
+        }//endif
+    }
+
+    //Resets the tracker for lost player health
+    public void ResetLostHealthBool()
+    {
+        health.lostHealth = false;
+    }
 
 }//End Player

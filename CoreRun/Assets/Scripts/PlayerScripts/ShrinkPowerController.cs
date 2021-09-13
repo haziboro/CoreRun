@@ -18,6 +18,12 @@ public class ShrinkPowerController : MonoBehaviour
     [SerializeField] float shrinkSpeed = 1f;//Rate at which shrinking occurs
     [Range(0.0f, 1.0f)] [SerializeField] float minimumSize = 0.5f; //Smallest size allowed
 
+    private void Awake()
+    {
+        shrinkPower.onCooldown = false;
+        shrinkPower.value = 100;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

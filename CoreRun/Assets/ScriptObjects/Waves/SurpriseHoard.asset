@@ -16,12 +16,24 @@ MonoBehaviour:
   - repeatAmount: 2
     seriesOfEnemies:
     - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
-  - repeatAmount: 8
+  - repeatAmount: 2
     seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
     - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
-  - repeatAmount: 8
-    seriesOfEnemies:
     - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
-  - repeatAmount: 8
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
+  - repeatAmount: 2
     seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
+  - repeatAmount: 2
+    seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
+    - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}
     - {fileID: 99180449596642585, guid: a3100ef04943ac94d86e4b2a4a6dc349, type: 3}

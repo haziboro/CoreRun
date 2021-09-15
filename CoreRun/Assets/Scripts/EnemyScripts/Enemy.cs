@@ -27,7 +27,10 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        OnTriggerFire(other);
+        if (gameRunning.active)
+        {
+            OnTriggerFire(other);
+        }
     }
 
     //Trigger ReportDeath() in player when colliding with them

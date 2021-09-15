@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SmallButDangerous
   m_EditorClassIdentifier: 
   enemyGroups:
-  - repeatAmount: 7
+  - repeatAmount: 8
     seriesOfEnemies:
     - {fileID: 1642308191283485690, guid: 201265d56b9dc9e4e957d2ed19d31ffe, type: 3}
     - {fileID: 1067262921629092238, guid: 338c1d5fedbbef24c9b7311399677154, type: 3}

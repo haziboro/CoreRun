@@ -13,16 +13,21 @@ MonoBehaviour:
   m_Name: ProudParents
   m_EditorClassIdentifier: 
   enemyGroups:
-  - repeatAmount: 1
+  - repeatAmount: 2
     seriesOfEnemies:
-    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
     - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
   - repeatAmount: 20
     seriesOfEnemies:
     - {fileID: 1067262921629092238, guid: 338c1d5fedbbef24c9b7311399677154, type: 3}
+  - repeatAmount: 2
+    seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
   - repeatAmount: 20
     seriesOfEnemies:
     - {fileID: 1067262921629092238, guid: 338c1d5fedbbef24c9b7311399677154, type: 3}
+  - repeatAmount: 2
+    seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
   - repeatAmount: 20
     seriesOfEnemies:
     - {fileID: 1067262921629092238, guid: 338c1d5fedbbef24c9b7311399677154, type: 3}

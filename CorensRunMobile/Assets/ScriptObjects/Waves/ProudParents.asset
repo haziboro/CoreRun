@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3088b9daa06100946879af50c3262393, type: 3}
+  m_Name: ProudParents
+  m_EditorClassIdentifier: 
+  enemyGroups:
+  - repeatAmount: 2
+    seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+  - repeatAmount: 20
+    seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: 338c1d5fedbbef24c9b7311399677154, type: 3}
+  - repeatAmount: 2
+    seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+  - repeatAmount: 20
+    seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: 338c1d5fedbbef24c9b7311399677154, type: 3}
+  - repeatAmount: 2
+    seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: ed591ac42d6df314e96a50b6e4d48395, type: 3}
+  - repeatAmount: 20
+    seriesOfEnemies:
+    - {fileID: 1067262921629092238, guid: 338c1d5fedbbef24c9b7311399677154, type: 3}

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 //Controls player movement and responds to damage taken
 public class Player : MonoBehaviour
 {
     private float horizontalInput;
+    private Touch touch;
 
+    [SerializeField] Camera cam;
     [SerializeField] GameEvent playerDied;
     [SerializeField] GameEvent iFramesOn;
     [SerializeField] GameEvent tookDamage;
@@ -18,16 +21,64 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 10;//left-right movement speed
     [SerializeField] float levelBoundaries = 3.4f;//distance from center
 
+    [SerializeField] int touchDeadzone;//width around character touch isn't read
+    [SerializeField] float inputAcceleration;
+    [SerializeField] float inputDecceleration;
+
     // Start is called before the first frame update
     private void Start()
     {
         health.health = health.maxHealth;
+        horizontalInput = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        if (Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);
+
+            //if touch to the left, decrease axes
+            if (touch.position.x < cam.WorldToScreenPoint(transform.position).x - touchDeadzone)
+            {
+                horizontalInput -= inputAcceleration;
+                horizontalInput = horizontalInput < -1 ? -1 : horizontalInput;
+            }
+            //if to the right, increase axis
+            else if (touch.position.x > cam.WorldToScreenPoint(transform.position).x + touchDeadzone)
+            {
+                horizontalInput += inputAcceleration;
+                horizontalInput = horizontalInput > 1 ? 1 : horizontalInput;
+            }
+            else
+            {
+                NeutralizeMovement();
+            }
+        }
+        //When not touching, return to 0
+        else if (Input.touchCount == 0)
+        {
+            NeutralizeMovement();
+        }
+        else { }
+    }
+
+    //Return movement to zero
+    private void NeutralizeMovement()
+    {
+        float adjustedInput;
+        if (horizontalInput > 0)
+        {
+            adjustedInput = horizontalInput - inputDecceleration;
+            horizontalInput = adjustedInput < 0 ? 0 : adjustedInput;
+        }
+        else if (horizontalInput < 0)
+        {
+            adjustedInput = horizontalInput + inputDecceleration;
+            horizontalInput = adjustedInput > 0 ? 0 : adjustedInput;
+        }
+        else { }
     }
 
     private void FixedUpdate()

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
     [SerializeField] ScriptableBool gameRunning;
     [SerializeField] ScriptableBool gamePaused;
     [SerializeField] GameEvent startLayer;
@@ -15,7 +16,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && gameRunning.active)
+        
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus && gamePaused.active == false)
         {
             PauseToggle();
         }

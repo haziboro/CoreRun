@@ -6,11 +6,12 @@ using UnityEngine;
 public class ShrinkPowerController : MonoBehaviour
 {
     private PlayerGraphicsController playerGraphicControl;
-    private bool ButtonDown;//Checks if down is held
+    private bool ButtonDown;//Checks if shrink button is held
     public Vector3 playerScale { get; private set; }
     private Vector3 shrinkScale;
 
     [SerializeField] ScriptableBool gameRunning;
+    [SerializeField] ScriptableBool shrinkButtonPressed;
     [SerializeField] ShrinkPower shrinkPower;
     [SerializeField] float shrinkPowerCooldownThreshold = 15;//The value that shrinkPower has to reach to go off cooldown
     [SerializeField] float shrinkPowerConsumptionSpeed = 1.0f;
@@ -37,7 +38,7 @@ public class ShrinkPowerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ButtonDown = Input.GetButton("Down");
+        ButtonDown = shrinkButtonPressed.active;
     }
 
     private void FixedUpdate()

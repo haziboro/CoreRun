@@ -59,6 +59,7 @@ public class LoadScreenController : MonoBehaviour
 
     IEnumerator FillTimer()
     {
+        loadScreenObj.SetActive(true);
         moving = true;
         while (!loadScreen.active)
         {
@@ -80,6 +81,7 @@ public class LoadScreenController : MonoBehaviour
 
     IEnumerator UnfillTimer()
     {
+        loadScreenObj.SetActive(true);
         moving = true;
         while (loadScreen.active)
         {
@@ -96,6 +98,7 @@ public class LoadScreenController : MonoBehaviour
             yield return null;
         }
         moving = false;
+        loadScreenObj.SetActive(false);
     }
 
 
